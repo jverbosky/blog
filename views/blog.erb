@@ -1,0 +1,33 @@
+<h1>My Blog Page</h1>
+
+<hr>
+
+<h3>Write New Blog</h3>
+
+<table>
+  <tr>
+    <td>Title:</td>
+    <td><input type="text" id="newBlogTitle"></td>
+  </tr>
+  <tr>
+    <td>Body:</td>
+    <td><textarea id="newBlogText"></textarea></td>
+  </tr>
+</table>
+
+<button id="btnPostNewBlog">Submit</button>
+
+<hr>
+
+<h2>Previous Blogs</h2>
+
+<hr>
+
+<% blogs_array.each do |blog| %>
+
+  <h3><%=blog["blog_title"]%></h3>
+  <p><i><%=blog["blog_date"]%></i></p>
+  <p><%=blog["blog_text"]%></p>
+  <hr>
+
+<% end %>
