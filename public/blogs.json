@@ -18,5 +18,10 @@
     "blog_title": "Formatted Text Using JavaScript",
     "blog_date": "Mon Jul 24 2017",
     "blog_text": "This <b>word</b> is in bold.\n\nThis <i>word</i> is in italics.\n\nThis <u>word</u> is underlined."
+  },
+  {
+    "blog_title": "Changed Blog Posting Call",
+    "blog_date": "Mon Jul 24 2017",
+    "blog_text": "Testing to see if posting still works."
   }
 ]
