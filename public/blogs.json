@@ -1,0 +1,22 @@
+[
+  {
+    "blog_title": "Testing Line Breaks",
+    "blog_date": "Mon Jul 24 2017",
+    "blog_text": "This is a sentence.\n\nThis is a sentence on another line.\n\nThis is a sentence on yet another line."
+  },
+  {
+    "blog_title": "Testing Quotes",
+    "blog_date": "Mon Jul 24 2017",
+    "blog_text": "This has \"double quotes\" and should be escaped in the JSON.\n\nThis has 'single quotes' and should also be escaped in the JSON."
+  },
+  {
+    "blog_title": "Testing Inline Formatting",
+    "blog_date": "Mon Jul 24 2017",
+    "blog_text": "This <b>word</b> is bold.\n\nThis <i>word</i> is italics.\n\nThis <u>word</u> is underlined."
+  },
+  {
+    "blog_title": "Formatted Text Using JavaScript",
+    "blog_date": "Mon Jul 24 2017",
+    "blog_text": "This <b>word</b> is in bold.\n\nThis <i>word</i> is in italics.\n\nThis <u>word</u> is underlined."
+  }
+]

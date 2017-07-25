@@ -6,15 +6,24 @@
 
 <table>
   <tr>
-    <td>Title:</td>
-    <td><input type="text" id="newBlogTitle"></td>
+    <td class="bold">Title:</td>
+    <td><input type="text" class="title" id="newBlogTitle"></td>
   </tr>
   <tr>
-    <td>Body:</td>
+    <td class="bold">Body:</td>
     <td><textarea id="newBlogText"></textarea></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <button onclick="formatText('b')">B</button>
+      <button onclick="formatText('i')">I</button>
+      <button onclick="formatText('u')">U</button>
+    </td>
   </tr>
 </table>
 
+<br>
 <button id="btnPostNewBlog">Submit</button>
 
 <hr>
@@ -27,7 +36,7 @@
 
   <h3><%=blog["blog_title"]%></h3>
   <p><i><%=blog["blog_date"]%></i></p>
-  <p><%=blog["blog_text"]%></p>
+  <p><%=blog["blog_text"].gsub(/\n/){"<br>"}%></p>
   <hr>
 
 <% end %>
