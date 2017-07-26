@@ -1,27 +1,34 @@
 [
   {
-    "blog_title": "Testing Line Breaks",
-    "blog_date": "Mon Jul 24 2017",
-    "blog_text": "This is a sentence.\n\nThis is a sentence on another line.\n\nThis is a sentence on yet another line."
+    "blog_title": "Blog without Photo",
+    "blog_date": "Tue Jul 25 2017",
+    "blog_text": "No photo for this blog."
   },
   {
-    "blog_title": "Testing Quotes",
-    "blog_date": "Mon Jul 24 2017",
-    "blog_text": "This has \"double quotes\" and should be escaped in the JSON.\n\nThis has 'single quotes' and should also be escaped in the JSON."
+    "blog_title": "Blog with Photo",
+    "blog_date": "Tue Jul 25 2017",
+    "blog_text": "This blog has a photo.",
+    "blog_photo": "anole.png"
   },
   {
-    "blog_title": "Testing Inline Formatting",
-    "blog_date": "Mon Jul 24 2017",
-    "blog_text": "This <b>word</b> is bold.\n\nThis <i>word</i> is italics.\n\nThis <u>word</u> is underlined."
+    "blog_title": "Another Blog without a Photo",
+    "blog_date": "Tue Jul 25 2017",
+    "blog_text": "Testing again with <u>console logging</u>."
   },
   {
-    "blog_title": "Formatted Text Using JavaScript",
-    "blog_date": "Mon Jul 24 2017",
-    "blog_text": "This <b>word</b> is in bold.\n\nThis <i>word</i> is in italics.\n\nThis <u>word</u> is underlined."
+    "blog_title": "Another Blog with a Photo",
+    "blog_date": "Tue Jul 25 2017",
+    "blog_text": "Testing again with <u>console logging</u>.",
+    "blog_photo": "caterpillar.png"
   },
   {
-    "blog_title": "Changed Blog Posting Call",
-    "blog_date": "Mon Jul 24 2017",
-    "blog_text": "Testing to see if posting still works."
+    "blog_title": "Page Refresh Enabled Again",
+    "blog_date": "Tue Jul 25 2017",
+    "blog_text": "Left console logging on but page refresh means it doesn't stay in the console."
+  },
+  {
+    "blog_title": "New DateTime Format",
+    "blog_date": "Tue Jul 25 2017 @ 22:38",
+    "blog_text": "Trying out new datetime format."
   }
 ]

@@ -1,6 +1,8 @@
 require 'sinatra'
+require 'base64'
 require 'json'
 require_relative 'lib/blog_handler.rb'
+require_relative 'lib/photo_handler.rb'
 
 
 # /ERROR RangeError: exceeded available parameter key space/ workaround for large blogs
@@ -21,9 +23,20 @@ end
 
 
 # Route to receive new blog text JSON via AJAX
-post '/ajax_verify' do
+post '/ajax_blog' do
 
   blog_hash = JSON.parse(request.body.read)
   write_json(blog_hash)
+
+end
+
+
+# Route to receive new blog photo via AJAX
+post '/ajax_photo' do
+
+  filename = params[:filename]
+  data = params[:data]
+
+  PhotoHandler.new(filename, data)
 
 end

@@ -2,16 +2,14 @@
 
 <hr>
 
-<h3>Write New Blog</h3>
+<h3>Write a New Blog</h3>
+
+<hr>
 
 <table>
   <tr>
     <td class="bold">Title:</td>
     <td><input type="text" class="title" id="newBlogTitle"></td>
-  </tr>
-  <tr>
-    <td class="bold">Body:</td>
-    <td><textarea id="newBlogText"></textarea></td>
   </tr>
   <tr>
     <td></td>
@@ -21,22 +19,39 @@
       <button onclick="formatText('u')">U</button>
     </td>
   </tr>
+  <tr>
+    <td class="bold">Body:</td>
+    <td><textarea id="newBlogText"></textarea></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><img src="" id="photoImage"</td>
+  </tr>
+  <tr>
+    <td class="bold">Image:</td>
+    <td><input type="file" accept="image/*" id="photo" onchange="evaluateAndResize('photo')">
+  </tr>
 </table>
 
 <br>
-<button id="btnPostNewBlog" onclick="postNewBlog()">Submit</button>
+<button id="btnPostNewBlog" onclick="postNewBlog()">Submit Blog</button>
 
 <hr>
 
-<h2>Previous Blogs</h2>
+<h3>Previous Blogs</h3>
 
 <hr>
 
-<% blogs_array.each do |blog| %>
+<% blogs_array.reverse_each do |blog| %>
 
-  <h3><%=blog["blog_title"]%></h3>
-  <p><i><%=blog["blog_date"]%></i></p>
-  <p><%=blog["blog_text"].gsub(/\n/){"<br>"}%></p>
+  <h4><%= blog["blog_title"] %></h4>
+  <p><i><%= blog["blog_date"] %></i></p>
+  <p><%= blog["blog_text"].gsub(/\n/){"<br>"} %></p>
+
+  <% if blog.include?("blog_photo") %>
+    <img src="images/blog/<%=blog["blog_photo"]%>" alt=""</p>
+  <% end %>
+
   <hr>
 
 <% end %>
