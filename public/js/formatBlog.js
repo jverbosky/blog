@@ -2,6 +2,25 @@ var now = new Date();
 var datetime = now.toDateString() + " @ " + now.getHours() + ":" + now.getMinutes();
 
 
+// ----- in progress, need to research more and test
+// - per http://jsfiddle.net/sathyamoorthi/BmTNP/5/
+
+// function ParseDIVText() {
+    
+//     var domString = "", temp = "";
+    
+//     $("#div-editable div").each(function() {
+//         temp = $(this).html();
+//         // domString += "<br>" + ((temp == "<br>") ? "" : temp);
+//         domString += ((temp == "<br>") ? "" : temp) + "<br>";
+//     });
+    
+//     alert(domString);
+// }
+
+// ------------------------------------------------------------
+
+
 // Function to allow selected text in textarea field to be formatted
 function formatText(tag) {
     
