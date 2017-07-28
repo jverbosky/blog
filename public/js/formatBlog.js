@@ -2,36 +2,18 @@ var now = new Date();
 var datetime = now.toDateString() + " @ " + now.getHours() + ":" + now.getMinutes();
 
 
-// ----- in progress, need to research more and test
-// - per http://jsfiddle.net/sathyamoorthi/BmTNP/5/
-
-// function ParseDIVText() {
+function parseDivText() {
     
-//     var domString = "", temp = "";
+    var htmlString = "";
+    var temp = "";
     
-//     $("#div-editable div").each(function() {
-//         temp = $(this).html();
-//         // domString += "<br>" + ((temp == "<br>") ? "" : temp);
-//         domString += ((temp == "<br>") ? "" : temp) + "<br>";
-//     });
+    $("#newBlogText div").each(function() {
+        temp = $(this).html();
+        htmlString += "<br>" + ((temp == "<br>") ? "" : temp);
+    });
     
-//     alert(domString);
-// }
-
-// ------------------------------------------------------------
-
-
-// Function to allow selected text in textarea field to be formatted
-function formatText(tag) {
-    
-    var txtarea = document.getElementById("newBlogText");
-    var start = txtarea.selectionStart;
-    var finish = txtarea.selectionEnd;
-    var allText = txtarea.value;
-    var sel = allText.substring(start, finish);
-    var newText=allText.substring(0, start)+"<"+tag+">"+sel+"</"+tag+">"+allText.substring(finish, allText.length);
-    
-    txtarea.value=newText;
+    console.log("htmlString: ", htmlString);
+    return htmlString;
 }
 
 
@@ -53,8 +35,8 @@ function postNewBlog() {
         data: JSON.stringify({
             blog_title: $("#newBlogTitle").val(),
             blog_date: datetime,
-            blog_text: $("#newBlogText").val(),
-            blog_photo: resized_image.filename
+            blog_photo: resized_image.filename,
+            blog_text: parseDivText()
         }),
         dataType: "json",
         success: function(data, status, xhr) {}

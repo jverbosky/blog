@@ -1,12 +1,31 @@
-textarea {
-  width: 500px;
-  height: 200px;
-}
-
 .title {
-  width: 500px;
+  width: 620px;
 }
 
 .bold {
   font-weight: bold;
+}
+
+.border {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0,0,255,0.25);
+}
+
+#newBlogText {
+  width : 620px;
+  height : 300px;
+  overflow-y: auto;
+  -moz-appearance: textfield-multiline; 
+  font: medium -moz-fixed;
+  font: -webkit-small-control;
+  font-size: 13px;
+}
+
+#newBlogText div {
+  white-space: pre-wrap;      /* CSS3 */   
+  white-space: -moz-pre-wrap; /* Firefox */    
+  white-space: -pre-wrap;     /* Opera <7 */   
+  white-space: -o-pre-wrap;   /* Opera 7 */    
+  word-wrap: break-word;      /* IE */
 }
