@@ -2,18 +2,11 @@ var now = new Date();
 var datetime = now.toDateString() + " @ " + now.getHours() + ":" + now.getMinutes();
 
 
-function parseDivText() {
+function getNewBlogText() {
     
-    var htmlString = "";
-    var temp = "";
-    
-    $("#newBlogText div").each(function() {
-        temp = $(this).html();
-        htmlString += "<br>" + ((temp == "<br>") ? "" : temp);
-    });
-    
-    console.log("htmlString: ", htmlString);
-    return htmlString;
+    var raw = $("#newBlogText").html();
+    var formatted = raw.replace(/<div><br><\/div>/g, '<br>');
+    return formatted;
 }
 
 
@@ -36,7 +29,7 @@ function postNewBlog() {
             blog_title: $("#newBlogTitle").val(),
             blog_date: datetime,
             blog_photo: resized_image.filename,
-            blog_text: parseDivText()
+            blog_text: getNewBlogText()
         }),
         dataType: "json",
         success: function(data, status, xhr) {}

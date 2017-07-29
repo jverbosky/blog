@@ -22,7 +22,7 @@ end
 def write_json(blog_hash)
 
   json = read_json()
-  # append user_hash array to json data (existing or empty), then write beautified data to user.json
+  # append user_hash array (using shovel operator: <<) to json data (existing or empty), then write beautified data to user.json
   File.open("public/blogs.json","w") { |f| f.puts JSON.pretty_generate(json << blog_hash) }
 
 end

@@ -17,17 +17,23 @@
     <td></td>
     <td><img src="" id="photoImage"></td>
   </tr>
+
+
   <tr>
     <td class="bold">Image:</td>
-    <td><input type="file" accept="image/*" id="photo" onchange="evaluateAndResize('photo')">
+    <td>
+      <label class="formatButton fileUpload">
+        <input type="file" accept="image/*" class="upload" id="photo" onchange="evaluateAndResize('photo')" />
+        Choose File
+      </label>
+    </td>
   </tr>
 
   <tr>
     <td class="bold">Body:</td>
     <td>
       <div class="border" id="newBlogText" contenteditable="true">
-          <!-- this inner div is needed to make it work proper in IE   -->
-          <div style="cursor: text"></div>
+        <div style="cursor: text">
       </div>
     </td>
   </tr>
@@ -35,25 +41,26 @@
   <tr>
     <td></td>
     <td>
-      <button class="fa fa-bold" onclick="document.execCommand('bold');"></button>
-      <button class="fa fa-italic" onclick="document.execCommand('italic');"></button>
-
-      <button class="fa fa-underline" onclick="document.execCommand('underline');"></button>
-      <button class="fa fa-strikethrough" onclick="document.execCommand('strikeThrough');"></button>
-      <button class="fa fa-superscript" onclick="document.execCommand('superscript');"></button>
-      <button class="fa fa-subscript" onclick="document.execCommand('subscript');"></button>
-      <button class="fa fa-link" onclick="document.execCommand('createLink');"></button>
-      <button class="fa fa-chain-broken" onclick="document.execCommand('unlink');"></button>
-      <button class="fa fa-list-ol" onclick="document.execCommand('insertOrderedList');"></button>
-      <button class="fa fa-list-ul" onclick="document.execCommand('insertUnorderedList');"></button>
-      <button class="fa fa-indent" onclick="document.execCommand('indent');"></button>
-      <button class="fa fa-outdent" onclick="document.execCommand('outdent');"></button>
-      <button class="fa fa-align-center" onclick="document.execCommand('justifyCenter');"></button>
-      <button class="fa fa-align-justify" onclick="document.execCommand('justifyFull');"></button>
-      <button class="fa fa-align-left" onclick="document.execCommand('justifyLeft');"></button>
-      <button class="fa fa-align-right" onclick="document.execCommand('justifyRight');"></button>
-      <button class="fa fa-undo" onclick="document.execCommand('undo');"></button>
-      <button class="fa fa-repeat" onclick="document.execCommand('redo');"></button>
+      <div class="formatButtons">
+        <button onclick="doCommand('bold');"></button>
+        <button onclick="doCommand('italic');"></button>
+        <button onclick="doCommand('underline');"></button>
+        <button onclick="doCommand('strikeThrough');"></button>
+        <button onclick="doCommand('superscript');"></button>
+        <button onclick="doCommand('subscript');"></button>
+        <button onclick="doCommand('createLink');"></button>
+        <button onclick="doCommand('unlink');"></button>
+        <button onclick="doCommand('insertOrderedList');"></button>
+        <button onclick="doCommand('insertUnorderedList');"></button>
+        <button onclick="doCommand('indent');"></button>
+        <button onclick="doCommand('outdent');"></button>
+        <button onclick="doCommand('justifyLeft');"></button>
+        <button onclick="doCommand('justifyRight');"></button>
+        <button onclick="doCommand('justifyCenter');"></button>
+        <button onclick="doCommand('justifyFull');"></button>
+        <button onclick="doCommand('undo');"></button>
+        <button onclick="doCommand('redo');"></button>
+      </div>
     </td>
   </tr>
 
@@ -61,8 +68,8 @@
 
 <br>
 
-<!-- <button id="btnPostNewBlog" onclick="parseDivText()">Submit Blog</button> -->
-<button id="btnPostNewBlog" onclick="postNewBlog()">Submit Blog</button>
+<!-- <button class="formatButton submit" id="btnPostNewBlog" onclick="getNewBlogText()">Submit Blog</button> -->
+<button class="formatButton submit" id="btnPostNewBlog" onclick="postNewBlog()">Submit Blog</button>
 
 <hr>
 
