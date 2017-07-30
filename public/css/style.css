@@ -1,4 +1,26 @@
-.title {
+h1, h3, h4 {
+  text-align: center;
+}
+
+.center-block-editor {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.center-block-blogs {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.padded {
+  padding: 15px 0px 5px 0px;
+}
+
+.newBlogTitle {
   width: 600px;
 }
 
@@ -9,8 +31,8 @@
 }
 
 #newBlogText {
-  width : 600px;
-  height : 300px;
+  width : 100%;
+  height : 250px;
   overflow-y: auto;
   -moz-appearance: textfield-multiline; 
   font: medium -moz-fixed;
@@ -115,3 +137,8 @@
   border-radius: 6px;
   background-color: rgb(229, 229, 229);
 }
+
+/* Play with resizing title and blog text fields*/
+/* Play with wrapping button groups for smaller screens */
+  /*display:flex;*/
+  /*flex-wrap:wrap;*/

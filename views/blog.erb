@@ -4,62 +4,64 @@
 
 <h3>Blog Creator 1.3</h3>
 
-<table>
-  
-  <tr>
-    <td><input type="text" class="title border" id="newBlogTitle" placeholder="Enter blog title here..."></td>
-  </tr>
+<div class="center-block-editor">
+  <table>
+    
+    <tr>
+      <td><input type="text" class="newBlogTitle border" id="newBlogTitle" placeholder="Enter blog title here..."></td>
+    </tr>
 
-  <tr>
-    <td><img src="" id="photoImage"></td>
-  </tr>
+    <tr>
+      <td><img src="" id="photoImage"></td>
+    </tr>
 
 
-  <tr>
-    <td>
-      <label class="nonEditorButton fileUpload">
-        <input type="file" accept="image/*" class="upload" id="photo" onchange="evaluateAndResize('photo')" />Choose Image
-      </label>
-    </td>
-  </tr>
+    <tr>
+      <td>
+        <label class="nonEditorButton fileUpload">
+          <input type="file" accept="image/*" class="upload" id="photo" onchange="evaluateAndResize('photo')" />Choose Image
+        </label>
+      </td>
+    </tr>
 
-  <tr>
-    <td>
-      <div class="border" id="newBlogText" placeholder="Enter blog text here..." contenteditable="true"></div>
-    </td>
-  </tr>
+    <tr>
+      <td>
+        <div class="border" id="newBlogText" placeholder="Enter blog text here..." contenteditable="true"></div>
+      </td>
+    </tr>
 
-  <tr>
-    <td>
-      <div class="editorButtons">
-        <button onclick="doCommand('bold');"></button>
-        <button onclick="doCommand('italic');"></button>
-        <button onclick="doCommand('underline');"></button>
-        <button onclick="doCommand('strikeThrough');"></button>
-        <button onclick="doCommand('superscript');"></button>
-        <button onclick="doCommand('subscript');"></button>
-        <button onclick="doCommand('createLink');"></button>
-        <button onclick="doCommand('unlink');"></button>
-        <button onclick="doCommand('insertOrderedList');"></button>
-        <button onclick="doCommand('insertUnorderedList');"></button>
-        <button onclick="doCommand('indent');"></button>
-        <button onclick="doCommand('outdent');"></button>
-        <button onclick="doCommand('justifyLeft');"></button>
-        <button onclick="doCommand('justifyRight');"></button>
-        <button onclick="doCommand('justifyCenter');"></button>
-        <button onclick="doCommand('justifyFull');"></button>
-        <button onclick="doCommand('undo');"></button>
-        <button onclick="doCommand('redo');"></button>
-      </div>
-    </td>
-  </tr>
+    <tr>
+      <td>
+        <div class="editorButtons">
+          <button onclick="doCommand('bold');"></button>
+          <button onclick="doCommand('italic');"></button>
+          <button onclick="doCommand('underline');"></button>
+          <button onclick="doCommand('strikeThrough');"></button>
+          <button onclick="doCommand('superscript');"></button>
+          <button onclick="doCommand('subscript');"></button>
+          <button onclick="doCommand('createLink');"></button>
+          <button onclick="doCommand('unlink');"></button>
+          <button onclick="doCommand('insertOrderedList');"></button>
+          <button onclick="doCommand('insertUnorderedList');"></button>
+          <button onclick="doCommand('indent');"></button>
+          <button onclick="doCommand('outdent');"></button>
+          <button onclick="doCommand('justifyLeft');"></button>
+          <button onclick="doCommand('justifyRight');"></button>
+          <button onclick="doCommand('justifyCenter');"></button>
+          <button onclick="doCommand('justifyFull');"></button>
+          <button onclick="doCommand('undo');"></button>
+          <button onclick="doCommand('redo');"></button>
+        </div>
+      </td>
+    </tr>
 
-</table>
+  </table>
+</div>
 
-<br>
-
-<!-- <button class="nonEditorButton submit" id="btnPostNewBlog" onclick="getNewBlogText()">Submit Blog</button> -->
-<button class="nonEditorButton" id="btnPostNewBlog" onclick="postNewBlog()">Submit Blog</button>
+<div class="center-block centered padded">
+  <!-- <button class="nonEditorButton submit" id="btnPostNewBlog" onclick="getNewBlogText()">Submit Blog</button> -->
+  <button class="nonEditorButton" id="btnPostNewBlog" onclick="postNewBlog()">Submit Blog</button>
+</div>
 
 <hr>
 
@@ -67,15 +69,19 @@
 
 <hr>
 
-<% blogs_array.reverse_each do |blog| %>
+<div class="center-block-blogs">
+  <% blogs_array.reverse_each do |blog| %>
 
-  <h4><%= blog["blog_title"] %></h4>
-  <p><i><%= blog["blog_date"] %></i></p>
-  <% if blog.include?("blog_photo") %>
-    <img class="border" src="images/blog/<%=blog["blog_photo"]%>" alt=""</p>
+    <h4><%= blog["blog_title"] %></h4>
+    <p><i><%= blog["blog_date"] %></i></p>
+    <% if blog.include?("blog_photo") %>
+      <div class="centered">
+        <img class="border" src="images/blog/<%=blog["blog_photo"]%>" alt=""</p>
+      </div>
+    <% end %>
+    <p><%= blog["blog_text"] %></p>
+
+    <hr>
+
   <% end %>
-  <p><%= blog["blog_text"] %></p>
-
-  <hr>
-
-<% end %>
+</div>
