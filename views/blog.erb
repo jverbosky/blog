@@ -2,44 +2,36 @@
 
 <hr>
 
-<h3>Write a New Blog</h3>
-
-<hr>
+<h3>Blog Creator 1.3</h3>
 
 <table>
   
   <tr>
-    <td class="bold">Title:</td>
-    <td><input type="text" class="title border" id="newBlogTitle"></td>
+    <td><input type="text" class="title border" id="newBlogTitle" placeholder="Enter blog title here..."></td>
   </tr>
 
   <tr>
-    <td></td>
     <td><img src="" id="photoImage"></td>
   </tr>
 
 
   <tr>
-    <td class="bold">Image:</td>
     <td>
-      <label class="formatButton fileUpload">
-        <input type="file" accept="image/*" class="upload" id="photo" onchange="evaluateAndResize('photo')" />
-        Choose File
+      <label class="nonEditorButton fileUpload">
+        <input type="file" accept="image/*" class="upload" id="photo" onchange="evaluateAndResize('photo')" />Choose Image
       </label>
     </td>
   </tr>
 
   <tr>
-    <td class="bold">Body:</td>
     <td>
-      <div class="border" id="newBlogText" contenteditable="true"></div>
+      <div class="border" id="newBlogText" placeholder="Enter blog text here..." contenteditable="true"></div>
     </td>
   </tr>
 
   <tr>
-    <td></td>
     <td>
-      <div class="formatButtons">
+      <div class="editorButtons">
         <button onclick="doCommand('bold');"></button>
         <button onclick="doCommand('italic');"></button>
         <button onclick="doCommand('underline');"></button>
@@ -66,8 +58,8 @@
 
 <br>
 
-<!-- <button class="formatButton submit" id="btnPostNewBlog" onclick="getNewBlogText()">Submit Blog</button> -->
-<button class="formatButton submit" id="btnPostNewBlog" onclick="postNewBlog()">Submit Blog</button>
+<!-- <button class="nonEditorButton submit" id="btnPostNewBlog" onclick="getNewBlogText()">Submit Blog</button> -->
+<button class="nonEditorButton submit" id="btnPostNewBlog" onclick="postNewBlog()">Submit Blog</button>
 
 <hr>
 

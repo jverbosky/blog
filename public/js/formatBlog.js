@@ -1,16 +1,18 @@
 var now = new Date();
-var datetime = now.toDateString() + " @ " + now.getHours() + ":" + now.getMinutes();
+var datetime = now.toDateString() + " @ " + (date.getHours()<10?'0':'') + now.getHours() + ":" + (date.getMinutes()<10?'0':'') + now.getMinutes();
 
 
+// Retrieves blog text from contenteditable div
+// - runs via AJAX data request (blog_text)
 function getNewBlogText() {
     
     var raw = $("#newBlogText").html();
-    var formatted = raw.replace(/<div><br><\/div>/g, '<br>');
+    var formatted = raw.replace(/<div><br><\/div>/g, '<br>');  // drop div around <br>s
     return formatted;
 }
 
 
-// Function to refresh page - called after new blog is posted
+// Refreshes page after new blog is posted
 function refreshPage() {
 
     setTimeout(function () {
@@ -19,7 +21,8 @@ function refreshPage() {
 }
 
 
-// Function to make AJAX POST requests with blog text and photo
+// Makes AJAX POST requests with blog title, timestamp, photo and blog text
+// - runs via onclick assigned to Submit Blog button
 function postNewBlog() {
 
     $.ajax({

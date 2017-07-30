@@ -1,19 +1,15 @@
 .title {
-  width: 620px;
-}
-
-.bold {
-  font-weight: bold;
+  width: 600px;
 }
 
 .border {
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(0,0,255,0.25);
+  border-color: rgba(0,0,0);
 }
 
 #newBlogText {
-  width : 620px;
+  width : 600px;
   height : 300px;
   overflow-y: auto;
   -moz-appearance: textfield-multiline; 
@@ -30,7 +26,15 @@
   word-wrap: break-word;      /* IE */
 }
 
-.formatButton {
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  color: gray;
+}
+
+/* button formatting */
+
+.nonEditorButton {
   display: inline-block;
   padding: 2px 8px 2px 8px;
   margin-right: 2px;
@@ -47,18 +51,30 @@
   user-select: none;
 }
 
-.formatButton.active.focus,.formatButton.active:focus,.formatButton.focus,.formatButton:active.focus,.formatButton:active:focus,.formatButton:focus {
+.nonEditorButton.active.focus,.nonEditorButton.active:focus,.nonEditorButton.focus,.nonEditorButton:active.focus,.nonEditorButton:active:focus,.nonEditorButton:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 
-.formatButton.focus,.formatButton:focus,.formatButton:hover {
+.nonEditorButton.focus,.nonEditorButton:focus,.nonEditorButton:hover {
   color: rgba(0,0,255,0.25);
 }
 
-.formatButton.active,.formatButton:active {
+.nonEditorButton.active,.nonEditorButton:active {
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
   box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
 
 .submit {
@@ -66,21 +82,40 @@
   padding-bottom: 4px;
 }
 
+/* editorButtons, editorButton and editorButtonGroup applied by init() in editText.js */
 
-.fileUpload {
-    position: relative;
-    overflow: hidden;
-    /*margin: 10px;*/
+.editorButtons {
+  margin-top: 5px;
 }
 
-.fileUpload input.upload {
-    position: absolute;
-/*    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;*/
-    /*font-size: 20px;*/
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
+.editorButton {
+  display: inline-block;
+  padding: 2px 6px 2px 6px;
+  margin: 0px 2px 0px 2px;
+  border-radius: 4px;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.editorButton.focus,.editorButton:focus,.editorButton:hover {
+  color: rgba(0,0,0,0.250);
+}
+
+.editorButton.active,.editorButton:active {
+  -webkit-box-shadow: 0px 2px 5px rgba(0,0,0,.250), 0px -2px 5px rgba(0,0,0,.250);
+  box-shadow: 0px 2px 5px rgba(0,0,0,.250), 0px -2px 5px rgba(0,0,0,.250);
+}
+
+.editorButtonGroup {
+  margin-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 1px solid;
+  border-radius: 6px;
+  background-color: rgb(229, 229, 229);
 }
