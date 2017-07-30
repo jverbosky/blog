@@ -1,43 +1,56 @@
-h1, h3, h4 {
+body, .newBlogTitle {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+h1, h2, h3 {
   text-align: center;
 }
 
-.center-block-editor {
+.center-block {
   margin: 0 auto;
-  max-width: 600px;
-}
-
-.center-block-blogs {
-  margin: 0 auto;
-  max-width: 800px;
 }
 
 .centered {
   text-align: center;
 }
 
+.right-aligned {
+  text-align: right;
+}
+
+.padImage {
+  padding-top: 10px;
+}
+
+.padImageButton {
+  padding-bottom: 5px;
+}
+
 .padded {
-  padding: 15px 0px 5px 0px;
+  padding: 10px 0px 10px 0px;
 }
 
 .newBlogTitle {
-  width: 600px;
+  width: 100%;
+  font: 16px Verdana, Geneva, sans-serif;
 }
 
 .border {
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(0,0,0);
+  border-color: black;
+}
+
+.divider {
+  border-top: 1px solid grey;
 }
 
 #newBlogText {
   width : 100%;
   height : 250px;
   overflow-y: auto;
-  -moz-appearance: textfield-multiline; 
-  font: medium -moz-fixed;
-  font: -webkit-small-control;
-  font-size: 13px;
+  -moz-appearance: textfield-multiline;
+  font: 16px Verdana, Geneva, sans-serif;
 }
 
 #newBlogText div {
@@ -51,13 +64,14 @@ h1, h3, h4 {
 [contenteditable=true]:empty:before {
   content: attr(placeholder);
   display: block; /* For Firefox */
+  font-family: Verdana, Geneva, sans-serif;
   color: gray;
 }
 
 /* button formatting */
 
 .nonEditorButton {
-  font: 13.3333px Arial;
+  font: 16px Verdana, Geneva, sans-serif;
   display: inline-block;
   padding: 4px 8px 4px 8px;
   margin-right: 2px;
@@ -102,10 +116,6 @@ h1, h3, h4 {
 
 /* editorButtons, editorButton and editorButtonGroup applied by init() in editText.js */
 
-.editorButtons {
-  margin-top: 5px;
-}
-
 .editorButton {
   display: inline-block;
   padding: 2px 6px 2px 6px;
@@ -130,7 +140,7 @@ h1, h3, h4 {
 }
 
 .editorButtonGroup {
-  margin-right: 5px;
+  margin: 5px 5px 0 0;
   padding-top: 4px;
   padding-bottom: 4px;
   border: 1px solid;
@@ -138,7 +148,37 @@ h1, h3, h4 {
   background-color: rgb(229, 229, 229);
 }
 
-/* Play with resizing title and blog text fields*/
-/* Play with wrapping button groups for smaller screens */
-  /*display:flex;*/
-  /*flex-wrap:wrap;*/
+.flexButtons {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* media queries */
+
+@media (min-width: 320px) {
+  .center-block { max-width: 310px; }
+}
+
+@media (min-width: 375px) {
+  .center-block { max-width: 365px; }
+}
+
+@media (min-width: 414px) {
+  .center-block { max-width: 404px; }
+}
+
+@media (min-width: 768px) {
+  .center-block { max-width: 758px; }
+}
+
+@media (min-width: 1024px) {
+  .center-block { max-width: 1014px; }
+}
+
+@media (min-width: 1200px) {
+  .center-block { max-width: 1190px; }
+}

@@ -6,19 +6,19 @@ var resized_image = {};  // Object to hold resized photo file
 function evaluateFileSignature(headerString) {
 
     switch (headerString) {
-        case "89504e47":
-            type = "image/png";
+        case '89504e47':
+            type = 'image/png';
             break;
-        case "47494638":
-            type = "image/gif";
+        case '47494638':
+            type = 'image/gif';
             break;
-        case "ffd8ffe0":
-        case "ffd8ffe1":
-        case "ffd8ffe2":
-            type = "image/jpeg";
+        case 'ffd8ffe0':
+        case 'ffd8ffe1':
+        case 'ffd8ffe2':
+            type = 'image/jpeg';
             break;
         default:
-            type = "unknown";
+            type = 'unknown';
             break;
     }
 
@@ -33,7 +33,7 @@ function getMimeType(file, callback) {
 
     fileReader.onloadend = function(e) {  // after file is loaded...
         var arr = (new Uint8Array(e.target.result)).subarray(0, 4);  // get file signature
-        var header = "";  // tranlsate file signature from decimal to hex for easier comparison
+        var header = '';  // tranlsate file signature from decimal to hex for easier comparison
         for(var i = 0; i < arr.length; i++) { header += arr[i].toString(16); }  
         var mimeType = evaluateFileSignature(header);
         callback(mimeType);  // retrieve mimeType for evaluation via evaluateMimeType()
@@ -47,8 +47,8 @@ function getMimeType(file, callback) {
 function resizeImage(url, callback) {
 
     var img = new Image;
-    var canvas = document.createElement("canvas");
-    var ctx=canvas.getContext("2d");
+    var canvas = document.createElement('canvas');
+    var ctx=canvas.getContext('2d');
     var cw=canvas.width;
     var ch=canvas.height;
     var maxW=150;  // limit the image to 150x600 maximum size
@@ -96,20 +96,20 @@ function b64toBlob(b64Data, contentType, sliceSize) {
 
 // Preview, resize and encode image file
 function evaluateAndResize(image) {
-    var inputId = "#" + image;
-    var imageSrc = image + "Image";  // update imageSrc for image preview
+    var inputId = '#' + image;
+    var imageSrc = image + 'Image';  // update imageSrc for image preview
     var input = document.querySelector(inputId);
     var file = input.files[0];
-    var fileName = file["name"].slice(0, -4) + ".png";  // image name to use with blob (resized output = PNG)
+    var fileName = file['name'].slice(0, -4) + '.png';  // image name to use with blob (resized output = PNG)
 
     //---- determine file signature via magic numbers ----
     getMimeType(file, evaluateMimeType);  // fire off MIME type retrieval (asynchronous)
 
     // Callback function called in getMimeType() to evaluate mimeType for uploaded file
     function evaluateMimeType(mimeType) {
-        console.log("mimeType: " + mimeType);
-        if (mimeType === "unknown") {
-            alert("Invalid file type - please load a valid image file.");
+        console.log('mimeType: ' + mimeType);
+        if (mimeType === 'unknown') {
+            alert('Invalid file type - please load a valid image file.');
         } else {
 
             url = URL.createObjectURL(file);  // create Object URL for resizing photo
@@ -124,7 +124,7 @@ function evaluateAndResize(image) {
                 var blob = b64toBlob(stringBase64, stringDataType);  // encode base64 string as blob for preview & file ops
                 var blobUrl = URL.createObjectURL(blob);  // create Object URL for image preview of resized image
 
-                img = document.createElement("img");  // use resized image (blobUrl) for image preview
+                img = document.createElement('img');  // use resized image (blobUrl) for image preview
                 img.src = blobUrl;
                 document.getElementById(imageSrc).src = blobUrl;
                 resized_image = {filename: fileName, data: resized};  // update object with photo filename & data
