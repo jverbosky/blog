@@ -7,32 +7,53 @@
 
     <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/blog.css">
     <link rel="icon" href="/images/favicon/favicon.ico?" type="image/x-icon">
 
   </head>
   <body>
 
-  <header>
+    <header></header>
 
-  </header>
+    <nav>
+     <!-- Container Of NavBar -->
+     <div class="navbar">
+         <!-- Brand Logo Box -->
+         <div class="brand">John C. Verbosky</div>
+         <!-- Navigation -->
+         <ul class="navigation">
+             <li><a href="/">Home</a></li>
+             <li><a href="/blog">Blog</a></li>
+             <li><a href="/resume">Resume</a></li>
+             <li><a href="/about">About</a></li>
+         </ul>
+         <!-- Responsive Buttons -->
+         <div class="resbtn">
+             <span></span>
+             <span></span>
+             <span></span>
+         </div>
+      </div>
+    </nav>
 
-  <section>
+    <section>
 
-    <div>
-      <%= yield %>  <!-- load unique content from other .erb files -->
-    </div>
+      <div class="padded">
+        <%= yield %>  <!-- load unique content from other .erb files -->
+      </div>
 
-    <div class="centered">
-      <p>Copyright © 2017 John C. Verbosky. All rights reserved.</p>
-    </div>
+      <div class="centered">
+        <p>Copyright © 2017 John C. Verbosky. All rights reserved.</p>
+      </div>
 
-  </section>
+    </section>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-    <script type="text/javascript" src="js/editorButtons.js"></script>
-    <script type="text/javascript" src="js/photoUpload.js"></script>
-    <script type="text/javascript" src="js/submitBlog.js"></script>
+<!--     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ -->
+    <script type="text/javascript" src="js/navbar.js"></script>
 
   </body>
 </html>

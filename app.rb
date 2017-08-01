@@ -12,8 +12,16 @@ if Rack::Utils.respond_to?("key_space_limit=")
 end
 
 
-# Route to load main blog page
+# Route to load main page
 get '/' do
+
+  erb :index
+
+end
+
+
+# Route to load blog page
+get '/blog' do
 
   blogs_array = read_json()
 
@@ -38,5 +46,21 @@ post '/ajax_photo' do
   data = params[:data]
 
   PhotoHandler.new(filename, data)
+
+end
+
+
+# Route to load resume page
+get '/resume' do
+
+  erb :resume
+
+end
+
+
+# Route to load contact page
+get '/about' do
+
+  erb :about
 
 end

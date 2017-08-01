@@ -1,0 +1,199 @@
+body {
+    background: #EEE
+}
+
+body, .newBlogTitle {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.padImage {
+  padding-top: 10px;
+}
+
+.padImageButton {
+  padding-bottom: 5px;
+}
+
+.newBlogTitle {
+  width: 100%;
+  font: 16px Verdana, Geneva, sans-serif;
+}
+
+#newBlogText {
+  width : 100%;
+  height : 250px;
+  overflow-y: auto;
+  -moz-appearance: textfield-multiline;
+  font: 16px Verdana, Geneva, sans-serif;
+  background-color: white;
+}
+
+#newBlogText div {
+  white-space: pre-wrap;      /* CSS3 */   
+  white-space: -moz-pre-wrap; /* Firefox */    
+  white-space: -pre-wrap;     /* Opera <7 */   
+  white-space: -o-pre-wrap;   /* Opera 7 */    
+  word-wrap: break-word;      /* IE */
+}
+
+/* override navbar *{} style */
+
+#newBlogText a {
+  text-decoration: underline;
+}
+
+#newBlogText ol {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}
+
+#newBlogText ol li {
+  display: list-item;
+  list-style: decimal;
+}
+
+#newBlogText u {
+  text-decoration: underline;
+}
+
+#newBlogText ul {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}
+
+#newBlogText ul li {
+  display: list-item;
+  list-style: disc;
+}
+
+/* enable placeholder text */
+
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  font-family: Verdana, Geneva, sans-serif;
+  color: gray;
+}
+
+/* button formatting */
+
+.nonEditorButton {
+  font: 16px Verdana, Geneva, sans-serif;
+  display: inline-block;
+  padding: 4px 8px 4px 8px;
+  margin-right: 2px;
+  margin-bottom: 0;
+  border: 1px solid;
+  border-radius: 6px;
+  background-color: rgb(229, 229, 229);
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.nonEditorButton.active.focus,.nonEditorButton.active:focus,.nonEditorButton.focus,.nonEditorButton:active.focus,.nonEditorButton:active:focus,.nonEditorButton:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.nonEditorButton.focus,.nonEditorButton:focus,.nonEditorButton:hover {
+  color: rgba(0,0,255,0.25);
+}
+
+.nonEditorButton.active,.nonEditorButton:active {
+  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+/* editorButtons, editorButton and editorButtonGroup applied by init() in editText.js */
+
+.editorButton {
+  display: inline-block;
+  padding: 2px 6px 2px 6px;
+  margin: 0px 2px 0px 2px;
+  border-radius: 4px;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.editorButton.focus,.editorButton:focus,.editorButton:hover {
+  color: rgba(0,0,0,0.250);
+}
+
+.editorButton.active,.editorButton:active {
+  -webkit-box-shadow: 0px 2px 5px rgba(0,0,0,.250), 0px -2px 5px rgba(0,0,0,.250);
+  box-shadow: 0px 2px 5px rgba(0,0,0,.250), 0px -2px 5px rgba(0,0,0,.250);
+}
+
+.editorButtonGroup {
+  margin: 5px 5px 0 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 1px solid;
+  border-radius: 6px;
+  background-color: rgb(229, 229, 229);
+}
+
+.flexButtons {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* media queries */
+
+@media (min-width: 320px) {
+  .center-block { max-width: 310px; }
+}
+
+@media (min-width: 375px) {
+  .center-block { max-width: 365px; }
+}
+
+@media (min-width: 414px) {
+  .center-block { max-width: 404px; }
+}
+
+@media (min-width: 768px) {
+  .center-block { max-width: 758px; }
+}
+
+@media (min-width: 1024px) {
+  .center-block { max-width: 1014px; }
+}
+
+@media (min-width: 1200px) {
+  .center-block { max-width: 1190px; }
+}

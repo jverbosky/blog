@@ -1,6 +1,10 @@
+<!-- <link rel="stylesheet" href="css/blog.css"> -->
+
 <div class="center-block">
 
-  <h1>Blog Creator 1.0</h1>
+  <div class="padded">
+    <h1>Blog Creator 1.0</h1>
+  </div>
 
   <input type="text" class="newBlogTitle border" id="newBlogTitle" placeholder="Enter blog title here...">
 
@@ -29,21 +33,30 @@
   <h2>Previous Blogs</h2>
   <div class="divider"></div>
 
-  <% blogs_array.reverse_each do |blog| %>
+  <div class="padded">
+    <% blogs_array.reverse_each do |blog| %>
 
-    <h3><%= blog["blog_title"] %></h3>
+      <h3><%= blog["blog_title"] %></h3>
 
-    <% if blog.include?("blog_photo") %>
-      <div class="centered">
-        <img class="border" src="images/blog/<%=blog["blog_photo"]%>" alt=""</p>
-      </div>
+      <% if blog.include?("blog_photo") %>
+        <div class="centered">
+          <img class="border margin" src="images/blog/<%=blog["blog_photo"]%>" alt=""</p>
+        </div>
+      <% end %>
+      
+      <p class="right-aligned"><i><%= blog["blog_date"] %></i></p>
+      <div class="divider"></div>
+      <p><%= blog["blog_text"] %></p>
+      <div class="divider"></div>
+
     <% end %>
-    
-    <p class="right-aligned"><i><%= blog["blog_date"] %></i></p>
-    <div class="divider"></div>
-    <p><%= blog["blog_text"] %></p>
-    <div class="divider"></div>
-
-  <% end %>
+  </div>
 
 </div>
+
+<!-- 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+
+<script type="text/javascript" src="js/editorButtons.js"></script>
+<script type="text/javascript" src="js/photoUpload.js"></script>
+<script type="text/javascript" src="js/submitBlog.js"></script>
