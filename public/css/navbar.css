@@ -81,7 +81,7 @@
 
 /* @media Queries Styles */
 
-    @media screen and (max-width : 320px) {
+    @media screen and (max-width : 319px) {
         .navbar .brand {
             float: none;
             margin-left: 10px;
