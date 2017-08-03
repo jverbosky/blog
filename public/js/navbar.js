@@ -12,7 +12,7 @@ $(function () {
 
    $(window).resize(function () {
 
-    if($(window).width() > 648) {
+    if($(window).width() > 916) {
 
        navbar.css('overflow', 'hidden');
 

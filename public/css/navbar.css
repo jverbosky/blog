@@ -79,75 +79,84 @@
     border-radius: 2px;
 }
 
-/* @media Queries Styles */
+/* media queries */
 
-    @media screen and (max-width : 319px) {
-        .navbar .brand {
-            float: none;
-            margin-left: 10px;
-            text-align: left
-        }
-        
-        .navbar .navigation {
-            float: none;
-            display: block;
-            height: 0em;
-            overflow: hidden;
-            width: 100%;
-            border-top: 1px solid #CCC;
-            border-bottom: 1px solid #CCC
-        }
-        
-        .navbar .navigation li {
-            display: block;
-            width: 100%;
-            height: 60px;
-            background: #fff;
-            text-align: left
-        }
-        
-        .navbar .navigation li a {
-            text-align: left;
-            padding-left: 5px;
-        }
-        .navbar .resbtn {
-            display: block;
-        }
+@media screen and (max-width : 319px) {
+    .navbar .brand {
+        float: none;
+        margin-left: 10px;
+        text-align: left
+    }
+    
+    .navbar .navigation {
+        float: none;
+        display: block;
+        height: 0em;
+        overflow: hidden;
+        width: 100%;
+        border-top: 1px solid #CCC;
+        border-bottom: 1px solid #CCC
+    }
+    
+    .navbar .navigation li {
+        display: block;
+        width: 100%;
+        height: 60px;
+        background: #fff;
+        text-align: left
+    }
+    
+    .navbar .navigation li a {
+        text-align: left;
+        padding-left: 5px;
+    }
+    .navbar .resbtn {
+        display: block;
+    }
+}
+
+/*@media screen and (max-width : 648px) {*/
+@media screen and (max-width : 916px) {
+    .navbar .brand {
+        float: none;
+        margin-left: 10px;
+        text-align: left
+    }
+    
+    .navbar .navigation {
+        float: none;
+        display: block;
+        height: 0em;
+        overflow: hidden;
+        width: 100%;
+        border-top: 1px solid #CCC;
+        border-bottom: 1px solid #CCC
+    }
+    
+    .navbar .navigation li {
+        display: block;
+        width: 100%;
+        height: 60px;
+        background: #fff;
+        text-align: left
+    }
+    
+    .navbar .navigation li a {
+        text-align: left;
+        padding-left: 5px;
     }
 
-/* @media Quesries Styles */
-
-    @media screen and (max-width : 648px) {
-        .navbar .brand {
-            float: none;
-            margin-left: 10px;
-            text-align: left
-        }
-        
-        .navbar .navigation {
-            float: none;
-            display: block;
-            height: 0em;
-            overflow: hidden;
-            width: 100%;
-            border-top: 1px solid #CCC;
-            border-bottom: 1px solid #CCC
-        }
-        
-        .navbar .navigation li {
-            display: block;
-            width: 100%;
-            height: 60px;
-            background: #fff;
-            text-align: left
-        }
-        
-        .navbar .navigation li a {
-            text-align: left;
-            padding-left: 5px;
-        }
-
-        .navbar .resbtn {
-            display: block;
-        }
+    .navbar .resbtn {
+        display: block;
     }
+}
+
+/*@media screen and (max-width : 899px) {
+    .navbar .brand {
+        width: 300px;
+    }
+
+    .navbar .navigation {
+        width: 348px;
+    }
+}*/
