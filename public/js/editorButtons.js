@@ -113,6 +113,15 @@ function icon(cmd) {
 // Handles font size increases and decreases
 function changeFontSize(cmd) {
 
+    // if font size changed, outerHTML == "<font size="#">word</font>"
+    var selectionDiv = window.getSelection().focusNode.parentElement.outerHTML;
+
+    if (selectionDiv.includes('<font size=')) {  // if font size changed
+        fontSize = selectionDiv.charAt(12);  // base size current value
+    } else {
+        fontSize = 3;  // otherwise use default size (3)
+    }
+
     if (cmd === 'fontSizeUp') {
         if (fontSize < 7) fontSize++;
     } else if (cmd === 'fontSizeDown') {
