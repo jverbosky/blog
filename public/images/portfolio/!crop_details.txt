@@ -1,0 +1,9 @@
+Print Screen with apps in iPhone 6 view (Chrome)
+
+Gimp crop settings:
+
+pos: 368 x 167
+size: 375 x 667
+
+calculator pos:  371 x 167
+anpanman pos:  533 x 156
