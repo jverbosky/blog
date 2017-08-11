@@ -51,8 +51,8 @@ function resizeImage(url, callback) {
     var ctx=canvas.getContext('2d');
     var cw=canvas.width;
     var ch=canvas.height;
-    var maxW=150;  // limit the image to 150x600 maximum size
-    var maxH=600;
+    var maxW=300;  // limit the image to 150x600 maximum size
+    var maxH=900;
 
     img.onload = function() {
         var iw=img.width;
