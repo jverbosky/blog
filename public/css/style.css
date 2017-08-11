@@ -371,6 +371,10 @@ p {
   list-style: disc;
 }
 
+#oldBlogText {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
 #oldBlogText a {
   text-decoration: underline;
 }
