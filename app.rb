@@ -64,3 +64,11 @@ get '/about' do
   erb :about
 
 end
+
+
+# Route to load example JSON file
+get '/json' do
+
+  erb :json
+
+end
