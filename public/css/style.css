@@ -8,8 +8,18 @@ h1, h2, h3 {
   text-align: center;
 }
 
-p {
+h4, h5 {
   font-family: Verdana, Geneva, sans-serif;
+}
+
+p {
+  font: 16px Verdana, Geneva, sans-serif;
+
+}
+
+label {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: bold
 }
 
 .center-block {
@@ -126,7 +136,7 @@ p {
 
 /* media queries */
 
-@media screen and (max-width : 319px) {
+/*@media screen and (max-width : 319px) {
   .navbar .brand {
     float: none;
     margin-left: 10px;
@@ -193,7 +203,7 @@ p {
   .navbar .resbtn {
     display: block;
   }
-}
+}*/
 
 /* portfolio page */
 
@@ -509,7 +519,322 @@ p {
   flex-wrap: wrap;
 }
 
+/* prototype page - accordion */
+
+button.accordion {
+  background-color: rgb(229, 229, 229);
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+  background-color: #cccccc;
+}
+
+div.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.readme {
+  display: none;
+  width: 300px;
+}
+
+.subheader {
+  margin-bottom: 1em;
+}
+
+/* prototype page - JSON updater  */
+
+.feedbackBox {
+  display: none;
+  background-color: rgb(229, 229, 229);
+  border: solid 1px #cccccc;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.flexContainer {
+  display: -webkit-flex;
+  display: flex;
+  /*-webkit-align-items: center;*/
+  /*align-items: center;*/
+  -webkit-justify-content: center;
+  justify-content: center;
+  /* You can set flex-wrap and flex-direction individually */
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  /* Or do it all in one line with flex flow */
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  /* tweak the where items line up on the row */
+  /* valid values are: flex-start, flex-end, space-between, space-around, stretch */
+  -webkit-align-content: flex-end;
+  align-content: flex-end;
+}
+
+.containerMargin {
+  margin-right: 15px;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  padding: 5px;
+}
+
+.ani_drop_down {
+  font: 16px Verdana, Geneva, sans-serif;
+  border-color: #cccccc;
+  margin-bottom: 1em;
+}
+
+.aniButtons {
+  margin: 0 auto;
+}
+
+.tableBorder {
+  border: 1px solid #cccccc;
+}
+
+.table_header {
+    width: 100%;
+    background-color: #cccccc;
+}
+
+.table_width {
+    width: 100%;
+}
+
+.table_scroll {
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*width: 100%;*/
+    height: 300px;
+    overflow-y: scroll;
+    /*overflow-x: hidden;*/
+}
+
+.scrollbar_offset {
+    width: 17.4px;
+}
+
+.table_border_top {
+    border-top: solid 2px;
+}
+
+.ani_th {
+  width: 25%;
+  text-align: left;
+  display: inline-block;
+  padding-left: 5px;
+  word-wrap: break-word;
+}
+
+.ani_col {
+  width: 25%;
+  display: inline-block;
+  padding-left: 5px;
+  word-wrap: break-word;
+}
+
+.hab_th {
+  width: 25%;
+  text-align: left;
+  display: inline-block;
+  padding-left: 5px;
+  word-wrap: break-word;
+}
+
+.hab_col {
+  width: 25%;
+  display: inline-block;
+  padding-left: 5px;
+  word-wrap: break-word;
+}
+
+.menu_th {
+  width: 25%;
+  text-align: left;
+  display: inline-block;
+  padding-left: 5px;
+  word-wrap: break-word;
+}
+
+.menu_col {
+  width: 25%;
+  display: inline-block;
+  padding-left: 5px;
+  word-wrap: break-word;
+}
+
+.opt_th {
+  width: 25%;
+  text-align: left;
+  display: inline-block;
+  padding-left: 5px;
+  word-wrap: break-word;
+}
+
+.opt_col {
+  width: 25%;
+  display: inline-block;
+  padding-left: 5px;
+  word-wrap: break-word;
+}
+
+/* prototype page - image uploader  */
+
+.text-center {
+    text-align: center;
+}
+
+.img-centered {
+    margin: 0 auto;
+}
+
+.pad_photo_select_btn {
+  padding-bottom: 5px;
+}
+
+.img-table {
+    border: 0px;
+}
+
+.img-row {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0px;
+    border: 0px;
+}
+
+.img-container {
+    position: relative;
+}
+
+.img-container:hover .target-img {
+    opacity: 0.5;
+}
+
+.img-container:hover .overlay {
+    opacity: 1.0;
+}
+
+.target-img {
+    opacity: 1.0;
+}
+
+.target-img:hover {
+    opacity: 0.5;
+}
+
+.overlay {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+
+.remove-txt {
+    background-color: #2C3E50;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+.hide_ajax_progress {
+    display: none;
+}
+
+.hide_upload_status {
+    display: none;
+}
+
+.upload_status {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+.ajax_bar {
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 50%;
+    background-color: #ddd;
+}
+
+.ajax_progress {
+    width: 0%;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}
+
+.btnmargin {
+    margin-bottom: 10px;
+}
+
 /* media queries */
+
+@media screen and (max-width : 319px) {
+  .navbar .brand {
+    float: none;
+    margin-left: 10px;
+    text-align: left
+  }
+    
+  .navbar .navigation {
+    float: none;
+    display: block;
+    height: 0em;
+    overflow: hidden;
+    width: 100%;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC
+  }
+    
+  .navbar .navigation li {
+    display: block;
+    width: 100%;
+    height: 60px;
+    background: #fff;
+    text-align: left
+  }
+    
+  .navbar .navigation li a {
+    text-align: left;
+    padding-left: 5px;
+  }
+  .navbar .resbtn {
+    display: block;
+  }
+}
 
 @media (min-width: 320px) {
   .center-block { max-width: 310px; }
@@ -534,6 +859,41 @@ p {
   .wrap {
     display: inline;
     flex-wrap: nowrap;
+  }
+}
+
+@media screen and (max-width : 916px) {
+  .navbar .brand {
+    float: none;
+    margin-left: 10px;
+    text-align: left
+  }
+    
+  .navbar .navigation {
+    float: none;
+    display: block;
+    height: 0em;
+    overflow: hidden;
+    width: 100%;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC
+  }
+    
+  .navbar .navigation li {
+    display: block;
+    width: 100%;
+    height: 60px;
+    background: #fff;
+    text-align: left
+  }
+    
+  .navbar .navigation li a {
+    text-align: left;
+    padding-left: 5px;
+  }
+
+  .navbar .resbtn {
+    display: block;
   }
 }
 

@@ -1,0 +1,34 @@
+{
+  "Animals": {
+    "Cow": {
+      "Habitats": {
+        "Desert": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Hare",
+                "Ostrich Egg",
+                "Lizard"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Tortoise",
+                "Meerkat",
+                "Ostrich"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Camel",
+                "Giraffe",
+                "Rhinoceros Calf",
+                "Elephant Calf"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

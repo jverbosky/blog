@@ -1,0 +1,40 @@
+{
+  "companies": [
+    {
+      "company_id": "1",
+      "name": "Company Inc.",
+      "address": "123 Main St",
+      "city": "Waynesburg",
+      "state": "PA",
+      "zipcode": "15370",
+      "phone": "7245551234",
+      "email": "bob.smith@company.com",
+      "contact": "Bob Smith",
+      "locations": [
+        "Location A",
+        " Location B",
+        " Location C"
+      ],
+      "site": "Main Work Site",
+      "site_type": "Commercial"
+    }
+  ],
+  "exposure_area": {
+    "Example Exposure Area": {
+      "Hazard Lists": {
+        "Example Hazard List": {
+          "Hazards": {
+            "Example Hazard": {
+              "Interventions": [
+                "Example Intervention"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "program_management": [
+    "Example program management item."
+  ]
+}

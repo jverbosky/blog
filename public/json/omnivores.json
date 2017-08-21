@@ -1,0 +1,142 @@
+{
+  "Animals": {
+    "Crow": {
+      "Habitats": {
+        "Savannah": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Mouse",
+                "Python",
+                "Hare",
+                "Bird"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Baboon",
+                "Porcupine",
+                "Aardvark",
+                "Steenbok"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Cape Buffalo",
+                "Gemsbok",
+                "Wildebeest",
+                "Burchell's Zebra",
+                "Warthog"
+              ]
+            }
+          }
+        },
+        "Desert": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Hare",
+                "Ostrich Egg",
+                "Lizard"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Tortoise",
+                "Meerkat",
+                "Ostrich"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Camel",
+                "Giraffe",
+                "Rhinoceros Calf",
+                "Elephant Calf"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Bear (Ursus arctos)": {
+      "Habitats": {
+        "Savannah": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Ants",
+                "Bees",
+                "Honey",
+                "Tree Shoots"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Nuts",
+                "Fruits",
+                "Salmon"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Baby Deer",
+                "Cow",
+                "Moose"
+              ]
+            }
+          }
+        },
+        "Coastline": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Wild Beans",
+                "Nuts",
+                "Grass",
+                "Tubers",
+                "Moths"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Salmon",
+                "Ground Squirrel"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Deer",
+                "Elk",
+                "Moose",
+                "Bison"
+              ]
+            }
+          }
+        },
+        "Arctic": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Ringed Seal",
+                "Harp Seal"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Bearded Seal",
+                "Hooded Seal"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Walrus",
+                "Beluga Whale"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

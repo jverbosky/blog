@@ -1,0 +1,202 @@
+{
+  "Animals": {
+    "Lion (Panthera leo)": {
+      "Habitats": {
+        "Savannah": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Mouse",
+                "Python",
+                "Hare",
+                "Bird"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Baboon",
+                "Porcupine",
+                "Aardvark",
+                "Steenbok"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Cape Buffalo",
+                "Gemsbok",
+                "Wildebeest",
+                "Burchell's Zebra",
+                "Warthog"
+              ]
+            }
+          }
+        },
+        "Desert": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Hare",
+                "Ostrich Egg",
+                "Lizard"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Tortoise",
+                "Meerkat",
+                "Ostrich"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Camel",
+                "Giraffe",
+                "Rhinoceros Calf",
+                "Elephant Calf"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Tiger (Panthera tigris)": {
+      "Habitats": {
+        "Tundra": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Mouse",
+                "Rabbit",
+                "Fish"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Wild Boar",
+                "Lynx"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Deer",
+                "Elk",
+                "Moose",
+                "Bear"
+              ]
+            }
+          }
+        },
+        "Jungle": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Bird",
+                "Fish",
+                "Monkey",
+                "Frog",
+                "Crab",
+                "Snake"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Wild Boar",
+                "Tapir",
+                "Goat",
+                "Porcupine"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Deer",
+                "Buffalo",
+                "Gaur",
+                "Elephant Calf",
+                "Rhinoceros Calf"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Bear (Ursus arctos)": {
+      "Habitats": {
+        "Savannah": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Ants",
+                "Bees",
+                "Honey",
+                "Tree Shoots"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Nuts",
+                "Fruits",
+                "Salmon"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Baby Deer",
+                "Cow",
+                "Moose"
+              ]
+            }
+          }
+        },
+        "Coastline": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Wild Beans",
+                "Nuts",
+                "Grass",
+                "Tubers",
+                "Moths"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Salmon",
+                "Ground Squirrel"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Deer",
+                "Elk",
+                "Moose",
+                "Bison"
+              ]
+            }
+          }
+        },
+        "Arctic": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Ringed Seal",
+                "Harp Seal"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Bearded Seal",
+                "Hooded Seal"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Walrus",
+                "Beluga Whale"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

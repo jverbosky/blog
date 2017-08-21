@@ -1,0 +1,335 @@
+<div class="center-block">
+
+  <div class="padded">
+    <h1>Prototypes</h1>
+  </div>
+
+  <div>
+    <p>This section highlights will let you play with some of the different prototypes that I've built.</p>
+    <p>Click on a button to expand the corresponding section for that prototype.</p>
+  </div>
+
+  <button class="accordion"><h1>JSON Updater</h1></button>
+  <div class="panel">
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="showReadme('jsonReadme')">View Readme</button>
+    </div>
+
+    <div class="center-block readme" id="jsonReadme">
+      <p>This app will allow you to:</p>
+      <ul>
+        <li><p>- specify which JSON file to use</p></li>
+        <li><p>- add/remove JSON file entries</p></li>
+        <li><p>- view JSON file data in table format</p></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- use to drive JSON selection in jsonPrototype.js -->
+    <input type="hidden" id="currentAniType" value=<%= JsonSelect.instance.anitype %> >
+
+    <div class="subheader">
+      <h3>Select Animal Type</h3>
+    </div>
+
+    <div class="centered">
+      <form action="/selanitype" method="post">
+
+        <div>
+          <label for="anitype">Animal Type:</label>
+          <select name ='anitype' class="ani_drop_down" id="anitype">
+            <option value='carnivores'>Carnivores</option>
+            <option value='herbivores'>Herbivores</option>
+            <option value='omnivores'>Omnivores</option>
+          </select>
+        </div>
+
+        <div class="centered">
+          <button type="submit" class="nonEditorButton">Submit</button>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+
+      <div class="container">
+        <h3 class="navbar-margin"></h3>
+        <div id="jump_div"></div>
+      </div>
+      
+      <div class="subheader">
+        <h3>Update Animals</h3>
+      </div>
+
+      <div class="centered">
+        <div id="feedbackBox" class="feedbackBox">
+
+          <% unless feedback == nil %> 
+            <% feedback_array = feedback.split('&&&') %>
+            <% counter = 0 %>
+            <% feedback_array.each do |line| %>
+              <% if counter == 0 %>
+                <p><i><%= line %></i></p><br>
+              <% else %>
+                <% items = line.split('> ') %>
+                <% items.each do |item| %>
+                  <p>-  <%= item %></p>
+                <% end %>
+              <% end %>
+              <% counter += 1%>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+
+      <div class="flexContainer">
+        <% if animals != [] %>
+
+        <div class="containerMargin">
+          <div class="row">
+            <div class="cell">
+              <label for="animal">Animal:</label>
+            </div>
+            <div class="cell">
+              <select name="animal" id="animal" class="ani_drop_down" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
+                  <option value='<Select an Animal...>' selected hidden>Select an Animal...</option>
+                  <option value='<Create a New Animal>'>&lt;Create a New Animal&gt;</option>
+                  <option disabled>────────────────────</option>
+                  <% animals.each do |animal| %>
+                    <option value="<%=animal.gsub(/"/){"\\&quot;"}.gsub(/'/){"\\&#39;"}%>"><%=animal%></option>
+                  <% end %>
+              </select>
+              <div id="newAnimalDiv"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="cell">
+              <label for="habitat">Habitat:</label>
+            </div>
+            <div class="cell">
+              <select name="habitat" id="habitat" class="ani_drop_down" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
+                  <option value='<Select a Habitat...>' selected hidden>Select a Habitat...</option>
+                  <option value='<Create a New Habitat>'>&lt;Create a New Habitat&gt;</option>
+                  <option value='<All Habitats>'>&lt;All Habitats&gt;</option>
+                  <option disabled>────────────────────</option>
+                  <% habitats.each do |habitat| %>
+                    <option value="<%=habitat.gsub(/"/){"\\&quot;"}.gsub(/'/){"\\&#39;"}%>"><%=habitat%></option>
+                  <% end %>
+              </select>
+              <div id="newHabitatDiv"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="containerMargin">
+          <div class="row">
+            <div class="cell">
+              <label for="menu">Menu:</label>
+            </div>
+            <div class="cell">
+              <select name="menu" id="menu" class="ani_drop_down" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
+                  <option value='<Select a Menu...>' selected hidden>Select a Menu...</option>
+                  <option value='<Create a New Menu>'>&lt;Create a New Menu&gt;</option>
+                  <option value='<All Menus>'>&lt;All Menus&gt;</option>
+                  <option disabled>────────────────────</option>
+                  <% menus.each do |menu| %>
+                    <option value="<%=menu.gsub(/"/){"\\&quot;"}.gsub(/'/){"\\&#39;"}%>"><%=menu%></option>
+                  <% end %>
+              </select>
+              <div id="newMenuDiv"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="cell">
+              <label for="option">Option:</label>
+            </div>
+            <div class="cell">
+              <select name="option" id="option" class="ani_drop_down" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
+                  <option value='<Select an Option...>' selected hidden>Select an Option...</option>
+                  <option value='<Create a New Option>'>&lt;Create a New Option&gt;</option>
+                  <option value='<All Options>'>&lt;All Options&gt;</option>
+                  <option disabled>────────────────────</option>
+                  <% options.each do |option| %>
+                    <option value="<%=option.gsub(/"/){"\\&quot;"}.gsub(/'/){"\\&#39;"}%>"><%=option%></option>
+                  <% end %>
+              </select>
+              <div id="newOptionDiv"></div>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+      </div>
+    
+      <div class="centered">
+        <button class="nonEditorButton" value="Add" id="btnExtendAnimalInfo">Add</button>
+        <button class="nonEditorButton" value="Delete" id="btnPruneAnimalInfo">Delete</button>
+      </div>     
+
+      <div class="divider"></div>
+
+      <div class="subheader">
+        <h3>Current Animals</h3>
+      </div>
+
+      <div class="tableBorder">
+
+        <!-- fixed header row for current animals table -->
+        <div>
+          <table class="table_header">
+            <tr>
+              <th class="ani_th"><p>Animal</p></th>
+              <th class="hab_th"><p>Habitat</p></th>
+              <th class="menu_th"><p>Menu</p></th>
+              <th class="opt_th"><p>Option</p></th>
+              <th class="scrollbar_offset"></th>  <!-- ensure th columns align with data row columns -->
+            </tr>
+          </table>
+        </div>
+
+        <!-- scrolling data with logic to pad columns as necessary so items stay in desired column -->
+        <div class="table_scroll">
+          <table class="table_width">
+            <% if animals_data != "" %>
+              <% ani_counter = 1 %>
+              <% animals_data.each do |animal, habitat| %>
+                <% hab_counter = 1 %>
+                <tr class="alt_row_color_ani table_border_top">
+                  <td class="ani_col"><p><%=animal%></p></td>
+                  <% habitat["Habitats"].each do |habitat, menus| %>
+                    <% menu_counter = 1 %>
+                      <% if hab_counter > ani_counter %>
+                        </tr>
+                        <tr class="alt_row_color_ani table_border_top">
+                          <td class="ani_col"></td>
+                      <% end %>
+                    <td class="hab_col"><p><%=habitat%></p></td>
+                    <% menus["Menus"].each do |menu, options| %>
+                      <% opt_counter = 1 %>
+                        <% if menu_counter > hab_counter %>
+                          </tr>
+                          <tr class="alt_row_color_ani table_border_top">
+                            <td class="ani_col"></td>
+                            <td class="hab_col"></td>
+                        <% end %>
+                      <td class="menu_col"><p><%=menu%></p></td>
+                      <% options["Options"].each do |option| %>
+                        <% unless opt_counter == 1 %>
+                          </tr>
+                          <tr class="alt_row_color_ani">
+                            <td class="ani_col"></td>
+                            <td class="hab_col"></td>
+                            <td class="menu_col"></td>
+                        <% end %>
+                        <td class="opt_col"><p><%=option%></p></td></tr>
+                        <% opt_counter += 1 %>
+                        <% menu_counter = 1 %>
+                      <% end %>
+                      <% menu_counter += 1 %>
+                      <% hab_counter = 1 %>
+                    <% end %>
+                    <% hab_counter += 1 %>
+                    <% ani_counter = 1 %>
+                  <% end %>
+                  <% ani_counter += 1 %>
+              <% end %>
+            <% end %>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+  </div>
+
+  <button class="accordion"><h1>Image Uploader</h1></button>
+  <div class="panel" id="imgUploaderPanel">
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="showReadme('imageReadme')">View Readme</button>
+    </div>
+
+    <div class="center-block readme" id="imageReadme">
+      <p>This app will allow you to:</p>
+      <ul>
+        <li><p>- select images to upload</p></li>
+        <li><p>- remove images from upload list</p></li>
+        <li><p>- readback images after upload</p></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+<!--     <div class="subheader">
+      <h3>Select Images</h3>
+    </div> -->
+
+<!--     <div class="form-group puploadmargin">
+      <div class="block"> -->
+
+<!--         <div class="auditphotoselect">
+          <h4>Upload Photos</h4>
+        </div> -->
+
+        <form id="ajax_write">
+
+            <div class="text-center pad_photo_select_btn" id='select_photo_button'>
+              <label class="nonEditorButton fileUpload">
+                <input type="file" class="upload" onchange="processFileList()" id='photos' accept="image/*" multiple>Select Images
+              </label>
+            </div>
+
+            <table class="img-table" id="photo_table">
+              <tr class="img-row" id="more-photos">
+                <!-- images populated in individual <td> elements via evaluateAndResize in photoUpload.js -->
+              </tr>
+            </table>
+
+            <div class="text-center hide_upload_status" id="hide_upload_status">
+              <div class="upload_status" id="upload_status">trigger</div>
+            </div>
+
+            <div class="img-centered hide_ajax_progress" id="hide_ajax_progress">
+              <div class="ajax_bar">
+                <div class="ajax_progress" id="photo_progress"></div>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <input type="submit" value="Upload" class="nonEditorButton btnmargin" id="btn_upload_photos">
+              <button class="nonEditorButton btnmargin" id="btn_reset">Reset</button>
+            </div>
+
+        </form>
+
+<!--         <div class="match_progress_bar">
+          <button class="nonEditorButton btn-hide btnmargin" id="btn_more_photos">Upload More Photos</button>
+          <button class="nonEditorButton btn-hide btnmargin" id="btn_home">Return Home</button>
+        </div> -->
+
+<!--       </div>
+    </div> -->
+
+    <div class="divider"></div>
+
+  </div>
+
+
+</div>
+
+<!-- jQuery must be loaded before jsonPrototype scripts -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="js/jsonUpdater.js"></script>
+<script src="js/imageUploader.js"></script>
+<script src="js/prototypes.js"></script>
