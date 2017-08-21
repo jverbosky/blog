@@ -1,6 +1,8 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    deep_merge (1.1.1)
+    hashable (0.1.2)
     json (2.1.0)
     mustermann (1.0.0)
     rack (2.0.3)
@@ -17,6 +19,8 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  deep_merge
+  hashable
   json
   sinatra
 
