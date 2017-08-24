@@ -117,9 +117,9 @@ get '/prototypes' do
   animals_data = data["Animals"]
 
   # S3 bucket images
-  session[:images] = query_s3(connection)
+  images = query_s3(connection)
 
-  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: session[:images]}
+  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}
 
 end
 
@@ -130,6 +130,16 @@ post '/selanitype' do
   JsonSelect.instance.anitype = params[:anitype]
 
   redirect '/prototypes?anitype=' + JsonSelect.instance.anitype
+
+end
+
+
+# Route for deleting photos from S3 bucket and PG DB
+post '/resetphotos' do
+
+  remove_photos(connection)
+
+  redirect '/prototypes'
 
 end
 
@@ -159,7 +169,11 @@ post '/prototypes' do
   data = file.json
   animals_data = data["Animals"]
 
-  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: session[:images]}
+  # S3 bucket images
+  # TODO - sessions weren't working, so calling again here
+  images = query_s3(connection)
+
+  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}
 
 end
 

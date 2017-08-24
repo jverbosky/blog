@@ -288,17 +288,11 @@ $("#btn_upload_photos").on("click", function() {
     function updateButtons() {
 
         var uploadBtnClasses = document.getElementById('btn_upload_photos').classList;
-        var resetBtnClasses = document.getElementById('btn_reset').classList;
         var uploadMoreBtnClasses = document.getElementById('btn_more_photos').classList;
-        var homeBtnClasses = document.getElementById('btn_home').classList;
 
-        if (uploadMoreBtnClasses.contains('btn-hide')) {
-            uploadBtnClasses.add('btn-hide');
-            resetBtnClasses.add('btn-hide');
-            uploadMoreBtnClasses.remove('btn-hide');
-            uploadMoreBtnClasses.add('btnsize4');
-            homeBtnClasses.remove('btn-hide');
-            homeBtnClasses.add('btnsize4');
+        if (uploadMoreBtnClasses.contains('btnHide')) {
+            uploadBtnClasses.add('btnHide');
+            uploadMoreBtnClasses.remove('btnHide');
         }
     }
 
@@ -345,18 +339,4 @@ $("#btn_reset").on("click", function() {
     event.preventDefault();  // suppress the default behavior for the button (since it's in a form)
 
     // collect all td elements and run each through deletePhoto(td)
-});
-
-
-// Go to beginning of Upload More Photos section when Upload More Photos button is selected
-$("#btn_more_photos").on("click", function() {
-
-    window.location.href = '/audit_photo';
-});
-
-
-// Go back home (New Audit) when Return Home button is selected
-$("#btn_home").on("click", function() {
-
-    window.location.href = '/index';
 });

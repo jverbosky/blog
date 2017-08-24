@@ -13,6 +13,11 @@ var currentAniType = document.getElementById("currentAniType").value;
 
 // Evaluates Animals & Program Management drop-down values and shows/hides field for creating new item
 function showNewItemField(id, name){
+
+    // leverage existing onchange() to remove red text formatting for selected option
+    var selectClasses = document.getElementById(id).classList;
+    selectClasses.remove('defaultGray');
+
     if (name in newAnimalItemIds) {
         if (id === "animal") {
             document.getElementById(newAnimalItemIds[name]).innerHTML = '<label>New Animal:</label> <input autofocus type="text" class="ani_drop_down" name="newAnimal" id="newAnimal" />';
@@ -89,31 +94,6 @@ function postAnimalInfo(changeType) {
 
     post('/prototypes', {animal: vAnimal, habitat: vHabitat, menu: vMenu, option: vOption, change_type: changeType});
     sessionStorage.setItem('dataPosted', true);  // store POST state for showing/hiding feedback div
-}
-
-
-// Sets display style for feedback div so it is visible
-function showFeedback() {
-
-   document.getElementById('feedbackBox').style.display = "inline-block";  // replace 'display: none' with 'display: inline-block'
-   sessionStorage.removeItem('dataPosted');  // clear 'dataPosted' flag so div will be hidden on page reload
-}
-
-
-// Jump to Animals div (animalsDiv) to display feedback from update
-function jumpToFeedback() {
-    var top = document.getElementById('jump_div').offsetTop; //Getting Y of target element
-    window.scrollTo(0, top); 
-}
-
-
-// Once the page has loaded, see if the 'dataPosted' flag has been set by POST to show feedback div
-window.onload = function () {
-
-    if (sessionStorage.getItem('dataPosted') !== null) {
-       showFeedback();
-       jumpToFeedback();
-    }
 }
 
 

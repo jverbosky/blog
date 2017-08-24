@@ -119,79 +119,14 @@
         }
       }
     },
-    "Bear (Ursus arctos)": {
+    "Dragon": {
       "Habitats": {
-        "Savannah": {
+        "Lair": {
           "Menus": {
             "Breakfast": {
               "Options": [
-                "Ants",
-                "Bees",
-                "Honey",
-                "Tree Shoots"
-              ]
-            },
-            "Lunch": {
-              "Options": [
-                "Nuts",
-                "Fruits",
-                "Salmon"
-              ]
-            },
-            "Dinner": {
-              "Options": [
-                "Baby Deer",
-                "Cow",
-                "Moose"
-              ]
-            }
-          }
-        },
-        "Coastline": {
-          "Menus": {
-            "Breakfast": {
-              "Options": [
-                "Wild Beans",
-                "Nuts",
-                "Grass",
-                "Tubers",
-                "Moths"
-              ]
-            },
-            "Lunch": {
-              "Options": [
-                "Salmon",
-                "Ground Squirrel"
-              ]
-            },
-            "Dinner": {
-              "Options": [
-                "Deer",
-                "Elk",
-                "Moose",
-                "Bison"
-              ]
-            }
-          }
-        },
-        "Arctic": {
-          "Menus": {
-            "Breakfast": {
-              "Options": [
-                "Ringed Seal",
-                "Harp Seal"
-              ]
-            },
-            "Lunch": {
-              "Options": [
-                "Bearded Seal",
-                "Hooded Seal"
-              ]
-            },
-            "Dinner": {
-              "Options": [
-                "Walrus",
-                "Beluga Whale"
+                "Princess",
+                "Knight"
               ]
             }
           }

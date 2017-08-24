@@ -523,7 +523,7 @@ label {
 
 button.accordion {
   background-color: rgb(229, 229, 229);
-  color: #444;
+  margin: 0 auto;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -531,7 +531,8 @@ button.accordion {
   text-align: left;
   outline: none;
   font-size: 15px;
-  transition: 0.4s;
+  border-radius: 6px;
+  /*transition: 0.4s;*/  /* interferes with scrollTo */
 }
 
 button.accordion.active, button.accordion:hover {
@@ -539,16 +540,20 @@ button.accordion.active, button.accordion:hover {
 }
 
 div.panel {
-  padding: 0 18px;
+  padding: 5px 18px;
   background-color: white;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  /*transition: max-height 0.2s ease-out;*/  /* interferes with scrollTo */
 }
 
 .readme {
   display: none;
-  width: 300px;
+  width: 350px;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .subheader {
@@ -556,6 +561,14 @@ div.panel {
 }
 
 /* prototype page - JSON updater  */
+
+select.defaultGray {
+    color: gray;
+}
+
+select option {
+    color: black;
+}
 
 .feedbackBox {
   display: none;
@@ -565,6 +578,10 @@ div.panel {
   margin-top: 5px;
   margin-bottom: 5px;
   text-align: left;
+}
+
+.usermessage {
+    color: red;
 }
 
 .flexContainer {
@@ -642,6 +659,7 @@ div.panel {
 }
 
 .ani_th {
+  font: bold 16px Verdana, Geneva, sans-serif;
   width: 25%;
   text-align: left;
   display: inline-block;
@@ -657,6 +675,7 @@ div.panel {
 }
 
 .hab_th {
+  font: bold 16px Verdana, Geneva, sans-serif;
   width: 25%;
   text-align: left;
   display: inline-block;
@@ -672,6 +691,7 @@ div.panel {
 }
 
 .menu_th {
+  font: bold 16px Verdana, Geneva, sans-serif;
   width: 25%;
   text-align: left;
   display: inline-block;
@@ -687,6 +707,7 @@ div.panel {
 }
 
 .opt_th {
+  font: bold 16px Verdana, Geneva, sans-serif;
   width: 25%;
   text-align: left;
   display: inline-block;
@@ -805,8 +826,17 @@ div.panel {
     color: white;
 }
 
-.btnmargin {
+.btnMargin {
     margin-bottom: 10px;
+}
+
+.btnHide {
+    display: none;
+}
+
+.match_progress_bar {
+    margin: 0 auto;
+    width: 50%;
 }
 
 /* media queries */

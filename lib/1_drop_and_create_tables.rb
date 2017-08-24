@@ -15,10 +15,10 @@ begin
       }
   conn = PG::Connection.new(db_params)
 
-  # drop listings table if it exists
+  # drop imageuploader table if it exists
   conn.exec "drop table if exists imageuploader"
 
-  # create the listings table (longest US city - Rancho Santa Margarita)
+  # create the imageuploader table
   conn.exec "create table imageuploader (
              id bigserial primary key,
              photo varchar)"

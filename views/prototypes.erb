@@ -6,25 +6,28 @@
 
 
   <div class="padded text-center">
-    <p>This section highlights will let you play with some of the different prototypes that I've built.</p>
+    <p>This page will let you play with some of the different prototypes that I've built.</p>
     <br>
-    <p>Click on a button to expand the corresponding section for that prototype.</p>
+    <p>Just click on one of the buttons below to expand the corresponding section for that prototype.</p>
+    <br>
+    <p>And feel free to add/delete things - don't worry, I have my baseline data sets backed up... ^_^;</p>
   </div>
 
   <br>
 
-  <button class="accordion"><h1>JSON Updater</h1></button>
+  <button class="accordion" id="acc_json"><h1>JSON Updater</h1></button>
   <div class="panel">
 
     <div class="centered padded">
-      <button class="nonEditorButton" onclick="showReadme('jsonReadme')">View Readme</button>
+      <button class="nonEditorButton" onclick="showReadme('jsonReadme')">Readme</button>
     </div>
 
     <div class="center-block readme" id="jsonReadme">
-      <p>This app will allow you to:</p>
+      <p class="underline">This app will allow you to:</p>
       <ul>
-        <li><p>- specify which JSON file to use</p></li>
+        <li><p>- load different datasets (JSON files)</p></li>
         <li><p>- add/remove JSON file entries</p></li>
+        <li><p>- view feedback for add/remove operations</p></li>
         <li><p>- view JSON file data in table format</p></li>
       </ul>
     </div>
@@ -51,7 +54,7 @@
         </div>
 
         <div class="centered">
-          <button type="submit" class="nonEditorButton">Submit</button>
+          <button type="submit" class="nonEditorButton" id="submitAniType">Submit</button>
         </div>
 
       </form>
@@ -101,7 +104,7 @@
               <label for="animal">Animal:</label>
             </div>
             <div class="cell">
-              <select name="animal" id="animal" class="ani_drop_down" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
+              <select name="animal" id="animal" class="ani_drop_down defaultGray" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
                   <option value='<Select an Animal...>' selected hidden>Select an Animal...</option>
                   <option value='<Create a New Animal>'>&lt;Create a New Animal&gt;</option>
                   <option disabled>────────────────────</option>
@@ -118,7 +121,7 @@
               <label for="habitat">Habitat:</label>
             </div>
             <div class="cell">
-              <select name="habitat" id="habitat" class="ani_drop_down" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
+              <select name="habitat" id="habitat" class="ani_drop_down defaultGray" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
                   <option value='<Select a Habitat...>' selected hidden>Select a Habitat...</option>
                   <option value='<Create a New Habitat>'>&lt;Create a New Habitat&gt;</option>
                   <option value='<All Habitats>'>&lt;All Habitats&gt;</option>
@@ -138,7 +141,7 @@
               <label for="menu">Menu:</label>
             </div>
             <div class="cell">
-              <select name="menu" id="menu" class="ani_drop_down" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
+              <select name="menu" id="menu" class="ani_drop_down defaultGray" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
                   <option value='<Select a Menu...>' selected hidden>Select a Menu...</option>
                   <option value='<Create a New Menu>'>&lt;Create a New Menu&gt;</option>
                   <option value='<All Menus>'>&lt;All Menus&gt;</option>
@@ -156,7 +159,7 @@
               <label for="option">Option:</label>
             </div>
             <div class="cell">
-              <select name="option" id="option" class="ani_drop_down" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
+              <select name="option" id="option" class="ani_drop_down defaultGray" onchange="showNewItemField(this.id, this.options[this.selectedIndex].value)" required>
                   <option value='<Select an Option...>' selected hidden>Select an Option...</option>
                   <option value='<Create a New Option>'>&lt;Create a New Option&gt;</option>
                   <option value='<All Options>'>&lt;All Options&gt;</option>
@@ -190,10 +193,10 @@
         <div>
           <table class="table_header">
             <tr>
-              <th class="ani_th"><p>Animal</p></th>
-              <th class="hab_th"><p>Habitat</p></th>
-              <th class="menu_th"><p>Menu</p></th>
-              <th class="opt_th"><p>Option</p></th>
+              <th class="ani_th">Animal</th>
+              <th class="hab_th">Habitat</th>
+              <th class="menu_th">Menu</th>
+              <th class="opt_th">Option</th>
               <th class="scrollbar_offset"></th>  <!-- ensure th columns align with data row columns -->
             </tr>
           </table>
@@ -256,19 +259,21 @@
 
   </div>
 
-  <button class="accordion"><h1>Image Uploader</h1></button>
+  <button class="accordion" id="acc_img"><h1>Image Uploader</h1></button>
   <div class="panel" id="imgUploaderPanel">
 
     <div class="centered padded">
-      <button class="nonEditorButton" onclick="showReadme('imageReadme')">View Readme</button>
+      <button class="nonEditorButton" onclick="showReadme('imageReadme')">Readme</button>
     </div>
 
     <div class="center-block readme" id="imageReadme">
-      <p>This app will allow you to:</p>
+      <p class="underline">This app will allow you to:</p>
       <ul>
         <li><p>- select images to upload</p></li>
-        <li><p>- remove images from upload list</p></li>
-        <li><p>- readback images after upload</p></li>
+        <li><p>- remove images from the upload list</p></li>
+        <li><p>- upload the images to an S3 bucket</p></li>
+        <li><p>- readback uploaded images</p></li>
+        <li><p>- remove uploaded images</p></li>
       </ul>
     </div>
 
@@ -311,15 +316,13 @@
             
             <div class="text-center">
               <input type="submit" value="Upload" class="nonEditorButton btnmargin" id="btn_upload_photos">
-              <button class="nonEditorButton btnmargin" id="btn_reset">Reset</button>
             </div>
 
         </form>
 
-<!--         <div class="match_progress_bar">
-          <button class="nonEditorButton btn-hide btnmargin" id="btn_more_photos">Upload More Photos</button>
-          <button class="nonEditorButton btn-hide btnmargin" id="btn_home">Return Home</button>
-        </div> -->
+        <div class="text-center">
+          <button class="nonEditorButton btnMargin btnHide" id="btn_more_photos">Upload More Photos</button>
+        </div>
 
 <!--       </div>
     </div> -->
@@ -331,16 +334,26 @@
     </div>
 
     <div>
-      <table class="img-table center-block">
+      <table class="img-table center-block" id="img-table">
         <tr class="img-row">
-          <% images.each do |image| %>
-            <td class="img-container" >
-              <img src="<%= image %>" class="s3-img">
-            </td>
+          <% if images == [] %>
+            <td><i>No images uploaded...</i></td>
+          <% else %>
+            <% images.each do |image| %>
+              <td class="img-container">
+                <img src="<%= image %>" class="s3-img">
+              </td>
+            <% end %>
           <% end %>
         </tr>
       </table>
     </div>
+
+    <form action="/resetphotos" method="post">
+      <div class="text-center">
+        <button type="submit" class="nonEditorButton btnMargin" id="btn_del_photos">Reset Photos</button>
+      </div>
+    </form>
 
     <div class="divider"></div>
 

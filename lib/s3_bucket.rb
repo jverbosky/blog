@@ -107,3 +107,20 @@ def query_s3(db)
   return secure_urls
 
 end
+
+
+# Method to delete all files from S3 bucket and DB references
+def remove_photos(db)
+
+  # empty bucket
+  connect_to_s3()
+  s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
+  obj = s3.bucket("prototype-jv").clear!
+
+  # drop & recreate imageuploader table
+  db.exec "drop table if exists imageuploader"
+  db.exec "create table imageuploader (
+             id bigserial primary key,
+             photo varchar)"
+
+end
