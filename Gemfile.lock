@@ -1,20 +1,20 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    aws-sdk (2.10.31)
-      aws-sdk-resources (= 2.10.31)
-    aws-sdk-core (2.10.31)
+    aws-sdk (2.10.32)
+      aws-sdk-resources (= 2.10.32)
+    aws-sdk-core (2.10.32)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.10.31)
-      aws-sdk-core (= 2.10.31)
-    aws-sigv4 (1.0.0)
+    aws-sdk-resources (2.10.32)
+      aws-sdk-core (= 2.10.32)
+    aws-sigv4 (1.0.1)
     deep_merge (1.1.1)
     hashable (0.1.2)
     jmespath (1.3.1)
     json (2.1.0)
     mustermann (1.0.0)
-    pg (0.20.0-x86-mingw32)
+    pg (0.21.0-x86-mingw32)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
