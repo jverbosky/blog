@@ -1,10 +1,10 @@
 # --------------- use for inline testing ---------------
-# require 'aws-sdk'
-# require 'pg'
+require 'aws-sdk'
+require 'pg'
 
-# load 'local_env.rb' if File.exist?('local_env.rb')
+load 'local_env.rb' if File.exist?('local_env.rb')
 
-# Aws.use_bundled_cert!  # resolves "certificate verify failed"
+Aws.use_bundled_cert!  # resolves "certificate verify failed"
 # ------------------------------------------------------
 
 
@@ -74,29 +74,30 @@ end
 
 
 # Use for inline testing
-# def connection()
+def connection()
 
-#   begin
-#     db_params = {
-#           host: ENV['host'],
-#           port:ENV['port'],
-#           dbname:ENV['dbname'],
-#           user:ENV['dbuser'],
-#           password:ENV['dbpassword']
-#         }
-#     db = PG::Connection.new(db_params)
-#   rescue PG::Error => e
-#     puts 'Exception occurred'
-#     puts e.message
-#   end
+  begin
+    db_params = {
+          host: ENV['host'],
+          port:ENV['port'],
+          dbname:ENV['dbname'],
+          user:ENV['dbuser'],
+          password:ENV['dbpassword']
+        }
+    db = PG::Connection.new(db_params)
+  rescue PG::Error => e
+    puts 'Exception occurred'
+    puts e.message
+  end
 
-# end
+end
 
 
 # Method to generate an array of secure URLs for photos in S3 bucket
-def query_s3(db)
+def query_s3()
 
   secure_urls = []
+  db = connection()
   query = db.exec("select photo from imageuploader")
 
   query.to_a.each do |hash|

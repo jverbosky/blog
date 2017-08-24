@@ -49,8 +49,6 @@ def connection()
     puts e.message
   end
 
-  return db
-
 end
 
 
@@ -119,7 +117,7 @@ get '/prototypes' do
   animals_data = data["Animals"]
 
   # S3 bucket images
-  images = query_s3(connection)
+  images = query_s3()
 
   erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}
 
@@ -153,8 +151,6 @@ post '/prototypes' do
   animal_array = [ params[:animal], params[:habitat], params[:menu], params[:option] ]
   change_type = params[:change_type]
 
-  p "post animal_array: #{animal_array}"
-
   # update JSON before pulling drop-down & table data
   updater = JsonUpdate.new
   feedback = updater.update_json(animal_array, change_type)
@@ -173,7 +169,7 @@ post '/prototypes' do
 
   # S3 bucket images
   # TODO - sessions weren't working, so calling again here
-  images = query_s3(connection)
+  images = query_s3()
 
   erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}
 
