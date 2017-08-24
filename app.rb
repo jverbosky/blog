@@ -49,6 +49,8 @@ def connection()
     puts e.message
   end
 
+  return db
+
 end
 
 
