@@ -113,7 +113,7 @@ get '/prototypes' do
   animals_data = data["Animals"]
 
   # S3 bucket images
-  images = query_s3(connection)
+  images = create_urls(connection)
   # images = []  # workaround for Internal Server Error on Heroku
 
   erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}
@@ -166,7 +166,7 @@ post '/prototypes' do
 
   # S3 bucket images
   # TODO - sessions weren't working, so calling again here
-  images = query_s3(connection)
+  images = create_urls(connection)
   # images = []  # workaround for Internal Server Error on Heroku
 
   erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}

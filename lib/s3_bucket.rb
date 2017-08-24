@@ -94,12 +94,12 @@ end
 
 
 # Method to generate an array of secure URLs for photos in S3 bucket
-def query_s3(db)
+def create_urls(db)
 
   secure_urls = []
-  query = db.exec("select photo from imageuploader")
+  results = db.exec("select photo from imageuploader")
 
-  query.to_a.each do |hash|
+  results.to_a.each do |hash|
     secure_url = generate_url(hash["photo"])
     secure_urls.push(secure_url)
   end
