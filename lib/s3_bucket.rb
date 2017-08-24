@@ -15,13 +15,24 @@ Aws.use_bundled_cert!  # resolves "certificate verify failed"
 def connect_to_s3()
 
   Aws::S3::Client.new(
-    access_key_id: ENV['S3_KEY'],
-    secret_access_key: ENV['S3_SECRET'],
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
     region: ENV['AWS_REGION'],
     force_path_style: ENV['PATH_STYLE']
   )
 
 end
+
+# def connect_to_s3()
+
+#   Aws::S3::Client.new(
+#     access_key_id: ENV['S3_KEY'],
+#     secret_access_key: ENV['S3_SECRET'],
+#     region: ENV['AWS_REGION'],
+#     force_path_style: ENV['PATH_STYLE']
+#   )
+
+# end
 
 
 # Method to clean up temp file after uploading to AWS S3 bucket
