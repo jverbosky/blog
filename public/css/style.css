@@ -715,16 +715,16 @@ div.panel {
   padding-bottom: 5px;
 }
 
-.img-table {
-    border: 0px;
+.img-table td {
+    border: 1px solid grey;
+    padding: 5px;
+    margin: 5px;
 }
 
 .img-row {
     display:flex;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 0px;
-    border: 0px;
+    flex-flow: row wrap;
 }
 
 .img-container {
@@ -741,6 +741,9 @@ div.panel {
 
 .target-img {
     opacity: 1.0;
+    position: relative;  /* these 3 lines verically align img in td */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .target-img:hover {
@@ -758,11 +761,17 @@ div.panel {
 }
 
 .remove-txt {
-    background-color: #2C3E50;
-    color: white;
+    background-color: #cccccc;
     font-size: 14px;
     border-radius: 4px;
     padding: 6px 12px;
+}
+
+.s3-img {
+    opacity: 1.0;
+    position: relative;  /* these 3 lines verically align img in td */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .hide_ajax_progress {

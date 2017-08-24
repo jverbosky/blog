@@ -4,10 +4,14 @@
     <h1>Prototypes</h1>
   </div>
 
-  <div>
+
+  <div class="padded text-center">
     <p>This section highlights will let you play with some of the different prototypes that I've built.</p>
+    <br>
     <p>Click on a button to expand the corresponding section for that prototype.</p>
   </div>
+
+  <br>
 
   <button class="accordion"><h1>JSON Updater</h1></button>
   <div class="panel">
@@ -289,7 +293,7 @@
               </label>
             </div>
 
-            <table class="img-table" id="photo_table">
+            <table class="img-table center-block" id="photo_table">
               <tr class="img-row" id="more-photos">
                 <!-- images populated in individual <td> elements via evaluateAndResize in photoUpload.js -->
               </tr>
@@ -319,6 +323,24 @@
 
 <!--       </div>
     </div> -->
+
+    <div class="divider"></div>
+
+    <div class="subheader">
+      <h3>Previously Uploaded Images</h3>
+    </div>
+
+    <div>
+      <table class="img-table center-block">
+        <tr class="img-row">
+          <% images.each do |image| %>
+            <td class="img-container" >
+              <img src="<%= image %>" class="s3-img">
+            </td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
 
     <div class="divider"></div>
 

@@ -1,10 +1,13 @@
+require 'aws-sdk'
 require 'base64'
 require 'deep_merge'
 require 'hashable'
 require 'json'
+require 'pg'
 require 'sinatra'
 require 'singleton'
 
+require_relative 'lib/ajax_interface.rb'
 require_relative 'lib/blog_handler.rb'
 require_relative 'lib/json_address.rb'
 require_relative 'lib/json_compare.rb'
@@ -14,12 +17,38 @@ require_relative 'lib/json_read.rb'
 require_relative 'lib/json_select.rb'
 require_relative 'lib/json_update.rb'
 require_relative 'lib/photo_handler.rb'
+require_relative 'lib/photo_queue.rb'
+require_relative 'lib/photo_upload.rb'
+require_relative 'lib/s3_bucket.rb'
 
+Aws.use_bundled_cert!  # resolves "certificate verify failed" error
+
+load './lib/local_env.rb' if File.exist?('./lib/local_env.rb')
 
 # /ERROR RangeError: exceeded available parameter key space/ workaround for large blogs
 # Ex: 150 paragraphs, 13158 words, 88991 bytes of Lorem Ipsum
 if Rack::Utils.respond_to?("key_space_limit=")
   Rack::Utils.key_space_limit = 88992
+end
+
+
+# Method to open a connection to the PostgreSQL database
+def connection()
+
+  begin
+    db_params = {
+          host: ENV['host'],
+          port:ENV['port'],
+          dbname:ENV['dbname'],
+          user:ENV['dbuser'],
+          password:ENV['dbpassword']
+        }
+    db = PG::Connection.new(db_params)
+  rescue PG::Error => e
+    puts 'Exception occurred'
+    puts e.message
+  end
+
 end
 
 
@@ -87,7 +116,10 @@ get '/prototypes' do
   # animals table items
   animals_data = data["Animals"]
 
-  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options}
+  # S3 bucket images
+  session[:images] = query_s3(connection)
+
+  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: session[:images]}
 
 end
 
@@ -127,7 +159,7 @@ post '/prototypes' do
   data = file.json
   animals_data = data["Animals"]
 
-  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options}
+  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: session[:images]}
 
 end
 
@@ -140,6 +172,16 @@ post '/queue_photos' do
   photo_data = [connection, filename, data]
 
   PhotoQueue.instance.push(photo_data)
+
+end
+
+
+# Route to pop photo data from queue for processing
+post '/upload_photos' do
+
+  status = params[:photoUploadStatus]
+
+  receive_photo_data(status)
 
 end
 

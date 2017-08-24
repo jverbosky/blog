@@ -1,6 +1,8 @@
 source :rubygems
-gem 'sinatra'
-gem 'json'
+gem 'aws-sdk'
 gem 'deep_merge'
 gem 'hashable'
+gem 'json'
+gem 'pg'
+gem 'sinatra'
 ruby '2.3.3'

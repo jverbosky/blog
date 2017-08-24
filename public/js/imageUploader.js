@@ -167,7 +167,12 @@ function evaluateAndResize(file) {
 
     // append img to more-photos td element if not already added (line 18 in photo_upload.erb)
     if (!imgRowDiv.innerHTML.includes(fileName)) {
-        imgRowDiv.innerHTML += '<td class="img-container" onclick="deletePhoto(this)"><img img src="" class="target-img" id=' + fileName + ' onload="resizeDiv()"><div class="overlay"><div class="remove-txt">Remove</div></div></td>';
+        imgRowDiv.innerHTML += '<td class="img-container" onclick="deletePhoto(this)">\
+                                    <img img src="" class="target-img" id=' + fileName + ' onload="resizeDiv()">\
+                                    <div class="overlay">\
+                                        <div class="nonEditorButton">Remove</div>\
+                                    </div>\
+                                </td>';
     }
 
     // display message
@@ -339,8 +344,7 @@ $("#btn_reset").on("click", function() {
 
     event.preventDefault();  // suppress the default behavior for the button (since it's in a form)
 
-    var timestamp = $("#timestamp").val();
-    window.location.href = '/photo_upload?time=' + timestamp;
+    // collect all td elements and run each through deletePhoto(td)
 });
 
 
