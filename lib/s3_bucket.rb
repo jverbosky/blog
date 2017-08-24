@@ -1,10 +1,10 @@
 # --------------- use for inline testing ---------------
-require 'aws-sdk'
-require 'pg'
+# require 'aws-sdk'
+# require 'pg'
 
-load 'local_env.rb' if File.exist?('local_env.rb')
+# load 'local_env.rb' if File.exist?('local_env.rb')
 
-Aws.use_bundled_cert!  # resolves "certificate verify failed"
+# Aws.use_bundled_cert!  # resolves "certificate verify failed"
 # ------------------------------------------------------
 
 
@@ -15,24 +15,13 @@ Aws.use_bundled_cert!  # resolves "certificate verify failed"
 def connect_to_s3()
 
   Aws::S3::Client.new(
-    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    access_key_id: ENV['S3_KEY'],
+    secret_access_key: ENV['S3_SECRET'],
     region: ENV['AWS_REGION'],
     force_path_style: ENV['PATH_STYLE']
   )
 
 end
-
-# def connect_to_s3()
-
-#   Aws::S3::Client.new(
-#     access_key_id: ENV['S3_KEY'],
-#     secret_access_key: ENV['S3_SECRET'],
-#     region: ENV['AWS_REGION'],
-#     force_path_style: ENV['PATH_STYLE']
-#   )
-
-# end
 
 
 # Method to clean up temp file after uploading to AWS S3 bucket
@@ -85,30 +74,29 @@ end
 
 
 # Use for inline testing
-def connection()
+# def connection()
 
-  begin
-    db_params = {
-          host: ENV['host'],
-          port:ENV['port'],
-          dbname:ENV['dbname'],
-          user:ENV['dbuser'],
-          password:ENV['dbpassword']
-        }
-    db = PG::Connection.new(db_params)
-  rescue PG::Error => e
-    puts 'Exception occurred'
-    puts e.message
-  end
+#   begin
+#     db_params = {
+#           host: ENV['host'],
+#           port:ENV['port'],
+#           dbname:ENV['dbname'],
+#           user:ENV['dbuser'],
+#           password:ENV['dbpassword']
+#         }
+#     db = PG::Connection.new(db_params)
+#   rescue PG::Error => e
+#     puts 'Exception occurred'
+#     puts e.message
+#   end
 
-end
+# end
 
 
 # Method to generate an array of secure URLs for photos in S3 bucket
-def query_s3()
+def query_s3(db)
 
   secure_urls = []
-  db = connection()
   query = db.exec("select photo from imageuploader")
 
   query.to_a.each do |hash|
