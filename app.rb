@@ -35,15 +35,19 @@ end
 # Method to open a connection to the PostgreSQL database
 def connection()
 
-  db_params = {
-        host: ENV['dbhost'],
-        port:ENV['dbport'],
-        dbname:ENV['dbname'],
-        user:ENV['dbuser'],
-        password:ENV['dbpass']
-      }
-
-  db = PG::Connection.new(db_params)
+  begin
+    db_params = {
+          host: ENV['host'],
+          port:ENV['port'],
+          dbname:ENV['dbname'],
+          user:ENV['dbuser'],
+          password:ENV['dbpassword']
+        }
+    db = PG::Connection.new(db_params)
+  rescue PG::Error => e
+    puts 'Exception occurred'
+    puts e.message
+  end
 
 end
 
@@ -113,7 +117,7 @@ get '/prototypes' do
   animals_data = data["Animals"]
 
   # S3 bucket images
-  images = create_urls(connection)
+  images = query_s3(connection)
   # images = []  # workaround for Internal Server Error on Heroku
 
   erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}
@@ -166,7 +170,7 @@ post '/prototypes' do
 
   # S3 bucket images
   # TODO - sessions weren't working, so calling again here
-  images = create_urls(connection)
+  images = query_s3(connection)
   # images = []  # workaround for Internal Server Error on Heroku
 
   erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}

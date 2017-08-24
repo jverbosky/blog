@@ -73,33 +73,13 @@ def generate_url(file)
 end
 
 
-# Use for inline testing
-# def connection()
-
-#   begin
-#     db_params = {
-#           host: ENV['host'],
-#           port:ENV['port'],
-#           dbname:ENV['dbname'],
-#           user:ENV['dbuser'],
-#           password:ENV['dbpassword']
-#         }
-#     db = PG::Connection.new(db_params)
-#   rescue PG::Error => e
-#     puts 'Exception occurred'
-#     puts e.message
-#   end
-
-# end
-
-
 # Method to generate an array of secure URLs for photos in S3 bucket
-def create_urls(db)
+def query_s3(db)
 
   secure_urls = []
-  results = db.exec("select photo from imageuploader")
+  query = db.exec("select photo from imageuploader")
 
-  results.to_a.each do |hash|
+  query.to_a.each do |hash|
     secure_url = generate_url(hash["photo"])
     secure_urls.push(secure_url)
   end
