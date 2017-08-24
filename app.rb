@@ -37,11 +37,11 @@ def connection()
 
   begin
     db_params = {
-          host: ENV['host'],
-          port:ENV['port'],
+          host: ENV['dbhost'],
+          port:ENV['dbport'],
           dbname:ENV['dbname'],
           user:ENV['dbuser'],
-          password:ENV['dbpassword']
+          password:ENV['dbpass']
         }
     db = PG::Connection.new(db_params)
   rescue PG::Error => e
