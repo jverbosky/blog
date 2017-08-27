@@ -1,5 +1,6 @@
 var resizedImages = [];  // Array to hold resized photo files - used by evaluateAndResize()
 var photoCounter = 1;  // Counter for multiple images - used by evaluateAndResize()
+var uploadBtnClasses = document.getElementById('btn_upload_photos').classList;  // called multiple places
 
 // Compare uploaded image file signature against known MIME types
 // Add more from:  http://en.wikipedia.org/wiki/List_of_file_signatures
@@ -97,12 +98,14 @@ function b64toBlob(b64Data, contentType, sliceSize) {
 // Delete photo <td> element and corresponding object from resizedImages array
 function deletePhoto(td) {
 
+    // remove <td> element from table row
     var row = document.getElementById("more-photos");
 
     for (var i = 0; i < row.children.length; i++) {
         if (row.children[i] === td) { row.deleteCell(i); }
     }
 
+    // remove photo from resizedImages array
     var selectedPhoto = td.children[0].id;
 
     for (var j = 0; j < resizedImages.length; j++ ) {
@@ -112,8 +115,10 @@ function deletePhoto(td) {
     // filter undefined element from array if photo element deleted
     resizedImages = resizedImages.filter(function(k) { return k != undefined }); 
 
-    // remove message if last photo element deleted
+    // hide Upload button and remove message if last photo element deleted
     if ($("#photo_table tr td").length === 0) {
+
+        uploadBtnClasses.add('btnHide');
         document.getElementById('hide_upload_status').style.display = "none";
     }
 }
@@ -175,8 +180,10 @@ function evaluateAndResize(file) {
                                 </td>';
     }
 
-    // display message
+    // show Upload button and display message
     if ($("#photo_table tr td").length > 0) {
+
+        uploadBtnClasses.remove('btnHide');
         document.getElementById('hide_upload_status').style.display = "inline";
         $("#upload_status").text("Select a photo to remove it from the list.").show();
     }
@@ -217,11 +224,26 @@ $("#btn_upload_photos").on("click", function() {
     }
 
 
-    // Message with photo upload status after uploads have completed
+    // Changes after uploads have completed
     function uploadStatus(length) {
 
         if (length > 0) {
             document.getElementById('hide_upload_status').style.display = "inline";
+
+            // find all img elements in more-photos tr and remove target-img class
+            var img = $("#more-photos").find("img");
+            img.removeClass("target-img");
+            img.addClass("uploaded-img");
+
+            // remove onclick function and overlay divs
+            var cells = $("#more-photos").find("td");          
+
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].onclick = null;
+                cells[i].removeChild(cells[i].childNodes[3]);
+            }
+
+            // message with photo upload status
             $("#upload_status").text("Your photos have successfully uploaded.").show();
             updateButtons();
         }
@@ -287,7 +309,6 @@ $("#btn_upload_photos").on("click", function() {
     // Hide Upload button and show Upload More Photos and Return Home buttons after clicking Upload button
     function updateButtons() {
 
-        var uploadBtnClasses = document.getElementById('btn_upload_photos').classList;
         var uploadMoreBtnClasses = document.getElementById('btn_more_photos').classList;
 
         if (uploadMoreBtnClasses.contains('btnHide')) {

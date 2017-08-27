@@ -771,6 +771,12 @@ select option {
     opacity: 0.5;
 }
 
+.uploaded-img {
+    position: relative;  /* these 3 lines verically align img in td */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .overlay {
     transition: .5s ease;
     opacity: 0;
@@ -786,13 +792,6 @@ select option {
     font-size: 14px;
     border-radius: 4px;
     padding: 6px 12px;
-}
-
-.s3-img {
-    opacity: 1.0;
-    position: relative;  /* these 3 lines verically align img in td */
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .hide_ajax_progress {
