@@ -794,6 +794,28 @@ select option {
     padding: 6px 12px;
 }
 
+.img-container:hover .rmv-overlay {
+    opacity: 1.0;
+}
+
+.rmv-overlay {
+    transition: .5s ease;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    transform: translate(-10%, -10%);
+    -ms-transform: translate(-10%, -10%)
+}
+
+.rmv-opacity {
+    opacity: 0;
+}
+
+.rmv-checkbox {
+    width: 30px;
+    height: 30px;
+}
+
 .hide_ajax_progress {
     display: none;
 }

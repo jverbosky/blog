@@ -44,27 +44,27 @@ function showNewItemField(id, name){
 }
 
 
-// Function to perform POST request - called at bottom of updateAnimalInfo() with parameters
-function post(path, params, method) {
+// // Function to perform POST request - called at bottom of postAnimalInfo() with parameters
+// function post(path, params, method) {
 
-    method = method || "post"; // Set method to post by default if not specified.
-    var form = document.createElement("form");
-    form.setAttribute("method", method);
-    form.setAttribute("action", path);
+//     method = method || "post"; // Set method to post by default if not specified.
+//     var form = document.createElement("form");
+//     form.setAttribute("method", method);
+//     form.setAttribute("action", path);
 
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", params[key]);
-            form.appendChild(hiddenField);
-         }
-    }
+//     for(var key in params) {
+//         if(params.hasOwnProperty(key)) {
+//             var hiddenField = document.createElement("input");
+//             hiddenField.setAttribute("type", "hidden");
+//             hiddenField.setAttribute("name", key);
+//             hiddenField.setAttribute("value", params[key]);
+//             form.appendChild(hiddenField);
+//          }
+//     }
 
-    document.body.appendChild(form);
-    form.submit();
-}
+//     document.body.appendChild(form);
+//     form.submit();
+// }
 
 
 // POSTs the specified drop-down or user-defined animal info

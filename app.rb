@@ -135,16 +135,6 @@ post '/selanitype' do
 end
 
 
-# Route for deleting photos from S3 bucket and PG DB
-post '/resetphotos' do
-
-  remove_photos(connection)
-
-  redirect '/prototypes'
-
-end
-
-
 # Route used by animals update form
 post '/prototypes' do
 
@@ -196,6 +186,17 @@ post '/upload_photos' do
   status = params[:photoUploadStatus]
 
   receive_photo_data(status)
+
+end
+
+
+# Route for deleting photos from S3 bucket and PG DB
+post '/deletephotos' do
+
+  selected = params[:selected]
+  remove_photos(connection, selected)
+
+  redirect '/prototypes'
 
 end
 

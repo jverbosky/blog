@@ -327,8 +327,11 @@
             <td><i>No images uploaded...</i></td>
           <% else %>
             <% images.each do |image| %>
-              <td class="img-container">
-                <img src="<%= image %>" class="uploaded-img">
+              <td class="img-container" onclick="selectPhoto(this)">
+                <img src="<%= image %>" class="target-img">
+                <div class="rmv-overlay rmv-opacity" id="rmv-overlay">
+                  <input type="checkbox" class="rmv-checkbox" id="rmv-checkbox">
+                </div>
               </td>
             <% end %>
           <% end %>
@@ -336,11 +339,9 @@
       </table>
     </div>
 
-    <form action="/resetphotos" method="post">
-      <div class="text-center">
-        <button type="submit" class="nonEditorButton btnMargin" id="btn_del_photos">Reset Photos</button>
-      </div>
-    </form>
+    <div class="centered">
+        <button type="submit" class="nonEditorButton btnMargin btnHide" id="btn_del_photos">Delete Photos</button>
+    </div>
 
     <div class="divider"></div>
 
@@ -352,6 +353,6 @@
 <!-- jQuery must be loaded before jsonPrototype scripts -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+<script src="js/prototypes.js"></script>
 <script src="js/jsonUpdater.js"></script>
 <script src="js/imageUploader.js"></script>
-<script src="js/prototypes.js"></script>

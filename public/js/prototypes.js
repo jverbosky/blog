@@ -147,6 +147,29 @@ $("#btn_del_photos").on("click", function() {
 });
 
 
+// Function to perform POST request
+// - called at bottom of postAnimalInfo() in jsonUpdater.js
+// - called in btn_del_photos onclick() in imageUploader.js
+function post(path, params, method) {
+
+    method = method || "post"; // Set method to post by default if not specified.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
 
 
 // open image uploader accordion to appropriate section

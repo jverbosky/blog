@@ -64,8 +64,9 @@ end
 # Method to generate secure URL for target file (expires after 15 minutes)
 def generate_url(file)
 
-  s3_file_path = "imageuploader/#{file}"
   bucket = "prototype-jv"
+  s3_file_path = "imageuploader/#{file}"
+
   connect_to_s3()
   signer = Aws::S3::Presigner.new
   url = signer.presigned_url(:get_object, bucket: bucket, key: s3_file_path)
@@ -89,18 +90,37 @@ def query_s3(db)
 end
 
 
-# Method to delete all files from S3 bucket and DB references
-def remove_photos(db)
+# Method to delete specified image from S3 bucket
+def delete_s3_file(file)
 
-  # empty bucket
+  bucket = "prototype-jv"
+  s3_file_path = "imageuploader/#{file}"
+  
   connect_to_s3()
   s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
-  obj = s3.bucket("prototype-jv").clear!
+  obj = s3.bucket(bucket).object(s3_file_path)
 
-  # drop & recreate imageuploader table
-  db.exec "drop table if exists imageuploader"
-  db.exec "create table imageuploader (
-             id bigserial primary key,
-             photo varchar)"
+  obj.delete(file, s3_file_path)
+
+end
+
+
+# Method to delete record for specified image from PostgreSQL DB
+def delete_db_record(db, photo)
+
+  db.exec("delete from imageuploader where photo = '#{photo}'")
+
+end
+
+
+# Method to delete all files from S3 bucket and DB references
+def remove_photos(db, selected)
+
+  photos = selected.split(",")
+
+  photos.each do |photo|
+    delete_s3_file(photo)
+    delete_db_record(db, photo)
+  end
 
 end

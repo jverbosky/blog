@@ -23,6 +23,15 @@
               ]
             }
           }
+        },
+        "Forest": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Nestlings"
+              ]
+            }
+          }
         }
       }
     },

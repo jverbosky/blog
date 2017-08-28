@@ -1,6 +1,7 @@
-var resizedImages = [];  // Array to hold resized photo files - used by evaluateAndResize()
-var photoCounter = 1;  // Counter for multiple images - used by evaluateAndResize()
+var resizedImages = [];  // array to hold resized photo files - used by evaluateAndResize()
+var photoCounter = 1;  // counter for multiple images - used by evaluateAndResize()
 var uploadBtnClasses = document.getElementById('btn_upload_photos').classList;  // called multiple places
+var deletePhotos = [];  // array to hold names of uploaded photos marked for deletion
 
 // Compare uploaded image file signature against known MIME types
 // Add more from:  http://en.wikipedia.org/wiki/List_of_file_signatures
@@ -244,7 +245,7 @@ $("#btn_upload_photos").on("click", function() {
             }
 
             // message with photo upload status
-            $("#upload_status").text("Your photos have successfully uploaded.").show();
+            $("#upload_status").html("Your photos have successfully uploaded.<br>Please note that it will take a moment to process them.").show();
             updateButtons();
         }
     }
@@ -354,10 +355,40 @@ $("#photos").on("click", function() {
 });
 
 
-// Reset page if selected pictures aren't as desired
-$("#btn_reset").on("click", function() {
+// Add photo to deletePhotos array when selected
+function selectPhoto(td) {
 
-    event.preventDefault();  // suppress the default behavior for the button (since it's in a form)
+    var overlayCheckbox = td.childNodes[3].childNodes[1];
+    var overlayClasses = td.childNodes[3].classList;
+    var delPhotosClasses = document.getElementById('btn_del_photos').classList;
 
-    // collect all td elements and run each through deletePhoto(td)
+    // get the photo name from the S3 URL
+    imgSrc = td.childNodes[1].src;
+    imgName = imgSrc.replace(/^(.*[/\\])?/, '').replace(/(\?[^.]*)$/, '')
+    
+    // if deletePhotos array doesn't have photo name, add it & show checkbox
+    if (!deletePhotos.includes(imgName)) {
+        deletePhotos.push(imgName);
+        overlayCheckbox.checked = true;
+        overlayClasses.remove('rmv-opacity');
+        delPhotosClasses.remove('btnHide');
+        resizeDiv();
+    } else {  // otherwise, delete it from deletePhotos array & clear checkbox
+        var index = deletePhotos.indexOf(imgName);
+        if (index > -1) {
+            deletePhotos.splice(index, 1);
+        }
+        overlayCheckbox.checked = false;
+        overlayClasses.add('rmv-opacity');
+        if (deletePhotos.length === 0) {
+            delPhotosClasses.add('btnHide');
+        }
+    }
+}
+
+
+// POSTs the image names in deletePhotos array 
+$("#btn_del_photos").on("click", function() {
+
+    post('/deletephotos', {selected: deletePhotos});
 });
