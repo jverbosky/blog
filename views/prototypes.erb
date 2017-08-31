@@ -76,7 +76,8 @@
       <div class="centered">
         <div id="feedbackBox" class="feedbackBox">
 
-          <% unless feedback == nil %> 
+          <% unless feedback == nil %>
+            <% puts "This is output from a view..." %>
             <% feedback_array = feedback.split('&&&') %>
             <% counter = 0 %>
             <% feedback_array.each do |line| %>

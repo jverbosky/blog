@@ -105,6 +105,8 @@ get '/prototypes' do
   file = JsonRead.new
   data = file.json
 
+  puts "This is output from a route..."
+
   # animals form items
   feedback = ""
   filtered = JsonFilter.new

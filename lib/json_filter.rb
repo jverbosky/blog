@@ -30,6 +30,7 @@ class JsonFilter
   # Method to return sorted list of Animals
   def get_animals()
 
+    puts "This is output from a method..."
     @animals = @raw.raw_animals.keys.uniq.sort_by(&:downcase)
 
   end
