@@ -1,0 +1,265 @@
+<html>
+<body>
+<pre>
+<code>
+2017-08-31T02:48:22.000000+00:00 app[api]: Build started by user jverbosk@gmail.com
+2017-08-31T02:48:36.326540+00:00 app[api]: Release v79 created by user jverbosk@gmail.com
+2017-08-31T02:48:36.326540+00:00 app[api]: Deploy 3861018f by user jverbosk@gmail.com
+2017-08-31T02:48:36.814375+00:00 heroku[web.1]: Restarting
+2017-08-31T02:48:36.816603+00:00 heroku[web.1]: State changed from up to starting
+2017-08-31T02:48:37.621371+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2017-08-31T02:48:37.637055+00:00 app[web.1]: [2017-08-31 02:48:37] FATAL SignalException: SIGTERM
+2017-08-31T02:48:37.637067+00:00 app[web.1]:  /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:177:in `select'
+2017-08-31T02:48:37.637071+00:00 app[web.1]:  /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:177:in `block in start'
+2017-08-31T02:48:37.637071+00:00 app[web.1]:  /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:33:in `start'
+2017-08-31T02:48:37.637072+00:00 app[web.1]:  /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:164:in `start'
+2017-08-31T02:48:37.637073+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/handler/webrick.rb:34:in `run'
+2017-08-31T02:48:37.637074+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/server.rb:297:in `start'
+2017-08-31T02:48:37.637075+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/server.rb:148:in `start'
+2017-08-31T02:48:37.637075+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/bin/rackup:4:in `<top (required)>'
+2017-08-31T02:48:37.637076+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/bin/rackup:22:in `load'
+2017-08-31T02:48:37.637077+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/bin/rackup:22:in `<top (required)>'
+2017-08-31T02:48:37.637078+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli/exec.rb:74:in `load'
+2017-08-31T02:48:37.637079+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli/exec.rb:74:in `kernel_load'
+2017-08-31T02:48:37.637079+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli/exec.rb:27:in `run'
+2017-08-31T02:48:37.637080+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli.rb:360:in `exec'
+2017-08-31T02:48:37.637082+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+2017-08-31T02:48:37.637083+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/vendor/thor/lib/thor/invocation.rb:126:in `invoke_command'
+2017-08-31T02:48:37.637083+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/vendor/thor/lib/thor.rb:369:in `dispatch'
+2017-08-31T02:48:37.637084+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli.rb:20:in `dispatch'
+2017-08-31T02:48:37.637085+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/vendor/thor/lib/thor/base.rb:444:in `start'
+2017-08-31T02:48:37.637086+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli.rb:10:in `start'
+2017-08-31T02:48:37.637087+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/exe/bundle:30:in `block in <top (required)>'
+2017-08-31T02:48:37.637088+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/friendly_errors.rb:121:in `with_friendly_errors'
+2017-08-31T02:48:37.637089+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/exe/bundle:22:in `<top (required)>'
+2017-08-31T02:48:37.637089+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/bin/bundle:22:in `load'
+2017-08-31T02:48:37.637090+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/bin/bundle:22:in `<main>'
+2017-08-31T02:48:37.637193+00:00 app[web.1]: [2017-08-31 02:48:37] INFO  going to shutdown ...
+2017-08-31T02:48:37.637248+00:00 app[web.1]: [2017-08-31 02:48:37] INFO  WEBrick::HTTPServer#start done.
+2017-08-31T02:48:37.637468+00:00 app[web.1]: bundler: failed to load command: rackup (/app/vendor/bundle/ruby/2.3.0/bin/rackup)
+2017-08-31T02:48:37.637500+00:00 app[web.1]: SignalException: SIGTERM
+2017-08-31T02:48:37.637502+00:00 app[web.1]:   /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:177:in `select'
+2017-08-31T02:48:37.637502+00:00 app[web.1]:   /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:177:in `block in start'
+2017-08-31T02:48:37.637503+00:00 app[web.1]:   /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:33:in `start'
+2017-08-31T02:48:37.637504+00:00 app[web.1]:   /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:164:in `start'
+2017-08-31T02:48:37.637505+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/handler/webrick.rb:34:in `run'
+2017-08-31T02:48:37.637505+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/server.rb:297:in `start'
+2017-08-31T02:48:37.637506+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/server.rb:148:in `start'
+2017-08-31T02:48:37.637507+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/bin/rackup:4:in `<top (required)>'
+2017-08-31T02:48:37.637508+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/bin/rackup:22:in `load'
+2017-08-31T02:48:37.637509+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/bin/rackup:22:in `<top (required)>'
+2017-08-31T02:48:37.804053+00:00 heroku[web.1]: Process exited with status 1
+2017-08-31T02:48:22.000000+00:00 app[api]: Build succeeded
+2017-08-31T02:48:38.883755+00:00 heroku[web.1]: Starting process with command `bundle exec rackup config.ru -p 9530`
+2017-08-31T02:48:41.876037+00:00 app[web.1]: [2017-08-31 02:48:41] INFO  WEBrick 1.3.1
+2017-08-31T02:48:41.876066+00:00 app[web.1]: [2017-08-31 02:48:41] INFO  ruby 2.3.3 (2016-11-21) [x86_64-linux]
+2017-08-31T02:48:41.876340+00:00 app[web.1]: [2017-08-31 02:48:41] INFO  WEBrick::HTTPServer#start: pid=4 port=9530
+2017-08-31T02:48:42.710340+00:00 heroku[web.1]: State changed from starting to up
+2017-08-31T02:48:49.873306+00:00 heroku[router]: at=info method=GET path="/" host=portfolio-jv.herokuapp.com request_id=6d9c3a19-f519-4f8c-b3a0-b1c3b47f3633 fwd="100.6.83.223" dyno=web.1 connect=0ms service=27ms status=200 bytes=9176 protocol=https
+2017-08-31T02:48:49.872457+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:49 +0000] "GET / HTTP/1.1" 200 8897 0.0161
+2017-08-31T02:48:49.963944+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:49 +0000] "GET /vendor/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 200 31000 0.0014
+2017-08-31T02:48:49.968139+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:49 +0000] "GET /css/style.css HTTP/1.1" 200 16115 0.0013
+2017-08-31T02:48:50.163744+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_3.png" host=portfolio-jv.herokuapp.com request_id=c34eb1b0-3a19-4144-b744-af62413e15b7 fwd="100.6.83.223" dyno=web.1 connect=0ms service=14ms status=200 bytes=14057 protocol=https
+2017-08-31T02:48:49.969602+00:00 heroku[router]: at=info method=GET path="/vendor/font-awesome-4.7.0/css/font-awesome.min.css" host=portfolio-jv.herokuapp.com request_id=a8a2f322-dcd6-4d49-aa18-ebd52a457662 fwd="100.6.83.223" dyno=web.1 connect=1ms service=14ms status=200 bytes=31263 protocol=https
+2017-08-31T02:48:49.967766+00:00 heroku[router]: at=info method=GET path="/css/style.css" host=portfolio-jv.herokuapp.com request_id=0e906f6d-cb73-4757-899a-6a3213b5a7f7 fwd="100.6.83.223" dyno=web.1 connect=0ms service=10ms status=200 bytes=16378 protocol=https
+2017-08-31T02:48:50.160968+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_4.png" host=portfolio-jv.herokuapp.com request_id=41c02385-2ba4-4e85-a786-6e2bb7408d73 fwd="100.6.83.223" dyno=web.1 connect=0ms service=10ms status=200 bytes=31471 protocol=https
+2017-08-31T02:48:50.138448+00:00 heroku[router]: at=info method=GET path="/js/navbar.js" host=portfolio-jv.herokuapp.com request_id=44b65e95-b21b-4f20-85ef-b3360df7921a fwd="100.6.83.223" dyno=web.1 connect=0ms service=5ms status=200 bytes=769 protocol=https
+2017-08-31T02:48:50.180478+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_5.png" host=portfolio-jv.herokuapp.com request_id=4bebe6ff-62fe-4f05-971d-b72ff4dad7d5 fwd="100.6.83.223" dyno=web.1 connect=0ms service=4ms status=200 bytes=26153 protocol=https
+2017-08-31T02:48:50.159018+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_2.png" host=portfolio-jv.herokuapp.com request_id=0f369770-f162-4a70-85e3-025f315cca44 fwd="100.6.83.223" dyno=web.1 connect=0ms service=15ms status=200 bytes=6779 protocol=https
+2017-08-31T02:48:50.230929+00:00 heroku[router]: at=info method=GET path="/images/portfolio/phonebook_3.png" host=portfolio-jv.herokuapp.com request_id=88c5841f-ecfd-45af-9d09-4e0c64fadaef fwd="100.6.83.223" dyno=web.1 connect=0ms service=6ms status=200 bytes=12025 protocol=https
+2017-08-31T02:48:50.160255+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_1.png" host=portfolio-jv.herokuapp.com request_id=a0be4c15-3589-4fe9-9ba0-bfdea4da9df1 fwd="100.6.83.223" dyno=web.1 connect=0ms service=16ms status=200 bytes=14024 protocol=https
+2017-08-31T02:48:50.216791+00:00 heroku[router]: at=info method=GET path="/images/portfolio/phonebook_1.png" host=portfolio-jv.herokuapp.com request_id=8faf0924-1a22-4c01-8a11-ffddcde9be2c fwd="100.6.83.223" dyno=web.1 connect=0ms service=5ms status=200 bytes=23723 protocol=https
+2017-08-31T02:48:50.137673+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /js/navbar.js HTTP/1.1" 200 494 0.0007
+2017-08-31T02:48:50.147413+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /js/crossfade.js HTTP/1.1" 200 801 0.0007
+2017-08-31T02:48:50.151320+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/tictactoe_1.png HTTP/1.1" 200 13774 0.0005
+2017-08-31T02:48:50.154847+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/tictactoe_2.png HTTP/1.1" 200 6530 0.0005
+2017-08-31T02:48:50.158601+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/tictactoe_4.png HTTP/1.1" 200 31221 0.0004
+2017-08-31T02:48:50.162843+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/tictactoe_3.png HTTP/1.1" 200 13807 0.0006
+2017-08-31T02:48:50.178700+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/tictactoe_5.png HTTP/1.1" 200 25903 0.0005
+2017-08-31T02:48:50.207661+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/tictactoe_6.png HTTP/1.1" 200 26220 0.0006
+2017-08-31T02:48:50.214656+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/phonebook_1.png HTTP/1.1" 200 23473 0.0005
+2017-08-31T02:48:50.222389+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/phonebook_2.png HTTP/1.1" 200 20277 0.0005
+2017-08-31T02:48:50.229955+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/phonebook_3.png HTTP/1.1" 200 11775 0.0005
+2017-08-31T02:48:50.282676+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/phonebook_4.png HTTP/1.1" 200 16255 0.0005
+2017-08-31T02:48:50.300139+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/calculator_1.png HTTP/1.1" 200 19503 0.0006
+2017-08-31T02:48:50.305746+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/calculator_2.png HTTP/1.1" 200 21303 0.0006
+2017-08-31T02:48:50.308860+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/calculator_3.png HTTP/1.1" 200 27760 0.0005
+2017-08-31T02:48:50.353649+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/sunshine_1.png HTTP/1.1" 200 34954 0.0005
+2017-08-31T02:48:50.359518+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/sunshine_2.png HTTP/1.1" 200 34800 0.0006
+2017-08-31T02:48:50.375508+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/sunshine_3.png HTTP/1.1" 200 35767 0.0005
+2017-08-31T02:48:50.311048+00:00 heroku[router]: at=info method=GET path="/images/portfolio/calculator_2.png" host=portfolio-jv.herokuapp.com request_id=e42a2f71-dea5-4731-8203-6992b8e9f27e fwd="100.6.83.223" dyno=web.1 connect=0ms service=8ms status=200 bytes=21553 protocol=https
+2017-08-31T02:48:50.151216+00:00 heroku[router]: at=info method=GET path="/js/crossfade.js" host=portfolio-jv.herokuapp.com request_id=2f69f332-8472-435a-8a67-19ee48104afd fwd="100.6.83.223" dyno=web.1 connect=0ms service=11ms status=200 bytes=1076 protocol=https
+2017-08-31T02:48:50.224250+00:00 heroku[router]: at=info method=GET path="/images/portfolio/phonebook_2.png" host=portfolio-jv.herokuapp.com request_id=0c5e0cd3-e908-478e-93d3-b8168c7b3bec fwd="100.6.83.223" dyno=web.1 connect=0ms service=5ms status=200 bytes=20527 protocol=https
+2017-08-31T02:48:50.208716+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_6.png" host=portfolio-jv.herokuapp.com request_id=aa1c8539-b4ca-4617-aa15-e9d5c2466eef fwd="100.6.83.223" dyno=web.1 connect=1ms service=7ms status=200 bytes=26470 protocol=https
+2017-08-31T02:48:50.406339+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_4.png" host=portfolio-jv.herokuapp.com request_id=5c0a1974-ade7-40ee-9b98-13112ee95c6a fwd="100.6.83.223" dyno=web.1 connect=1ms service=5ms status=200 bytes=30298 protocol=https
+2017-08-31T02:48:50.309756+00:00 heroku[router]: at=info method=GET path="/images/portfolio/calculator_3.png" host=portfolio-jv.herokuapp.com request_id=d6187900-ab12-47fd-941f-2aa111ac3678 fwd="100.6.83.223" dyno=web.1 connect=0ms service=8ms status=200 bytes=28010 protocol=https
+2017-08-31T02:48:50.301180+00:00 heroku[router]: at=info method=GET path="/images/portfolio/calculator_1.png" host=portfolio-jv.herokuapp.com request_id=1be68bae-c591-4f55-b651-d094bfdc3e91 fwd="100.6.83.223" dyno=web.1 connect=0ms service=7ms status=200 bytes=19753 protocol=https
+2017-08-31T02:48:50.362197+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_2.png" host=portfolio-jv.herokuapp.com request_id=8fa4feaa-8ebe-4d1e-8c39-b464cd24a0fd fwd="100.6.83.223" dyno=web.1 connect=1ms service=6ms status=200 bytes=35050 protocol=https
+2017-08-31T02:48:50.377991+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_3.png" host=portfolio-jv.herokuapp.com request_id=317b54bb-dd9d-4ffe-86ad-282ed78d00f3 fwd="100.6.83.223" dyno=web.1 connect=0ms service=6ms status=200 bytes=36017 protocol=https
+2017-08-31T02:48:50.355093+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_1.png" host=portfolio-jv.herokuapp.com request_id=3a011301-8caf-451b-b207-e24311247e77 fwd="100.6.83.223" dyno=web.1 connect=0ms service=4ms status=200 bytes=35204 protocol=https
+2017-08-31T02:48:50.283571+00:00 heroku[router]: at=info method=GET path="/images/portfolio/phonebook_4.png" host=portfolio-jv.herokuapp.com request_id=60d80001-26a0-43df-8728-7c7971dcd1d6 fwd="100.6.83.223" dyno=web.1 connect=0ms service=5ms status=200 bytes=16505 protocol=https
+2017-08-31T02:48:50.492707+00:00 heroku[router]: at=info method=GET path="/images/portfolio/anpanman_3.png" host=portfolio-jv.herokuapp.com request_id=44b76267-1bac-4466-a848-20afe5172731 fwd="100.6.83.223" dyno=web.1 connect=0ms service=18ms status=200 bytes=35566 protocol=https
+2017-08-31T02:48:50.404649+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/sunshine_4.png HTTP/1.1" 200 30048 0.0006
+2017-08-31T02:48:50.474521+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/sunshine_6.png HTTP/1.1" 200 17195 0.0007
+2017-08-31T02:48:50.485870+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/sunshine_5.png HTTP/1.1" 200 25758 0.0011
+2017-08-31T02:48:50.492188+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/anpanman_3.png HTTP/1.1" 200 35316 0.0012
+2017-08-31T02:48:50.495880+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/anpanman_2.png HTTP/1.1" 200 36763 0.0005
+2017-08-31T02:48:50.501035+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:50 +0000] "GET /images/portfolio/anpanman_1.png HTTP/1.1" 200 127425 0.0006
+2017-08-31T02:48:50.487811+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_5.png" host=portfolio-jv.herokuapp.com request_id=2bbac0c2-3e31-45f2-9851-aed899d9efd0 fwd="100.6.83.223" dyno=web.1 connect=3ms service=20ms status=200 bytes=26008 protocol=https
+2017-08-31T02:48:50.487411+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_6.png" host=portfolio-jv.herokuapp.com request_id=2a454f26-668d-4f04-9984-bebe690505e4 fwd="100.6.83.223" dyno=web.1 connect=2ms service=20ms status=200 bytes=17445 protocol=https
+2017-08-31T02:48:50.506342+00:00 heroku[router]: at=info method=GET path="/images/portfolio/anpanman_1.png" host=portfolio-jv.herokuapp.com request_id=a79cafd4-9dff-4d47-a7db-e0714ff6ebe7 fwd="100.6.83.223" dyno=web.1 connect=0ms service=36ms status=200 bytes=127676 protocol=https
+2017-08-31T02:48:50.497887+00:00 heroku[router]: at=info method=GET path="/images/portfolio/anpanman_2.png" host=portfolio-jv.herokuapp.com request_id=e52d7572-8772-4539-8261-640d4ba271ad fwd="100.6.83.223" dyno=web.1 connect=0ms service=23ms status=200 bytes=37013 protocol=https
+2017-08-31T02:48:53.923248+00:00 heroku[router]: at=info method=GET path="/prototypes" host=portfolio-jv.herokuapp.com request_id=b742c035-75bc-4e85-ba27-58c6db9c649f fwd="100.6.83.223" dyno=web.1 connect=0ms service=708ms status=200 bytes=40345 protocol=https
+2017-08-31T02:48:53.920200+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:53 +0000] "GET /prototypes HTTP/1.1" 200 40065 0.7022
+2017-08-31T02:48:54.064854+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:54 +0000] "GET /js/prototypes.js HTTP/1.1" 200 7398 0.0005
+2017-08-31T02:48:54.067874+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:54 +0000] "GET /css/style.css HTTP/1.1" 304 - 0.0005
+2017-08-31T02:48:54.073330+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:54 +0000] "GET /vendor/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 - 0.0006
+2017-08-31T02:48:54.098206+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:54 +0000] "GET /js/imageUploader.js HTTP/1.1" 200 14166 0.0005
+2017-08-31T02:48:54.156713+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:54 +0000] "GET /js/jsonUpdater.js HTTP/1.1" 200 5170 0.0005
+2017-08-31T02:48:54.159787+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:54 +0000] "GET /js/crossfade.js HTTP/1.1" 304 - 0.0004
+2017-08-31T02:48:54.072907+00:00 heroku[router]: at=info method=GET path="/js/prototypes.js" host=portfolio-jv.herokuapp.com request_id=d0fa9907-d396-4177-8efb-530bbffbcbdb fwd="100.6.83.223" dyno=web.1 connect=0ms service=13ms status=200 bytes=7674 protocol=https
+2017-08-31T02:48:54.099881+00:00 heroku[router]: at=info method=GET path="/js/imageUploader.js" host=portfolio-jv.herokuapp.com request_id=42a7c18b-fffb-4f15-ac8a-886152a93a50 fwd="100.6.83.223" dyno=web.1 connect=0ms service=4ms status=200 bytes=14443 protocol=https
+2017-08-31T02:48:54.073497+00:00 heroku[router]: at=info method=GET path="/vendor/font-awesome-4.7.0/css/font-awesome.min.css" host=portfolio-jv.herokuapp.com request_id=1d545f07-7994-44ec-88af-aff20ea4da39 fwd="100.6.83.223" dyno=web.1 connect=0ms service=14ms status=304 bytes=166 protocol=https
+2017-08-31T02:48:54.067282+00:00 heroku[router]: at=info method=GET path="/css/style.css" host=portfolio-jv.herokuapp.com request_id=ef5ca45d-040d-4861-ad71-fa3d5db63bff fwd="100.6.83.223" dyno=web.1 connect=0ms service=9ms status=304 bytes=166 protocol=https
+2017-08-31T02:48:54.213790+00:00 heroku[router]: at=info method=GET path="/js/navbar.js" host=portfolio-jv.herokuapp.com request_id=7246e17d-06bf-4220-b03c-007c88b6342d fwd="100.6.83.223" dyno=web.1 connect=3ms service=6ms status=304 bytes=166 protocol=https
+2017-08-31T02:48:54.157349+00:00 heroku[router]: at=info method=GET path="/js/jsonUpdater.js" host=portfolio-jv.herokuapp.com request_id=404736ca-90cb-48c0-a09a-688ac2de43bb fwd="100.6.83.223" dyno=web.1 connect=0ms service=4ms status=200 bytes=5446 protocol=https
+2017-08-31T02:48:54.158957+00:00 heroku[router]: at=info method=GET path="/js/crossfade.js" host=portfolio-jv.herokuapp.com request_id=ce701dff-5fe1-44d8-aca2-1b351d7d943f fwd="100.6.83.223" dyno=web.1 connect=0ms service=5ms status=304 bytes=166 protocol=https
+2017-08-31T02:48:54.209758+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:48:54 +0000] "GET /js/navbar.js HTTP/1.1" 304 - 0.0005
+
+************************************************************************************
+Build with $stdout.sync = true in app.rb
+************************************************************************************
+
+2017-08-31T02:50:12.000000+00:00 app[api]: Build started by user jverbosk@gmail.com
+2017-08-31T02:50:27.131812+00:00 heroku[web.1]: Restarting
+2017-08-31T02:50:27.132392+00:00 heroku[web.1]: State changed from up to starting
+2017-08-31T02:50:26.880783+00:00 app[api]: Release v80 created by user jverbosk@gmail.com
+2017-08-31T02:50:26.880783+00:00 app[api]: Deploy 01dda891 by user jverbosk@gmail.com
+2017-08-31T02:50:28.158601+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2017-08-31T02:50:28.178777+00:00 app[web.1]: [2017-08-31 02:50:28] FATAL SignalException: SIGTERM
+2017-08-31T02:50:28.178797+00:00 app[web.1]:  /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:177:in `select'
+2017-08-31T02:50:28.178798+00:00 app[web.1]:  /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:177:in `block in start'
+2017-08-31T02:50:28.178798+00:00 app[web.1]:  /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:33:in `start'
+2017-08-31T02:50:28.178799+00:00 app[web.1]:  /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:164:in `start'
+2017-08-31T02:50:28.178800+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/handler/webrick.rb:34:in `run'
+2017-08-31T02:50:28.178800+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/server.rb:297:in `start'
+2017-08-31T02:50:28.178801+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/server.rb:148:in `start'
+2017-08-31T02:50:28.178801+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/bin/rackup:4:in `<top (required)>'
+2017-08-31T02:50:28.178802+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/bin/rackup:22:in `load'
+2017-08-31T02:50:28.178803+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/bin/rackup:22:in `<top (required)>'
+2017-08-31T02:50:28.178803+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli/exec.rb:74:in `load'
+2017-08-31T02:50:28.178804+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli/exec.rb:74:in `kernel_load'
+2017-08-31T02:50:28.178805+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli/exec.rb:27:in `run'
+2017-08-31T02:50:28.178805+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli.rb:360:in `exec'
+2017-08-31T02:50:28.178806+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+2017-08-31T02:50:28.178807+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/vendor/thor/lib/thor/invocation.rb:126:in `invoke_command'
+2017-08-31T02:50:28.178808+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/vendor/thor/lib/thor.rb:369:in `dispatch'
+2017-08-31T02:50:28.178808+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli.rb:20:in `dispatch'
+2017-08-31T02:50:28.178809+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/vendor/thor/lib/thor/base.rb:444:in `start'
+2017-08-31T02:50:28.178810+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/cli.rb:10:in `start'
+2017-08-31T02:50:28.178810+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/exe/bundle:30:in `block in <top (required)>'
+2017-08-31T02:50:28.178811+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/lib/bundler/friendly_errors.rb:121:in `with_friendly_errors'
+2017-08-31T02:50:28.178811+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/gems/bundler-1.15.2/exe/bundle:22:in `<top (required)>'
+2017-08-31T02:50:28.178812+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/bin/bundle:22:in `load'
+2017-08-31T02:50:28.178813+00:00 app[web.1]:  /app/vendor/bundle/ruby/2.3.0/bin/bundle:22:in `<main>'
+2017-08-31T02:50:28.178813+00:00 app[web.1]: [2017-08-31 02:50:28] INFO  going to shutdown ...
+2017-08-31T02:50:28.178814+00:00 app[web.1]: [2017-08-31 02:50:28] INFO  WEBrick::HTTPServer#start done.
+2017-08-31T02:50:28.178815+00:00 app[web.1]: This is output from a route...
+2017-08-31T02:50:28.178815+00:00 app[web.1]: This is output from a method...
+2017-08-31T02:50:28.178816+00:00 app[web.1]: This is output from a view...
+2017-08-31T02:50:28.178817+00:00 app[web.1]: bundler: failed to load command: rackup (/app/vendor/bundle/ruby/2.3.0/bin/rackup)
+2017-08-31T02:50:28.178817+00:00 app[web.1]: SignalException: SIGTERM
+2017-08-31T02:50:28.178818+00:00 app[web.1]:   /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:177:in `select'
+2017-08-31T02:50:28.178818+00:00 app[web.1]:   /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:177:in `block in start'
+2017-08-31T02:50:28.178819+00:00 app[web.1]:   /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:33:in `start'
+2017-08-31T02:50:28.178820+00:00 app[web.1]:   /app/vendor/ruby-2.3.3/lib/ruby/2.3.0/webrick/server.rb:164:in `start'
+2017-08-31T02:50:28.178820+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/handler/webrick.rb:34:in `run'
+2017-08-31T02:50:28.178821+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/server.rb:297:in `start'
+2017-08-31T02:50:28.178821+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/lib/rack/server.rb:148:in `start'
+2017-08-31T02:50:28.178822+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/gems/rack-2.0.3/bin/rackup:4:in `<top (required)>'
+2017-08-31T02:50:28.178823+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/bin/rackup:22:in `load'
+2017-08-31T02:50:28.178823+00:00 app[web.1]:   /app/vendor/bundle/ruby/2.3.0/bin/rackup:22:in `<top (required)>'
+2017-08-31T02:50:28.382753+00:00 heroku[web.1]: Process exited with status 1
+2017-08-31T02:50:12.000000+00:00 app[api]: Build succeeded
+2017-08-31T02:50:28.898689+00:00 heroku[web.1]: Starting process with command `bundle exec rackup config.ru -p 40518`
+2017-08-31T02:50:31.269108+00:00 app[web.1]: [2017-08-31 02:50:31] INFO  WEBrick 1.3.1
+2017-08-31T02:50:31.269136+00:00 app[web.1]: [2017-08-31 02:50:31] INFO  ruby 2.3.3 (2016-11-21) [x86_64-linux]
+2017-08-31T02:50:31.269515+00:00 app[web.1]: [2017-08-31 02:50:31] INFO  WEBrick::HTTPServer#start: pid=4 port=40518
+2017-08-31T02:50:32.510819+00:00 heroku[web.1]: State changed from starting to up
+2017-08-31T02:50:42.116729+00:00 heroku[router]: at=info method=GET path="/" host=portfolio-jv.herokuapp.com request_id=e9c19a9f-bd22-421f-8c99-1b3f11a60de7 fwd="100.6.83.223" dyno=web.1 connect=11ms service=23ms status=200 bytes=9176 protocol=https
+2017-08-31T02:50:42.205472+00:00 heroku[router]: at=info method=GET path="/vendor/font-awesome-4.7.0/css/font-awesome.min.css" host=portfolio-jv.herokuapp.com request_id=b71f3d0e-1576-4fd4-8505-a288d85671a5 fwd="100.6.83.223" dyno=web.1 connect=1ms service=6ms status=200 bytes=31263 protocol=https
+2017-08-31T02:50:42.220872+00:00 heroku[router]: at=info method=GET path="/css/style.css" host=portfolio-jv.herokuapp.com request_id=6a391d7c-a93d-4d6d-a8f8-86313bc64e7f fwd="100.6.83.223" dyno=web.1 connect=1ms service=6ms status=200 bytes=16378 protocol=https
+2017-08-31T02:50:42.113754+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET / HTTP/1.1" 200 8897 0.0132
+2017-08-31T02:50:42.202392+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /vendor/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 200 31000 0.0006
+2017-08-31T02:50:42.219694+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /css/style.css HTTP/1.1" 200 16115 0.0006
+2017-08-31T02:50:42.296039+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /js/navbar.js HTTP/1.1" 200 494 0.0004
+2017-08-31T02:50:42.297001+00:00 heroku[router]: at=info method=GET path="/js/navbar.js" host=portfolio-jv.herokuapp.com request_id=e87b1339-2142-4f3b-aedd-d61ab58e8599 fwd="100.6.83.223" dyno=web.1 connect=1ms service=3ms status=200 bytes=769 protocol=https
+2017-08-31T02:50:42.534506+00:00 heroku[router]: at=info method=GET path="/js/crossfade.js" host=portfolio-jv.herokuapp.com request_id=24671d88-51f3-4664-ba24-b184dcfce053 fwd="100.6.83.223" dyno=web.1 connect=2ms service=6ms status=200 bytes=1076 protocol=https
+2017-08-31T02:50:42.511999+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_3.png" host=portfolio-jv.herokuapp.com request_id=47cf06fa-7691-464b-9fd7-82369ade8853 fwd="100.6.83.223" dyno=web.1 connect=1ms service=5ms status=200 bytes=14057 protocol=https
+2017-08-31T02:50:42.604359+00:00 heroku[router]: at=info method=GET path="/images/portfolio/calculator_1.png" host=portfolio-jv.herokuapp.com request_id=91bffb29-bd9c-4909-b31c-3daa263030d7 fwd="100.6.83.223" dyno=web.1 connect=0ms service=8ms status=200 bytes=19753 protocol=https
+2017-08-31T02:50:42.547489+00:00 heroku[router]: at=info method=GET path="/images/portfolio/phonebook_1.png" host=portfolio-jv.herokuapp.com request_id=696ab757-2497-4cd1-9b91-5ee1eb2a0c76 fwd="100.6.83.223" dyno=web.1 connect=1ms service=6ms status=200 bytes=23723 protocol=https
+2017-08-31T02:50:42.533189+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_6.png" host=portfolio-jv.herokuapp.com request_id=7fb9e2f8-50b9-448f-b8c1-1d174fc5dcb2 fwd="100.6.83.223" dyno=web.1 connect=1ms service=5ms status=200 bytes=26470 protocol=https
+2017-08-31T02:50:42.607672+00:00 heroku[router]: at=info method=GET path="/images/portfolio/calculator_2.png" host=portfolio-jv.herokuapp.com request_id=df9527fa-ff59-4b03-a321-691a3c150582 fwd="100.6.83.223" dyno=web.1 connect=1ms service=6ms status=200 bytes=21553 protocol=https
+2017-08-31T02:50:42.491624+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_5.png" host=portfolio-jv.herokuapp.com request_id=c5e49c7e-8efc-4266-8344-ccc376d51a2f fwd="100.6.83.223" dyno=web.1 connect=1ms service=9ms status=200 bytes=26153 protocol=https
+2017-08-31T02:50:42.480773+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/tictactoe_1.png HTTP/1.1" 200 13774 0.0007
+2017-08-31T02:50:42.483336+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/tictactoe_2.png HTTP/1.1" 200 6530 0.0003
+2017-08-31T02:50:42.485730+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/tictactoe_4.png HTTP/1.1" 200 31221 0.0003
+2017-08-31T02:50:42.487695+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/tictactoe_5.png HTTP/1.1" 200 25903 0.0004
+2017-08-31T02:50:42.503297+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/tictactoe_3.png HTTP/1.1" 200 13807 0.0003
+2017-08-31T02:50:42.525955+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /js/crossfade.js HTTP/1.1" 200 801 0.0003
+2017-08-31T02:50:42.532749+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/tictactoe_6.png HTTP/1.1" 200 26220 0.0004
+2017-08-31T02:50:42.544241+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/phonebook_1.png HTTP/1.1" 200 23473 0.0008
+2017-08-31T02:50:42.569646+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/phonebook_3.png HTTP/1.1" 200 11775 0.0004
+2017-08-31T02:50:42.572875+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/phonebook_2.png HTTP/1.1" 200 20277 0.0003
+2017-08-31T02:50:42.593951+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/phonebook_4.png HTTP/1.1" 200 16255 0.0005
+2017-08-31T02:50:42.598647+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/calculator_1.png HTTP/1.1" 200 19503 0.0005
+2017-08-31T02:50:42.607990+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/calculator_2.png HTTP/1.1" 200 21303 0.0004
+2017-08-31T02:50:42.611712+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/calculator_3.png HTTP/1.1" 200 27760 0.0003
+2017-08-31T02:50:42.632831+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/sunshine_1.png HTTP/1.1" 200 34954 0.0007
+2017-08-31T02:50:42.635261+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/sunshine_2.png HTTP/1.1" 200 34800 0.0003
+2017-08-31T02:50:42.659879+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/sunshine_3.png HTTP/1.1" 200 35767 0.0004
+2017-08-31T02:50:42.709932+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/sunshine_5.png HTTP/1.1" 200 25758 0.0004
+2017-08-31T02:50:42.712346+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/sunshine_4.png HTTP/1.1" 200 30048 0.0003
+2017-08-31T02:50:42.728077+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/sunshine_6.png HTTP/1.1" 200 17195 0.0004
+2017-08-31T02:50:42.730816+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/anpanman_1.png HTTP/1.1" 200 127425 0.0004
+2017-08-31T02:50:42.483804+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_2.png" host=portfolio-jv.herokuapp.com request_id=4df28d2d-3614-406c-851d-3a796b8a2a25 fwd="100.6.83.223" dyno=web.1 connect=1ms service=7ms status=200 bytes=6779 protocol=https
+2017-08-31T02:50:42.487549+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_1.png" host=portfolio-jv.herokuapp.com request_id=bb9cf9c8-a64e-4702-b461-549e9d07a472 fwd="100.6.83.223" dyno=web.1 connect=0ms service=9ms status=200 bytes=14024 protocol=https
+2017-08-31T02:50:42.493408+00:00 heroku[router]: at=info method=GET path="/images/portfolio/tictactoe_4.png" host=portfolio-jv.herokuapp.com request_id=795376fb-14fa-4e44-8215-b9a0d204ea97 fwd="100.6.83.223" dyno=web.1 connect=0ms service=10ms status=200 bytes=31471 protocol=https
+2017-08-31T02:50:42.575474+00:00 heroku[router]: at=info method=GET path="/images/portfolio/phonebook_2.png" host=portfolio-jv.herokuapp.com request_id=402e352c-003c-4b99-b727-f086e6738b92 fwd="100.6.83.223" dyno=web.1 connect=1ms service=6ms status=200 bytes=20527 protocol=https
+2017-08-31T02:50:42.575125+00:00 heroku[router]: at=info method=GET path="/images/portfolio/phonebook_3.png" host=portfolio-jv.herokuapp.com request_id=45f43e2b-aed0-4693-9cca-8cab3eb5e620 fwd="100.6.83.223" dyno=web.1 connect=1ms service=6ms status=200 bytes=12025 protocol=https
+2017-08-31T02:50:42.640541+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_2.png" host=portfolio-jv.herokuapp.com request_id=e1711d63-e219-442e-bf32-3b33f4237d56 fwd="100.6.83.223" dyno=web.1 connect=1ms service=7ms status=200 bytes=35050 protocol=https
+2017-08-31T02:50:42.733577+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_6.png" host=portfolio-jv.herokuapp.com request_id=aa80f721-bc5d-47ee-adbc-a71aace50f4a fwd="100.6.83.223" dyno=web.1 connect=0ms service=5ms status=200 bytes=17445 protocol=https
+2017-08-31T02:50:42.635076+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_1.png" host=portfolio-jv.herokuapp.com request_id=eaaf7d8d-0562-4ac4-89d7-5401cdc2e8a7 fwd="100.6.83.223" dyno=web.1 connect=1ms service=6ms status=200 bytes=35204 protocol=https
+2017-08-31T02:50:42.595665+00:00 heroku[router]: at=info method=GET path="/images/portfolio/phonebook_4.png" host=portfolio-jv.herokuapp.com request_id=eeeda9c3-8d85-449f-b5f3-d0372da7ebd9 fwd="100.6.83.223" dyno=web.1 connect=1ms service=5ms status=200 bytes=16505 protocol=https
+2017-08-31T02:50:42.614578+00:00 heroku[router]: at=info method=GET path="/images/portfolio/calculator_3.png" host=portfolio-jv.herokuapp.com request_id=2855cbab-c043-47bf-b3ca-74abe39001d5 fwd="100.6.83.223" dyno=web.1 connect=1ms service=5ms status=200 bytes=28010 protocol=https
+2017-08-31T02:50:42.715743+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_4.png" host=portfolio-jv.herokuapp.com request_id=f5987bbc-8588-401d-9f41-b93115a1f3e2 fwd="100.6.83.223" dyno=web.1 connect=1ms service=9ms status=200 bytes=30298 protocol=https
+2017-08-31T02:50:42.738284+00:00 heroku[router]: at=info method=GET path="/images/portfolio/anpanman_1.png" host=portfolio-jv.herokuapp.com request_id=b7df3f0b-e594-4f6c-bfba-aabb5a618c79 fwd="100.6.83.223" dyno=web.1 connect=1ms service=9ms status=200 bytes=127676 protocol=https
+2017-08-31T02:50:42.663148+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_3.png" host=portfolio-jv.herokuapp.com request_id=bc6796f8-12e0-4962-8b99-b1e0cd2a8492 fwd="100.6.83.223" dyno=web.1 connect=1ms service=5ms status=200 bytes=36017 protocol=https
+2017-08-31T02:50:42.746596+00:00 heroku[router]: at=info method=GET path="/images/portfolio/anpanman_2.png" host=portfolio-jv.herokuapp.com request_id=ffe4325e-b5e5-4803-81a8-c7e563ef5376 fwd="100.6.83.223" dyno=web.1 connect=1ms service=9ms status=200 bytes=37013 protocol=https
+2017-08-31T02:50:42.712306+00:00 heroku[router]: at=info method=GET path="/images/portfolio/sunshine_5.png" host=portfolio-jv.herokuapp.com request_id=17010e34-9e65-416f-9153-ca2a8a69d39a fwd="100.6.83.223" dyno=web.1 connect=1ms service=8ms status=200 bytes=26008 protocol=https
+2017-08-31T02:50:42.739821+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/anpanman_2.png HTTP/1.1" 200 36763 0.0006
+2017-08-31T02:50:42.741947+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:42 +0000] "GET /images/portfolio/anpanman_3.png HTTP/1.1" 200 35316 0.0004
+2017-08-31T02:50:42.745485+00:00 heroku[router]: at=info method=GET path="/images/portfolio/anpanman_3.png" host=portfolio-jv.herokuapp.com request_id=0a8bf596-d8af-4c03-8915-7066780658a1 fwd="100.6.83.223" dyno=web.1 connect=1ms service=7ms status=200 bytes=35566 protocol=https
+2017-08-31T02:50:46.069933+00:00 app[web.1]: This is output from a route...
+2017-08-31T02:50:46.070284+00:00 app[web.1]: This is output from a method...
+2017-08-31T02:50:46.777636+00:00 heroku[router]: at=info method=GET path="/prototypes" host=portfolio-jv.herokuapp.com request_id=fd03b707-89f2-42b8-92c6-e48450115b86 fwd="100.6.83.223" dyno=web.1 connect=1ms service=710ms status=200 bytes=40345 protocol=https
+2017-08-31T02:50:46.772041+00:00 app[web.1]: This is output from a view...
+2017-08-31T02:50:46.773369+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:46 +0000] "GET /prototypes HTTP/1.1" 200 40065 0.7039
+2017-08-31T02:50:47.069396+00:00 heroku[router]: at=info method=GET path="/vendor/font-awesome-4.7.0/css/font-awesome.min.css" host=portfolio-jv.herokuapp.com request_id=c7770305-f3df-485a-b39c-ff3965778612 fwd="100.6.83.223" dyno=web.1 connect=1ms service=3ms status=304 bytes=166 protocol=https
+2017-08-31T02:50:47.068775+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:47 +0000] "GET /vendor/font-awesome-4.7.0/css/font-awesome.min.css HTTP/1.1" 304 - 0.0004
+2017-08-31T02:50:47.174435+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:47 +0000] "GET /css/style.css HTTP/1.1" 304 - 0.0003
+2017-08-31T02:50:47.199106+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:47 +0000] "GET /js/prototypes.js HTTP/1.1" 200 7398 0.0004
+2017-08-31T02:50:47.199897+00:00 heroku[router]: at=info method=GET path="/js/prototypes.js" host=portfolio-jv.herokuapp.com request_id=5056acfb-bab5-4878-9dca-a1dbf44d2a0e fwd="100.6.83.223" dyno=web.1 connect=1ms service=3ms status=200 bytes=7674 protocol=https
+2017-08-31T02:50:47.175026+00:00 heroku[router]: at=info method=GET path="/css/style.css" host=portfolio-jv.herokuapp.com request_id=2e05f801-8931-42af-ac5f-d89805f5705f fwd="100.6.83.223" dyno=web.1 connect=1ms service=3ms status=304 bytes=166 protocol=https
+2017-08-31T02:50:47.346234+00:00 heroku[router]: at=info method=GET path="/js/navbar.js" host=portfolio-jv.herokuapp.com request_id=f0498480-5775-4096-a391-bd0bb45def2c fwd="100.6.83.223" dyno=web.1 connect=0ms service=3ms status=304 bytes=166 protocol=https
+2017-08-31T02:50:47.347746+00:00 heroku[router]: at=info method=GET path="/js/imageUploader.js" host=portfolio-jv.herokuapp.com request_id=1685eef8-cfb9-46c2-ab6b-af93dcceb55c fwd="100.6.83.223" dyno=web.1 connect=0ms service=4ms status=200 bytes=14443 protocol=https
+2017-08-31T02:50:47.329574+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:47 +0000] "GET /js/jsonUpdater.js HTTP/1.1" 200 5170 0.0004
+2017-08-31T02:50:47.344085+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:47 +0000] "GET /js/navbar.js HTTP/1.1" 304 - 0.0003
+2017-08-31T02:50:47.346214+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:47 +0000] "GET /js/imageUploader.js HTTP/1.1" 200 14166 0.0003
+2017-08-31T02:50:47.408028+00:00 app[web.1]: 100.6.83.223 - - [31/Aug/2017:02:50:47 +0000] "GET /js/crossfade.js HTTP/1.1" 304 - 0.0005
+2017-08-31T02:50:47.408526+00:00 heroku[router]: at=info method=GET path="/js/crossfade.js" host=portfolio-jv.herokuapp.com request_id=58838a77-85a6-4f27-a942-545d07b18611 fwd="100.6.83.223" dyno=web.1 connect=1ms service=4ms status=304 bytes=166 protocol=https
+2017-08-31T02:50:47.330877+00:00 heroku[router]: at=info method=GET path="/js/jsonUpdater.js" host=portfolio-jv.herokuapp.com request_id=b141f79b-f2fa-4510-a5b8-fa318e78bb60 fwd="100.6.83.223" dyno=web.1 connect=1ms service=4ms status=200 bytes=5446 protocol=https
+</code>
+</pre>
+</body>
+</html>

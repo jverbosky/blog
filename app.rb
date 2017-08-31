@@ -86,6 +86,14 @@ get '/json' do
 end
 
 
+# Route to load example logging output for 08/30 Heroku Logging blog
+get '/herokulog' do
+
+  erb :herokulog
+
+end
+
+
 # Route to receive new blog text JSON via AJAX
 post '/ajax_blog' do
 
@@ -112,8 +120,6 @@ get '/prototypes' do
   # load JSON for specified animal type
   file = JsonRead.new
   data = file.json
-
-  puts "This is output from a route..."
 
   # animals form items
   feedback = ""
