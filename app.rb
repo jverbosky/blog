@@ -32,6 +32,14 @@ if Rack::Utils.respond_to?("key_space_limit=")
 end
 
 
+# For Heroku logging to work (heroku logs --app portfolio-jv)
+configure do
+
+  $stdout.sync = true
+  
+end
+
+
 # Method to open a connection to the PostgreSQL database
 def connection()
 
