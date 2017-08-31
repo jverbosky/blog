@@ -33,11 +33,11 @@ end
 
 
 # For Heroku logging to work (heroku logs --app portfolio-jv)
-configure do
+# configure do
 
-  $stdout.sync = true
+#   $stdout.sync = true
   
-end
+# end
 
 
 # Method to open a connection to the PostgreSQL database
