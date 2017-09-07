@@ -259,6 +259,8 @@
 
   </div>
 
+  <!-- NEXT PROTOTYPE -->
+
   <button class="accordion" id="acc_img"><h1>Image Uploader</h1></button>
   <div class="panel" id="imgUploaderPanel">
 
@@ -347,6 +349,58 @@
 
   </div>
 
+  <!-- NEXT PROTOTYPE -->
+
+  <button class="accordion" id="acc_api"><h1>API Mashup</h1></button>
+  <div class="panel">
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="showReadme('apiReadme')">Readme</button>
+    </div>
+
+    <div class="center-block readme" id="apiReadme">
+      <p class="underline">This app will allow you to:</p>
+      <ul>
+        <li><p>- enter a word or phrase</p></li>
+        <li><p>- make a Wikipedia API fetch request</p></li>
+        <li><p>- make a Flickr API AJAX request</p></li>
+        <li><p>- view a related image and text</p></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="centered">
+      <!-- <form action="/selanitype" method="post"> -->
+
+        <div>
+          <label for="searchTerm">Please enter a search term:</label>
+          <input id="searchTerm" type="text">
+        </div>
+
+        <div class="centered padded">
+          <button type="submit" class="nonEditorButton" id="submitSearchTerm">Submit</button>
+        </div>
+
+      <!-- </form> -->
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="centered">
+      <h3 id="apiTitle" class="padded"></h3>
+      <div id="apiImage">
+        <img class="padded" src="">
+      </div>
+      <p id="apiDescription" class="padded"></p>
+      <a id="apiArticleUrl" class="nonEditorButton linkHide" target="_blank">Wikipedia Article</a>
+    </div>
+
+    <div id="apiDivider" class="divider divHide"></div>
+
+  </div>
+
+  <!-- NEXT PROTOTYPE -->
 
 </div>
 
@@ -356,3 +410,4 @@
 <script src="js/prototypes.js"></script>
 <script src="js/jsonUpdater.js"></script>
 <script src="js/imageUploader.js"></script>
+<script src="js/api.js"></script>

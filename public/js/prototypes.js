@@ -64,7 +64,7 @@ function doScrolling(element, duration) {
 }
 
 
-// Configures height for correspondingpanel div when accordion button is clicked
+// Configures height for corresponding panel div when accordion button is clicked
 function setupAccordions() {
 
     var acc = document.getElementsByClassName("accordion");

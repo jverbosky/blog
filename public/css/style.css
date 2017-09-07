@@ -14,12 +14,15 @@ h4, h5 {
 
 p {
   font: 16px Verdana, Geneva, sans-serif;
-
 }
 
 label {
   font-family: Verdana, Geneva, sans-serif;
   font-weight: bold
+}
+
+input {
+  font: 16px Verdana, Geneva, sans-serif;
 }
 
 .center-block {
@@ -816,6 +819,7 @@ select option {
     height: 30px;
 }
 
+/* need to merge into other display: none classes */
 .hide_ajax_progress {
     display: none;
 }
@@ -858,6 +862,16 @@ select option {
 .match_progress_bar {
     margin: 0 auto;
     width: 50%;
+}
+
+/* prototype page - api mashup  */
+
+.linkHide {
+    display: none;
+}
+
+.divHide {
+    display: none;
 }
 
 /* media queries */
