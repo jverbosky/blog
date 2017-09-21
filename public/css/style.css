@@ -874,6 +874,31 @@ select option {
     display: none;
 }
 
+/* prototype page - matrix rain code  */
+
+.matrix {
+  position: relative;
+  margin: 0 5%;
+  width: 90%;
+  height: 80vh;
+  background-color: black;
+  color: white;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.m_container {
+  position: absolute;
+  top: 0%;
+}
+
+.m_trailing {
+  color: lime;
+}
+
 /* media queries */
 
 @media screen and (max-width : 319px) {
