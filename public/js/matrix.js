@@ -127,7 +127,7 @@ function mDriver(i, containerId, textId, randChar) {
 function mInit() {
 
   // generate random values
-  var randText = genRandNum(0, 6);
+  var randText = genRandNum(0, 14);
   var randChar = genRandString(3);
   var randContainerId = "cont_" + genRandString(6);
   var randTextId = "text_" + genRandString(8);
