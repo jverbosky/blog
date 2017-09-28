@@ -876,27 +876,44 @@ select option {
 
 /* prototype page - matrix rain code  */
 
-.matrix {
-  position: relative;
-  margin: 0 5%;
-  width: 90%;
+.m_canvas {
+  margin: 0 auto;
+  width: 100%;
   height: 80vh;
   background-color: black;
   color: white;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
 }
 
 .m_container {
-  position: absolute;
-  top: 0%;
+  float: left;
+  writing-mode: tb-rl;  /* top-down writing */
+  text-orientation: upright;  /* non-Japanese characters upright */
+  min-height: 1px;  /* keeps columns spaced when empty */
+  font-family: courier;
+  font-size: 12px;
+  width: 14px;  /* 2px between rows */
 }
 
-.m_trailing {
-  color: lime;
+.flip_vertical {
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+.m_span {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 /* media queries */

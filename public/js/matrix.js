@@ -1,20 +1,13 @@
-var textArray = [ 
-  "This is your last chance.",
-  "だがもし赤い薬を飲めば、君の物語はまだ終わらない。",
-  "After this, there is no turning back.",
-  "この世界が抱える秘密の深淵にお連れしよう。",
-  "There is no spoon.",
-  "入り口までは案内するが､扉は君自身で開けろ。",
-  "Follow the white rabbit.",
-  "道を知っていることと、実際にその道を歩くことは、別物だ。",
-  "What is real?",
-  "人生は自分で決めるものよ。",
-  "You have to see it for yourself.",
-  "重要なのは、何事も理由があって起こるということだ。",
-  "You've already made the choice.",
-  "'マトリックス'って何だ？",
-  "Don't think you are - know you are."
-];
+// full-width characters
+var kanji = ["弁","才","千"];
+var katakana = ["ネ","ハ","メ","ム","フ","チ","コ","ロ","リ","ノ","ソ","ン","レ","二","カ","オ","ジ","ゴ","ミ","テ","キ","ケ"];
+var hiragana = ["く","や","の"];
+var numbers = ["０","１","２","３","４","５","６","７","８","９"];
+var letters = ["Ｚ"];
+var symbols = ["＝", "＋"];
+var charSet = kanji.concat(katakana, hiragana, numbers, letters, symbols);
+var columns = 0;
+var populatedDiv = [];
 
 
 // Get a random number from min to max
@@ -25,40 +18,97 @@ function genRandNum(min, max) {
 
 
 // Get a random alpha-numberic string for the specified length
-function genRandString(length) {
+function genRandId(length) {
 
   return Math.random().toString(36).substr(2, length)
 }
 
 
-// Create randomly named divs to hold the text div and parent container div
-function genRandDiv(containerId, textId) {
+// Create a random string from charSet (string length = 24 | font-size: 24px)
+function genRandString() {
 
-  var divData = '<div id="' + containerId + '" class="m_container"><div id="' + textId + '"></div></div>';
+  // don't let kanji be first character (column jumps to right)
+  var randString = charSet[genRandNum(3, charSet.length - 1)];
 
-  return divData;
+  for (var i=0; i<60; i++) {
+    randString += charSet[genRandNum(0, charSet.length - 1)];
+  }
+
+  return randString;
+}
+
+
+// Randomly apply changes to characters
+function transformChar(targetId, charId, speed) {
+
+  var frequency = genRandNum(0, 100)
+  var randomChar = charSet[genRandNum(0, charSet.length - 1)];
+
+  if (frequency <= 15) {
+    $("#char_" + charId + "_" + targetId).text(randomChar);
+    if (frequency === 0) {
+      $("#char_" + charId + "_" + targetId).css("opacity", "1");
+      $("#char_" + charId + "_" + targetId).fadeTo(2000, 0);
+    }
+  } else if (frequency >= 16 && frequency <= 20) {
+    $("#char_" + charId + "_" + targetId).css("opacity", "0");
+  } else if (frequency >= 21 && frequency <= 25) {
+    $("#char_" + charId + "_" + targetId).css("font-weight", "bold");
+  } else if (frequency >= 26 && frequency <= 32) {
+    $("#char_" + charId + "_" + targetId).css("transform", "rotate(90deg)");
+  } else if (frequency === 42) {
+    $("#char_" + charId + "_" + targetId).text(randomChar);
+    $("#char_" + charId + "_" + targetId).css("opacity", "1");
+    $("#char_" + charId + "_" + targetId).fadeTo(3000, 0);
+  }
 }
 
 
 // Incrementally loops through text character by character
-function outputText(text, i, textId, randChar, callback) {
+function outputText(div, string, i, textId, charId, slength, speed, callback) {
 
-  // var spans = $("#text").children();
   var spans = $("#" + textId).children();
 
-  if (i < text.length) {
+  if (i < string.length) {
 
     // create a unique id for character and wrap in span for targeting later
-    var charSpan = '<span id="char_' + randChar + "_" + i + '">' + text[i] + '</span>'
+    var charSpan = '<span id="char_' + charId + "_" + i + '" class="m_span bold">' + string[i] + '</span>'
 
-    // set characters before the leading 3 to lime
-    if (spans.length > 2) {
-      $("#char_" + randChar + "_" + (spans.length - 3)).addClass("m_trailing");
+    // gradually re-color non-leading characters from white to Matrix green
+    if (spans.length > 0) {
+      $("#char_" + charId + "_" + (spans.length - 1)).css("color", "#EDFBE4");
+      $("#char_" + charId + "_" + (spans.length - 1)).removeClass("bold");
     }
 
-    // fade out beginning characters after 10 characters are on screen
-    if (spans.length > 9) {
-      $("#char_" + randChar + "_" + (spans.length - 11)).fadeTo(1500, 0);
+    if (spans.length > 1) {
+      $("#char_" + charId + "_" + (spans.length - 2)).css("color", "#D6F5CB");
+    }
+
+    if (spans.length > 2) {
+      $("#char_" + charId + "_" + (spans.length - 3)).css("color", "#A8E999");
+    }
+
+    if (spans.length > 3) {
+      $("#char_" + charId + "_" + (spans.length - 4)).css("color", "#7ADD67");
+    }
+
+    if (spans.length > 4) {
+      $("#char_" + charId + "_" + (spans.length - 5)).css("color", "#4CD135");
+    }    
+
+    if (spans.length > 5) {
+      $("#char_" + charId + "_" + (spans.length - 6)).css("color", "#1EC503");
+    } 
+
+    // randomly replace characters and flip character orientation
+    if (spans.length > 10) {
+      var targetId = genRandNum(0, spans.length);
+      transformChar(targetId, charId, speed);
+    }
+
+    // fade out beginning characters after random number of characters are on screen
+    if (spans.length > slength) {
+      $("#char_" + charId + "_" + (spans.length - slength - 1)).fadeTo(speed, 0);
     }
 
     // write resulting character (span) to target element
@@ -66,23 +116,24 @@ function outputText(text, i, textId, randChar, callback) {
 
     // recursive call for next character after delay (default = 100)
     setTimeout(function() {
-      outputText(text, i + 1, textId, randChar, callback)
-    }, 100);
+      outputText(div, string, i + 1, textId, charId, slength, speed, callback)
+    }, speed);
 
   } else {
 
     // the remaining characters that need faded
-    var remaining = spans.length - 11;
+    var remaining = spans.length - slength - 1;
 
-    // fade the target character then call 
+    // fade the target character then call evaluateRemaining();
     function fadeEnd(remaining) {
-      $("#char_" + randChar + "_" + remaining).fadeTo(1500, 0);
+      if (speed > 60) { speed -= 50; }  // minimize pop-outs for slow speeds
+      $("#char_" + charId + "_" + remaining).fadeTo(speed, 0);
       evaluateRemaining();
     }
 
-    // call fadeEnd() after the specified delay (default = 100)
+    // call fadeEnd() after the specified delay
     function initSetTimeout(callback) {
-      setTimeout(callback, 100)
+      setTimeout(callback, speed);
     }
 
     // conditionally call initSetTime() with an incremented remaining value
@@ -92,62 +143,123 @@ function outputText(text, i, textId, randChar, callback) {
       }
     }
 
-    // progressively (and recursively) fade out the rest of the characters
+    // progressively fade out the rest of the characters
     evaluateRemaining();
 
-    // callback to mDriver() for next item in textArray
-    setTimeout(callback, 3000);
+    // callback to mDriver() for next string
+    setTimeout(callback, 5000);
   }
 }
 
 
 // Drives the outputText function with incremented index value
-function mDriver(i, containerId, textId, randChar) {
+function mDriver(div, string, containerId, textId, charId, slength, speed) {
 
-  // empty the existing text
-  $("#" + textId).empty();
-
-  // generate random numbers
-  var randXLocation = genRandNum(0, 100);
-  var randYLocation = genRandNum(0, 15);
-  var randFontSize = genRandNum(8, 24);
-
-  $("#" + containerId).css("right", randXLocation + "%");
-  $("#" + containerId).css("top", randYLocation + "%");
-  $("#" + textId).css("font-size", randFontSize + "px");
+  // append the random text DIV to a randomly selected available container DIV
+  var randTextDiv = '<div id="' + textId + '" class="flip_vertical"></div>'
+  $("#" + containerId).append(randTextDiv);
 
   // after callback (and whole text has been animated), start next text
-  outputText(textArray[i], 0, textId, randChar, function() {
-    mDriver(genRandNum(0, 6), containerId, textId, randChar);
+  outputText(div, string, 0, textId, charId, slength, speed, function() {
+    $("#" + containerId).empty();  // remove text div from container div
+    populatedDiv.push(div);  // make the div available for selection
+    genRandoms();  // generate new random values for next string
   });
 }
 
 
-//
-function mInit() {
+// Generate random values to help the matrix feel more organic
+function genRandoms() {
 
   // generate random values
-  var randText = genRandNum(0, 14);
-  var randChar = genRandString(3);
-  var randContainerId = "cont_" + genRandString(6);
-  var randTextId = "text_" + genRandString(8);
-  var randDiv = genRandDiv(randContainerId, randTextId);
+  var randDiv = populatedDiv[Math.floor(Math.random() * populatedDiv.length)];
+  var randDivIndex = populatedDiv.indexOf(randDiv);
+  var randContainerId = "cont_" + randDiv;
+  var randTextId = "text_" + genRandId(8);
+  var randString = genRandString();
+  var randStringLength = genRandNum(20, 50);
+  var randCharId = genRandId(3);
+  var randSpeed = genRandNum(50, 150);
 
-  // append the random DIVs to the main DIV
-  $("#matrix").append(randDiv);
+  // remove randDiv value from populatedDiv to prevent overlapping divs
+  if (randDivIndex > -1) {
+    populatedDiv.splice(randDivIndex, 1);
+  }
 
-  // start the text animation
-  mDriver(randText, randContainerId, randTextId, randChar);
+  mDriver(randDiv, randString, randContainerId, randTextId, randCharId, randStringLength, randSpeed);
 }
 
 
+// Uses self-invoking recursive function to stagger initial population of text divs
+function initMatrix() {
 
-$(document).ready(function() {
+  (function staggerDivPopulation(i) {
+    setTimeout(function () {
+      genRandoms();
+      if (--i) {
+        staggerDivPopulation(i);
+      }
+    }, 250);
+  }) (columns)
+}
 
-  var m = 20;
-  while (m--) {
-    setTimeout(function() {
-      mInit();
-    }, 1000);
+
+// Calculate and create divs to hold the text div and parent container div
+function setupDivs() {
+
+  var canvasWidth = $(".divider").width();
+  var divWidth = 14;  // equal to character pixel size
+  var divCount = Math.floor(canvasWidth / divWidth);
+  columns = Math.floor(divCount / 2);
+  var matrixWidth = divWidth * divCount;
+  var divSet = [];
+
+  // create container divs
+  for (var i=0; i<divCount; i++) {
+    var containerId = "cont_" + i;
+    var containerDiv = '<div id="' + containerId + '" class="m_container"></div>';
+
+    divSet.push(containerDiv);  // use to populate matrix
+    populatedDiv.push(i);  // use to track which container divs are in use
   }
-});
+
+  $("#matrix").css({"width": matrixWidth, "margin": "0 auto"});  // center matrix div
+  $("#matrix").children().remove();
+  $("#matrix").append(divSet);
+}
+
+
+// Adjust height of Matrix Code Rain accordion panel
+function matrixPanelResize() {
+    var acc_matrix = document.getElementById("acc_matrix");
+    // var acc_api.classList.toggle("active");
+    var panel = acc_matrix.nextElementSibling;
+    panel.style.maxHeight = panel.scrollHeight + "px";
+}
+
+
+// Start the matrix code rain and show the canvas div
+function startMatrix() {
+
+  columns = 0;
+  populatedDiv = [];
+  $("#m_canvas").append('<div id="matrix" class="matrix"></div>');
+  $("#m_canvas").removeClass("divHide");
+  matrixPanelResize();
+  doScrolling("#m_scroll", 800);
+
+  setTimeout(function () {
+    setupDivs();
+    initMatrix();
+  }, 800);
+}
+
+
+// Clear the matrix div, hide the canvas div and clean up
+function stopMatrix() {
+
+  $("#m_canvas").children().remove();
+  $("#m_canvas").addClass("divHide");
+  matrixPanelResize();
+  throw new Error("This is not an error. This is just to abort javascript");
+}
