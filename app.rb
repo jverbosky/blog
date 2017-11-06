@@ -3,6 +3,7 @@ require 'base64'
 require 'deep_merge'
 require 'hashable'
 require 'json'
+require 'open-uri'
 require 'pg'
 require 'sinatra'
 require 'singleton'
@@ -213,6 +214,36 @@ post '/deletephotos' do
   remove_photos(connection, selected)
 
   redirect '/prototypes'
+
+end
+
+
+# Route to receive/queue data from JavaScript via AJAX request
+post '/cache_image' do
+
+  image_info = params[:image_info]
+  url_type = params[:url_type]
+
+  # download image to ./public/swap
+  if url_type == "S3"
+    download_s3_file(image_info)
+  else
+    download_image(image_info)
+  end
+
+  "<p hidden>AJAX request successfully received - image cached.</p>"  # update HTML to trigger JS
+
+end
+
+
+# Route to receive/queue data from JavaScript via AJAX request
+post '/purge_image' do
+
+  image_name = params[:image_name]
+
+  cleanup_swap_dir(image_name)  # delete image from ./public/swap
+
+  "<p hidden>AJAX request successfully received - image purged.</p>"  # update HTML to trigger JS
 
 end
 

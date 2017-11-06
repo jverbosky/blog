@@ -395,10 +395,10 @@
         <img class="padded" src="">
       </div>
       <p id="apiDescription" class="padded"></p>
-      <a id="apiArticleUrl" class="nonEditorButton linkHide" target="_blank">Wikipedia Article</a>
+      <a id="apiArticleUrl" class="nonEditorButton link_hide" target="_blank">Wikipedia Article</a>
     </div>
 
-    <div id="apiDivider" class="divider divHide"></div>
+    <div id="apiDivider" class="divider div_hide"></div>
 
   </div>
 
@@ -422,13 +422,99 @@
 
     <div id="m_scroll" class="divider"></div>
 
-    <div id="m_canvas" class="m_canvas divHide">
-      <!-- <div id="matrix" class="matrix"></div> -->
-    </div>
+    <div id="m_canvas" class="m_canvas div_hide"></div>
 
     <div class="centered padded">
       <button class="nonEditorButton" onclick="startMatrix()">Start</button>
       <button class="nonEditorButton" onclick="stopMatrix()">Stop</button>
+    </div>
+
+    <div class="divider"></div>
+
+  </div>
+
+  <!-- NEXT PROTOTYPE -->
+
+  <button class="accordion" id="acc_base64"><h1>Image to Base64 String Converter</h1></button>
+  <div class="panel">
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="showReadme('base64Readme')">Readme</button>
+    </div>
+
+    <div class="center-block readme" id="base64Readme">
+      <p class="underline">The code for this app features:</p>
+      <ul>
+        <li><p>- image data passed from client to server</p></li>
+        <li><p>- image data processed on server</p></li>
+        <li><p>- image data passed from server to client</p></li>
+      </ul>
+    </div>
+
+    <div id="m_scroll" class="divider"></div>
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="b64showS3Images()">AWS S3 Images</button>
+      <button class="nonEditorButton" onclick="b64showUploadImage()">Upload Image</button>
+      <button class="nonEditorButton" onclick="b64showImageUrl()">Image URL</button>
+    </div>
+
+    <div id="ajax_result" class="center_text">
+      <p hidden>Results posted here</p>
+    </div>
+
+    <div id="b64_s3_images" class="div_hide">
+      <table class="img-table center-block">
+        <tr class="img-row">
+          <% if images == [] %>
+            <td><i>No images uploaded...</i></td>
+          <% else %>
+            <% images.each do |image| %>
+              <td class="img-container">
+                <img src="<%= image %>" class="target-img" onclick="cacheS3Image(this.src)">
+              </td>
+            <% end %>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+
+    <div id="b64_upload_image" class="div_hide">
+      <div class="centered padded">
+
+        <div class="padImage">
+          <img src="" class="div_hide" id="b64_photo_preview">
+        </div>
+
+        <div class="padImageButton">
+          <label class="nonEditorButton fileUpload">
+            <input type="file" accept="image/*" class="upload" id="b64_photo" onchange="evaluateB64AndResize('b64_photo')" />Choose Image
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="b64_image_url" class="div_hide">
+
+      <div id="b64_invalid_image_url" class="div_hide">
+        <p class="upload_status text-center">Unable to convert due to an issue with the image URL.
+      </div>
+
+      <div class="centered padded">
+        <input id="b64_img_url_input">
+        <button id="b64_img_url_btn" class="nonEditorButton" onclick="convertImageUrl()">Convert</button>
+      </div>
+
+    </div>
+
+    <div id="b64_container">
+      <textarea id="b64_string" placeholder="Image base64 string..."></textarea>
+      <div id="b64_progress"></div>
+    </div>
+
+    <div id="btn_copy_b64_string" class="centered padded div_hide">
+      <button id="copy_b64_string" class="nonEditorButton" data-clipboard-target="#b64_string" onclick="copyBase64String()">Copy Base64 String</button>
     </div>
 
     <div class="divider"></div>
@@ -447,3 +533,5 @@
 <script src="js/imageUploader.js"></script>
 <script src="js/api.js"></script>
 <script src="js/matrix.js"></script>
+<script src="js/imageConverter.js"></script>
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>

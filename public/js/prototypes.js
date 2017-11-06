@@ -110,6 +110,16 @@ function showReadme(target) {
 }
 
 
+
+// Adjust height of accordion panels after other elements displayed
+function panelResize(target) {
+
+    var button = document.getElementById(target);
+    var panel = button.nextElementSibling;
+    panel.style.maxHeight = panel.scrollHeight + "px";
+}
+
+
 // run after page loaded
 $(document).ready(function() {
 

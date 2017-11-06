@@ -257,7 +257,7 @@ function startMatrix() {
   master.columns = 0;
   master.populatedDiv = [];
   $("#m_canvas").append('<div id="matrix" class="matrix"></div>');
-  $("#m_canvas").removeClass("divHide");
+  $("#m_canvas").removeClass("div_hide");
   matrixPanelResize();
   doScrolling("#m_scroll", 800);
 
@@ -273,31 +273,7 @@ function purgeCanvas() {
     delete master.columns;
     delete master.populatedDiv;
     $("#m_canvas").children().remove();
-    $("#m_canvas").addClass("divHide");
     $("#m_canvas").removeAttr("style");
-}
-
-
-// Progressively resize the m_canvas div
-function shrinkCanvas() {
-
-  var canvasHeight = $("#m_canvas").height();
-  var resized = canvasHeight;
-
-  (function staggerShrink(i) {
-
-    resized = i - 100;
-
-    setTimeout(function() {
-      $("#m_canvas").height(resized);
-      if (resized > 0) {
-        staggerShrink(resized);
-      } else {
-        stopAllTimeouts();
-        purgeCanvas();
-      }
-    }, 100);
-  }) (resized)
 }
 
 
@@ -317,10 +293,5 @@ function stopAllTimeouts() {
 function stopMatrix() {
 
   stopAllTimeouts();
-  shrinkCanvas();  
+  purgeCanvas();
 }
-
-
-// Next:
-// - optimize speed/performance
-// - fix columns popping out (kills rain effect)

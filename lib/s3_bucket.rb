@@ -1,5 +1,7 @@
 # --------------- use for inline testing ---------------
 # require 'aws-sdk'
+# require 'base64'
+# require 'open-uri'
 # require 'pg'
 
 # load 'local_env.rb' if File.exist?('local_env.rb')
@@ -122,5 +124,67 @@ def remove_photos(db, selected)
     delete_s3_file(photo)
     delete_db_record(db, photo)
   end
+
+end
+
+
+# Method to download specified S3 folder/file to ./public/swap
+def download_s3_file(image_info)
+
+  folder = image_info[0]
+  filename = image_info[1]
+  bucket = "prototype-jv"
+  s3_file_path = "#{folder}/#{filename}"
+  swap_file = "./public/swap/#{filename}"  # use when running via app.rb
+  # swap_file = "../public/swap/#{file}"  # use when running locally from /lib/s3_bucket.rb
+  
+  s3 = connect_to_s3()
+  file = File.new(swap_file, 'wb')
+  s3.get_object({ bucket:bucket, key:s3_file_path }, target: swap_file)
+  file.close if file
+
+end
+
+
+################################
+# Non-S3 image download methods
+################################
+
+
+# Method to create base64 string from avatar image URL
+def image_url_to_base64(url)
+
+  img = open(url,{ssl_verify_mode: 0})
+  Base64.encode64(img.read)
+
+end
+
+
+# Method to extract & decode avatar URL base64 string
+def decode_base64_string(filename, data)
+
+  decoded_image = Base64.decode64(data)
+
+end
+
+
+# Method to write decoded photo to swap directory
+def write_swap_file(filename, decoded_image)
+
+  f = File.new "./public/swap/#{filename}", "wb"
+  # f = File.new "../public/swap/#{filename}", "wb"  # inline testing path
+  f.write(decoded_image)
+  f.close if f
+
+end
+
+
+# Method to driver other non-S3 image download methods
+def download_image(image_url)
+
+  filename = "temp.png"
+  data = image_url_to_base64(image_url)
+  decoded_image = decode_base64_string(filename, data)
+  write_swap_file(filename, decoded_image)
 
 end

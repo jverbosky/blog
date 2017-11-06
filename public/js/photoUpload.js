@@ -51,8 +51,8 @@ function resizeImage(url, callback) {
     var ctx=canvas.getContext('2d');
     var cw=canvas.width;
     var ch=canvas.height;
-    var maxW=300;  // limit the image to 150x600 maximum size
-    var maxH=900;
+    var maxW=300;  // limit the image to 300x900 maximum size
+    var maxH=300;
 
     img.onload = function() {
         var iw=img.width;
@@ -96,6 +96,9 @@ function b64toBlob(b64Data, contentType, sliceSize) {
 
 // Preview, resize and encode image file
 function evaluateAndResize(image) {
+
+    $('#photoImage').removeClass('div_hide');
+
     var inputId = '#' + image;
     var imageSrc = image + 'Image';  // update imageSrc for image preview
     var input = document.querySelector(inputId);

@@ -25,7 +25,7 @@ function jsonFlickrFeed(json) {
     $("#apiImage img").attr("src", json.items[randIndex].media.m);
 
     setTimeout(function(){
-        panelResize();
+        panelResize("acc_api");
     }, 500);
 };
 
@@ -50,20 +50,10 @@ function getArticleList(searchTerm) {
         $("#apiTitle").text(data[1][0]);
         $("#apiDescription").text(data[2][0]);
         $("#apiArticleUrl").attr("href", data[3][0]);
-        document.getElementById("apiArticleUrl").classList.remove("linkHide");
-        document.getElementById("apiDivider").classList.remove("divHide");
+        document.getElementById("apiArticleUrl").classList.remove("link_hide");
+        document.getElementById("apiDivider").classList.remove("div_hide");
     })
 };
-
-
-// Adjust height of API Mashup accordion panel
-function panelResize() {
-    var acc_api = document.getElementById("acc_api");
-    // var acc_api.classList.toggle("active");
-    var panel = acc_api.nextElementSibling;
-    panel.style.maxHeight = panel.scrollHeight + "px";
-}
-
 
 
 $("#submitSearchTerm").on("click", function() {
