@@ -359,14 +359,21 @@ function clearBase64Messages() {
 }
 
 
+// Hide convert button and show reset button for Base64 String to Image prototype
+function showBase64ResetButton() {
+
+  b64elements.btnConvert.addClass("div_hide");
+  b64elements.btnReset.removeClass("div_hide");
+}
+
+
 // Load base64 string into img element to preview image
 function renderBase64Image() {
 
   b64elements.imageTarget.attr("src", b64elements.b64string.val());
   b64elements.imageTarget.addClass("border");
   b64elements.imageTarget.removeClass("div_hide");
-  b64elements.btnConvert.addClass("div_hide");
-  b64elements.btnReset.removeClass("div_hide");
+  showBase64ResetButton();
 
   stLoadImage = setTimeout( function(){
     
@@ -376,6 +383,14 @@ function renderBase64Image() {
 }
 
 
+// Show invalid message
+function showInvalidBase64Message() {
+
+  b64elements.msgInvalid.removeClass("div_hide");
+  showBase64ResetButton();
+  adjustPanel("acc_base64conv"); 
+}
+
 // Fire off page updates based on base64 string content
 function evalBase64String() {
 
@@ -383,32 +398,38 @@ function evalBase64String() {
 
   clearBase64Messages();
 
-  if (b64stringText !== "") {
+  if (b64stringText !== "") {  // if base64 string isn't empty
 
-    testImageSrc(b64stringText, getTestResult);
+    if (!b64stringText.startsWith("http")) {  // if base64 string isn't an URL
 
-    function getTestResult(imgSrc, result) {
+      testImageSrc(b64stringText, getTestResult);
 
-      if (result === "success") {
+      function getTestResult(imgSrc, result) {
 
-        renderBase64Image();
+        if (result === "success") {
 
-      } else {
+          renderBase64Image();
 
-        b64elements.msgInvalid.removeClass("div_hide");
-        adjustPanel("acc_base64conv");
+        } else {
+
+          showInvalidBase64Message();
+        }
       }
+    } else {
+
+      showInvalidBase64Message();
     }
   } else {
 
     b64elements.msgEmpty.removeClass("div_hide");
+    showBase64ResetButton();
     adjustPanel("acc_base64conv");
   }
 }
 
 
 // Copy contents of /public/misc/example_b64.txt into text area
-function loadExampleString() {
+function loadExampleBase64String() {
 
   resetBase64String();
   clearBase64Messages();
