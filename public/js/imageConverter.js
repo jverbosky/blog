@@ -7,13 +7,20 @@ var b64imageUrlInput = $("#b64_img_url_input");
 var b64textArea = $("#b64_string");
 var b64progress = $("#b64_progress");
 var b64copyStringBtn = $("#btn_copy_b64_string");
+var imageTarget = $("#b64_photo_dest");
+var b64string = $("#b64_string_src");
+var btnConvert = $("#convert_b64_string");
+var btnReset = $("#reset_b64_string");
+var msgEmpty = $("#b64_empty_b64_string");
+var msgInvalid = $("#b64_invalid_b64_string");
+var exampleString;
 
 
 // Resize panel height for base64 prototype
-function adjustb64Panel() {
+function adjustPanel(target) {
 
-  panelResize("acc_base64");
-  doScrolling("#acc_base64", 800);
+  panelResize(target);
+  doScrolling("#" + target, 800);
 }
 
 
@@ -38,7 +45,7 @@ function b64showS3Images() {
   b64awsS3images.removeClass("div_hide");
 
   resetB64Elements();
-  adjustb64Panel();
+  adjustPanel("acc_base64");
 }
 
 
@@ -50,7 +57,7 @@ function b64showUploadImage() {
   b64uploadImage.removeClass("div_hide");
 
   resetB64Elements();
-  adjustb64Panel();
+  adjustPanel("acc_base64");
 }
 
 
@@ -62,7 +69,7 @@ function b64showImageUrl() {
   b64imageUrl.removeClass("div_hide");
 
   resetB64Elements();
-  adjustb64Panel();
+  adjustPanel("acc_base64");
 }
 
 
@@ -221,6 +228,15 @@ function testImageUrl(url, callback, timeout) {
 }
 
 
+// Advise on problem with image URL
+function handleBadUrl() {
+
+  b64invalidImageUrl.removeClass("div_hide");
+  updateBase64TextArea("");
+  b64copyStringBtn.addClass("div_hide");
+}
+
+
 // Make AJAX request to Sinatra route to prompt caching of non-S3 image to ./public/swap
 function convertImageUrl() {
 
@@ -228,7 +244,12 @@ function convertImageUrl() {
   b64InProgress();
 
   var imageInfo = b64imageUrlInput.val();
-  testImageUrl(imageInfo, getTestResult);
+
+  if (imageInfo.startsWith("http://") || imageInfo.startsWith("https://")) {
+    testImageUrl(imageInfo, getTestResult);
+  } else {
+    handleBadUrl();
+  }
 
   function getTestResult(url, result) {
 
@@ -247,9 +268,7 @@ function convertImageUrl() {
 
     } else {
 
-      b64invalidImageUrl.removeClass("div_hide");
-      updateBase64TextArea("");
-      b64copyStringBtn.addClass("div_hide");
+      handleBadUrl();
     }
   }
 }
@@ -298,7 +317,7 @@ function evaluateB64AndResize(image) {
         // resize panel after image loaded (delay)
         stUploadImage = setTimeout( function(){
           
-          adjustb64Panel();
+          adjustPanel("acc_base64");
           b64InProgress();
 
           // update base64 text area after a delay (smoother)
@@ -313,4 +332,88 @@ function evaluateB64AndResize(image) {
       }
     }
   }
+}
+
+
+// Clear loaded base64 string and image
+function resetBase64String() {
+
+  imageTarget.attr("src", "");
+  imageTarget.removeClass("border");
+  btnReset.addClass("div_hide");
+  btnConvert.removeClass("div_hide");
+  b64string.val("");
+}
+
+
+// Hide any visible empty/invalid base64 string messages
+function clearBase64Messages() {
+
+  msgEmpty.addClass("div_hide");
+  msgInvalid.addClass("div_hide");
+}
+
+
+// Load base64 string into img element to preview image
+function loadBase64Image() {
+
+  var b64stringText = b64string.val();
+  var png = "data:image/png;base64";
+  var jpg = "data:image/jpeg;base64";
+  var gif = "data:image/gif;base64";
+
+  clearBase64Messages();
+
+  if (b64stringText !== "") {
+
+    if (b64stringText.startsWith(png) || b64stringText.startsWith(jpg) || b64stringText.startsWith(gif)) {
+
+      imageTarget.attr("src", b64string.val());
+      imageTarget.addClass("border");
+      imageTarget.removeClass("div_hide");
+      btnConvert.addClass("div_hide");
+      btnReset.removeClass("div_hide");
+
+      stLoadImage = setTimeout( function(){
+        
+        adjustPanel("acc_base64conv");
+        clearTimeout(stLoadImage);
+      }, 100);
+
+    } else {
+
+      msgInvalid.removeClass("div_hide");
+      adjustPanel("acc_base64conv");
+
+    }
+  } else {
+
+    msgEmpty.removeClass("div_hide");
+    adjustPanel("acc_base64conv");
+  }
+}
+
+
+// Copy contents of /public/misc/example_b64.txt into text area
+function loadExampleString() {
+
+  resetBase64String();
+  clearBase64Messages();
+  b64string.val("");
+
+  if (exampleString === undefined) {
+
+    jQuery.get("misc/example_b64.txt", function(data) {
+      
+      exampleString = data;
+      b64string.val(exampleString);
+    });
+
+  } else {
+
+    b64string.val(exampleString);    
+  }
+
+  // same result but shorter - reloads each time
+  // $("#b64_string_src").load("misc/example_b64.txt");
 }

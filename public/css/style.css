@@ -923,7 +923,7 @@ select option {
   height: 100px;
 }
 
-#b64_string {
+.b64_text {
   font: 16px Verdana, Geneva, sans-serif;
   width: 100%;
   height: 100px;

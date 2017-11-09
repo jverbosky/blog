@@ -482,9 +482,7 @@
     <div id="b64_upload_image" class="div_hide">
       <div class="centered padded">
 
-        <div class="padImage">
-          <img src="" class="div_hide" id="b64_photo_preview">
-        </div>
+        <img src="" class="div_hide" id="b64_photo_preview">
 
         <div class="padImageButton">
           <label class="nonEditorButton fileUpload">
@@ -509,7 +507,7 @@
     </div>
 
     <div id="b64_container">
-      <textarea id="b64_string" placeholder="Image base64 string..."></textarea>
+      <textarea id="b64_string" class="b64_text" placeholder="Image base64 string..."></textarea>
       <div id="b64_progress"></div>
     </div>
 
@@ -520,6 +518,48 @@
     <div class="divider"></div>
 
   </div>
+
+  <!-- NEXT PROTOTYPE -->
+
+  <button class="accordion" id="acc_base64conv"><h1>Base64 String to Image Converter</h1></button>
+  <div class="panel">
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="showReadme('base64convReadme')">Readme</button>
+    </div>
+
+    <div class="center-block readme" id="base64convReadme">
+      <p class="underline">This app will allow you to:</p>
+      <ul>
+        <li><p>- specify a valid base64 image string</p></li>
+        <li><p>- display the decoded image</p></li>
+        <li><p>- works for PNG, JPG and GIF image strings</p></li>
+      </ul>
+    </div>
+
+    <div id="m_scroll" class="divider"></div>
+
+    <div class="centered padded">
+      <img src="" class="div_hide" id="b64_photo_dest">
+    </div>
+
+   <div id="b64_empty_b64_string" class="div_hide">
+      <p class="upload_status text-center">Please provide a base64 string in the field below.
+    </div>
+
+    <div id="b64_invalid_b64_string" class="div_hide">
+      <p class="upload_status text-center">Unable to convert due to an issue with the base64 string.
+    </div>
+
+    <div id="b64_container">
+      <textarea id="b64_string_src" class="b64_text" placeholder="Image base64 string..."></textarea>
+    </div>
+
+    <div class="centered padded">
+      <button id="example_b64_string" class="nonEditorButton" onclick="loadExampleString()">Example Base64 String</button>      
+      <button id="convert_b64_string" class="nonEditorButton" onclick="loadBase64Image()">Convert Base64 String</button>
+      <button id="reset_b64_string" class="nonEditorButton div_hide" onclick="resetBase64String()">Reset Base64 String</button>
+    </div>
 
   <!-- NEXT PROTOTYPE -->
 
