@@ -24,7 +24,7 @@ function resetReportElements() {
 // Reset filter drop-downs and no_matching_records message, then call resetReportElements()
 function resetReportFilters() {
 
-  hideMessaging();  // hide messaging divs
+  // hideMessaging();  // hide messaging divs
 
   $("#order_filter").val("All Orders");
   $("#location_filter").val("All Locations");
@@ -424,7 +424,7 @@ function evaluateMessage() {
 // Apply specified filter set to all species buttons
 function applyReportFilters() {
 
-  hideMessaging();  // hide messaging divs
+  // hideMessaging();  // hide messaging divs
 
   // collect filter drop-down values
   var orderFilterValue = $('#order_filter option:selected').val();
