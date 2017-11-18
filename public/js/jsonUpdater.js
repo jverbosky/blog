@@ -20,13 +20,13 @@ function showNewItemField(id, name){
 
     if (name in newAnimalItemIds) {
         if (id === "animal") {
-            document.getElementById(newAnimalItemIds[name]).innerHTML = '<label>New Animal:</label> <input autofocus type="text" class="ani_drop_down" name="newAnimal" id="newAnimal" />';
+            document.getElementById(newAnimalItemIds[name]).innerHTML = '<label>New Animal:</label> <input autofocus type="text" class="drop_down" name="newAnimal" id="newAnimal" />';
         } else if (id === "habitat") {
-            document.getElementById(newAnimalItemIds[name]).innerHTML = '<label>New Habitat:</label> <input autofocus type="text" class="ani_drop_down" name="newHabitat" id="newHabitat" />';
+            document.getElementById(newAnimalItemIds[name]).innerHTML = '<label>New Habitat:</label> <input autofocus type="text" class="drop_down" name="newHabitat" id="newHabitat" />';
         } else if (id === "menu") {
-            document.getElementById(newAnimalItemIds[name]).innerHTML = '<label>New Menu:</label> <input autofocus type="text" class="ani_drop_down" name="newMenu" id="newMenu" />';
+            document.getElementById(newAnimalItemIds[name]).innerHTML = '<label>New Menu:</label> <input autofocus type="text" class="drop_down" name="newMenu" id="newMenu" />';
         } else if (id === "option") {
-            document.getElementById(newAnimalItemIds[name]).innerHTML = '<label>New Option:</label> <input autofocus type="text" class="ani_drop_down" name="newOption" id="newOption" />';
+            document.getElementById(newAnimalItemIds[name]).innerHTML = '<label>New Option:</label> <input autofocus type="text" class="drop_down" name="newOption" id="newOption" />';
         }
     } else {
         if (id === "animal") {

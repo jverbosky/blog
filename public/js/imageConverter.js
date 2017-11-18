@@ -19,14 +19,6 @@ var b64elements = {
 }
 
 
-// Resize panel height for base64 prototype
-function adjustPanel(target) {
-
-  panelResize(target);
-  doScrolling("#" + target, 800);
-}
-
-
 // Reset elements when button options are selected
 function resetB64Elements() {
 

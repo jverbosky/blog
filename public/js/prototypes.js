@@ -110,7 +110,6 @@ function showReadme(target) {
 }
 
 
-
 // Adjust height of accordion panels after other elements displayed
 function panelResize(target) {
 
@@ -120,7 +119,15 @@ function panelResize(target) {
 }
 
 
-// run after page loaded
+// Resize panel height and scroll to target
+function adjustPanel(target) {
+
+  panelResize(target);
+  doScrolling("#" + target, 800);
+}
+
+
+// Run after page loaded
 $(document).ready(function() {
 
     // setup the prototype accordions

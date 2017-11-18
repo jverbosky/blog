@@ -1,12 +1,12 @@
 # --------------- use for inline testing ---------------
-# require 'aws-sdk'
-# require 'base64'
-# require 'open-uri'
-# require 'pg'
+require 'aws-sdk'
+require 'base64'
+require 'open-uri'
+require 'pg'
 
-# load 'local_env.rb' if File.exist?('local_env.rb')
+load 'local_env.rb' if File.exist?('local_env.rb')
 
-# Aws.use_bundled_cert!  # resolves "certificate verify failed"
+Aws.use_bundled_cert!  # resolves "certificate verify failed"
 # ------------------------------------------------------
 
 
@@ -64,10 +64,10 @@ end
 
 
 # Method to generate secure URL for target file (expires after 15 minutes)
-def generate_url(file)
+def generate_url(folder, file)
 
   bucket = "prototype-jv"
-  s3_file_path = "imageuploader/#{file}"
+  s3_file_path = "#{folder}/#{file}"
 
   connect_to_s3()
   signer = Aws::S3::Presigner.new
@@ -83,7 +83,7 @@ def query_s3(db)
   query = db.exec("select photo from imageuploader")
 
   query.to_a.each do |hash|
-    secure_url = generate_url(hash["photo"])
+    secure_url = generate_url("imageuploader", hash["photo"])
     secure_urls.push(secure_url)
   end
 

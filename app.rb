@@ -1,8 +1,10 @@
 require 'aws-sdk'
 require 'base64'
 require 'deep_merge'
+require 'fileutils'
 require 'hashable'
 require 'json'
+require 'mail'
 require 'open-uri'
 require 'pg'
 require 'sinatra'
@@ -10,6 +12,7 @@ require 'singleton'
 
 require_relative './lib/ajax_interface.rb'
 require_relative './lib/blog_handler.rb'
+require_relative './lib/db_query.rb'
 require_relative './lib/json_address.rb'
 require_relative './lib/json_compare.rb'
 require_relative './lib/json_filter.rb'
@@ -137,7 +140,12 @@ get '/prototypes' do
   images = query_s3(connection)
   # images = []  # workaround for Internal Server Error on Heroku
 
-  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}
+  # species and sightings tables
+  db = connection()
+  all_records = combine_all_records(db)
+  db.close
+
+  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images, all_records: all_records}
 
 end
 
@@ -180,9 +188,62 @@ post '/prototypes' do
   images = query_s3(connection)
   # images = []  # workaround for Internal Server Error on Heroku
 
-  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images}
+  # species and sightings tables
+  db = connection()
+  all_records = combine_all_records(db)
+  db.close
+
+  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images, all_records: all_records}
 
 end
+
+
+# # Route that shows all audits in PostgreSQL DB
+# get '/show_all_audits' do
+
+#   db = connection()
+#   complete_audit = combine_all_records(db)
+#   db.close
+
+#   erb :show_all_audits, locals: { complete_audit: complete_audit }
+
+# end
+
+
+# # Route to receive/queue data from JavaScript via AJAX request
+# post '/cache_image' do
+
+#   image_info = params[:image_info]
+#   exposure_count = params[:exposure_count]
+
+#   download_s3_file(image_info, exposure_count)  # download S3 image to ./public/swap
+
+#   # update HTML to trigger JS function retrieveImage()
+#   "<p hidden>AJAX request successfully received - image cached.</p>"
+
+# end
+
+
+# # Route to receive/queue data from JavaScript via AJAX request
+# post '/purge_images' do
+
+#   cleanup_cached_images()  # delete exposure images directory from ./public/swap
+
+#   # update HTML to trigger JS function cleanupSwap()
+#   "<p hidden>AJAX request successfully received - images purged.</p>"
+
+# end
+
+
+# # Route to receive PDF data from JavaScript via AJAX request
+# post '/email_pdf' do
+
+#   pdf_data = params[:pdf_data]
+#   pdf_filename = params[:pdf_filename]
+
+#   MailPdf.new(pdf_data, pdf_filename, connection, session[:user])
+
+# end
 
 
 # Route to receive/queue data from JavaScript via AJAX request

@@ -1,5 +1,5 @@
 body {
-  background: #EEE
+  background: #EEE;
   font-family: Verdana, Geneva, sans-serif;
 }
 
@@ -12,11 +12,11 @@ h4, h5 {
   font-family: Verdana, Geneva, sans-serif;
 }
 
-p {
+p, td {
   font: 16px Verdana, Geneva, sans-serif;
 }
 
-label {
+label, th {
   font-family: Verdana, Geneva, sans-serif;
   font-weight: bold
 }
@@ -621,7 +621,7 @@ select option {
   padding: 5px;
 }
 
-.ani_drop_down {
+.drop_down {
   font: 16px Verdana, Geneva, sans-serif;
   border-color: #cccccc;
   margin-bottom: 1em;
@@ -727,11 +727,11 @@ select option {
 
 /* prototype page - image uploader  */
 
-.text-center {
+.text_center {
     text-align: center;
 }
 
-.img-centered {
+.img_center {
     margin: 0 auto;
 }
 
@@ -824,11 +824,11 @@ select option {
     display: none;
 }
 
-.hide_upload_status {
+.hide_status_message {
     display: none;
 }
 
-.upload_status {
+.status_message {
     margin-top: 5px;
     margin-bottom: 5px;
     font-style: italic;
@@ -941,6 +941,77 @@ select option {
 
 #b64_img_url_input {
   width: 40vw;
+}
+
+/* prototype page - report filter with pdf output  */
+
+button.accordion_species {
+  background-color: rgb(229, 229, 229);
+  margin: 0 auto;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 6px;
+  /*transition: 0.4s;*/  /* interferes with scrollTo */
+}
+
+button.accordion_sighting {
+  background-color: rgb(229, 229, 229);
+  margin: 0 auto;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 6px;
+  /*transition: 0.4s;*/  /* interferes with scrollTo */
+}
+
+button.accordion_species.active, button.accordion_species:hover {
+  background-color: #cccccc;
+}
+
+button.accordion_sighting.active, button.accordion_sighting:hover {
+  background-color: #cccccc;
+}
+
+.accordion_td {
+  padding-right: 20px;
+}
+
+.accordion_h4_offset {
+  vertical-align: bottom;
+  padding-bottom: 2px;
+}
+
+.table_species {
+  background-color: #e5e5e5;
+  border-collapse: collapse;
+  text-align: left;
+  width: 100%;
+  padding: 4px;
+  margin-top: 5px;
+}
+
+.table_species th,td {
+  padding: 5px;
+}
+
+.tr_species {
+  background-color: white;
+}
+
+.valign_img {
+    /* these 3 lines verically align img in td */
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* media queries */
