@@ -620,14 +620,27 @@
         <div class="centered padded">
           <button class="nonEditorButton" onclick="applyReportFilters()">Apply Filters</button>
           <button class="nonEditorButton" onclick="resetReportFilters()">Reset Filters</button>
-          <!-- <button id="createPdf" class="nonEditorButton" onclick="evalPdfOutput('file')">Create PDF</button>
-          <button id="emailPdf" class="nonEditorButton" onclick="evalPdfOutput('email')">Email PDF</button> -->
+          <button id="createPdf" class="nonEditorButton" onclick="evalPdfOutput('file')">Create PDF</button>
+          <button id="emailPdf" class="nonEditorButton" onclick="showEmailAddress()">Email PDF</button>
         </div>
 
       </div>
 
-      <div id="ajax_result">
+      <div id="pdf_email_target" class="centered padded div_hide">
+        <form id="pdf_email_form">
+          <label>Email Address:</label>
+          <input id="pdf_email_address" name=id="pdf_email_address" placeholder="Enter email address..." type="email" required>
+          <button id="pdf_email_submit" class="nonEditorButton">Submit</button>
+          <button id="pdf_email_cancel" class="nonEditorButton" type="button" onclick="hideEmailAddress()">Cancel</button>
+        </form>
+      </div>
+
+      <div id="species_ajax_result">
         <p hidden>Photo cache results posted here</p>
+      </div>
+
+      <div class="div_hide" id="validated_addresses">
+        <%= validated_addresses %>
       </div>
 
       <div class="text_center div_hide" id="no_matching_records">
@@ -639,11 +652,15 @@
       </div>
 
       <div class="text_center div_hide" id="pdf_in_progress">
-        <div class="status_message" id="audit_processing"></div>
+        <div class="status_message" id="pdf_processing"></div>
+      </div>
+
+      <div class="text_center div_hide" id="invalid_email_address">
+        <div class="status_message">Sorry, that email address has not been validated for this prototype!</div>
       </div>
 
       <div class="text_center div_hide" id="pdf_emailed">
-        <div class="status_message">Please check your email - your record has been sent!</div>
+        <div class="status_message">PDF(s) sent - please check your email!</div>
       </div>
 
       <% order_list = [] %>
@@ -802,8 +819,8 @@
 
 <!-- other external scripts -->
 <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
 
 <!-- local scripts in /public/js -->
 <script src="js/prototypes.js"></script>
@@ -813,4 +830,4 @@
 <script src="js/matrix.js"></script>
 <script src="js/imageConverter.js"></script>
 <script src="js/showAll.js"></script>
-<!-- <script src="/js/htmlToPdf.js"></script> -->
+<script src="/js/htmlToPdf.js"></script>

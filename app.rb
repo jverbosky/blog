@@ -20,6 +20,7 @@ require_relative './lib/json_parse.rb'
 require_relative './lib/json_read.rb'
 require_relative './lib/json_select.rb'
 require_relative './lib/json_update.rb'
+require_relative './lib/mail_pdf.rb'
 require_relative './lib/photo_handler.rb'
 require_relative './lib/photo_queue.rb'
 require_relative './lib/photo_upload.rb'
@@ -41,6 +42,19 @@ configure do
 
   $stdout.sync = true
   
+end
+
+
+# Configuration for sending email via AWS SES
+Mail.defaults do
+
+  delivery_method :smtp,
+  address: "email-smtp.us-west-2.amazonaws.com",
+  port: 587,
+  :user_name  => ENV['a3smtpuser'],
+  :password   => ENV['a3smtppass'],
+  :enable_ssl => true
+
 end
 
 
@@ -145,7 +159,10 @@ get '/prototypes' do
   all_records = combine_all_records(db)
   db.close
 
-  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images, all_records: all_records}
+  # validated addresses
+  validated_addresses = encrypt_string(ENV['emails'])
+
+  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images, all_records: all_records, validated_addresses: validated_addresses}
 
 end
 
@@ -193,57 +210,12 @@ post '/prototypes' do
   all_records = combine_all_records(db)
   db.close
 
-  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images, all_records: all_records}
+  # validated addresses
+  validated_addresses = encrypt_string(ENV['emails'])
+
+  erb :prototypes, locals: {animals_data: animals_data, feedback: feedback, animals: animals, habitats: habitats, menus: menus, options: options, images: images, all_records: all_records, validated_addresses: validated_addresses}
 
 end
-
-
-# # Route that shows all audits in PostgreSQL DB
-# get '/show_all_audits' do
-
-#   db = connection()
-#   complete_audit = combine_all_records(db)
-#   db.close
-
-#   erb :show_all_audits, locals: { complete_audit: complete_audit }
-
-# end
-
-
-# # Route to receive/queue data from JavaScript via AJAX request
-# post '/cache_image' do
-
-#   image_info = params[:image_info]
-#   exposure_count = params[:exposure_count]
-
-#   download_s3_file(image_info, exposure_count)  # download S3 image to ./public/swap
-
-#   # update HTML to trigger JS function retrieveImage()
-#   "<p hidden>AJAX request successfully received - image cached.</p>"
-
-# end
-
-
-# # Route to receive/queue data from JavaScript via AJAX request
-# post '/purge_images' do
-
-#   cleanup_cached_images()  # delete exposure images directory from ./public/swap
-
-#   # update HTML to trigger JS function cleanupSwap()
-#   "<p hidden>AJAX request successfully received - images purged.</p>"
-
-# end
-
-
-# # Route to receive PDF data from JavaScript via AJAX request
-# post '/email_pdf' do
-
-#   pdf_data = params[:pdf_data]
-#   pdf_filename = params[:pdf_filename]
-
-#   MailPdf.new(pdf_data, pdf_filename, connection, session[:user])
-
-# end
 
 
 # Route to receive/queue data from JavaScript via AJAX request
@@ -284,10 +256,11 @@ post '/cache_image' do
 
   image_info = params[:image_info]
   url_type = params[:url_type]
+  sighting_count = params[:sighting_count]  # optional (splat)
 
   # download image to ./public/swap
   if url_type == "S3"
-    download_s3_file(image_info)
+    download_s3_file(image_info, sighting_count)
   else
     download_image(image_info)
   end
@@ -305,6 +278,30 @@ post '/purge_image' do
   cleanup_swap_dir(image_name)  # delete image from ./public/swap
 
   "<p hidden>AJAX request successfully received - image purged.</p>"  # update HTML to trigger JS
+
+end
+
+
+# Route to receive/queue data from JavaScript via AJAX request
+post '/purge_swap_dir' do
+
+  cleanup_cached_images()  # delete exposure images directory from ./public/swap
+
+  # update HTML to trigger JS function cleanupSwap()
+  "<p hidden>AJAX request successfully received - images purged.</p>"
+
+end
+
+
+# Route to receive PDF data and email address from JavaScript via AJAX request
+post '/email_pdf' do
+
+  pdf_data = params[:pdf_data]
+  pdf_filename = params[:pdf_filename]
+  email = params[:email]
+
+  # MailPdf.new(pdf_data, pdf_filename, connection, session[:user])
+  MailPdf.new(pdf_data, pdf_filename, connection, email)
 
 end
 

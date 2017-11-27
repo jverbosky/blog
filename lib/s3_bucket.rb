@@ -1,12 +1,12 @@
 # --------------- use for inline testing ---------------
-require 'aws-sdk'
-require 'base64'
-require 'open-uri'
-require 'pg'
+# require 'aws-sdk'
+# require 'base64'
+# require 'open-uri'
+# require 'pg'
 
-load 'local_env.rb' if File.exist?('local_env.rb')
+# load 'local_env.rb' if File.exist?('local_env.rb')
 
-Aws.use_bundled_cert!  # resolves "certificate verify failed"
+# Aws.use_bundled_cert!  # resolves "certificate verify failed"
 # ------------------------------------------------------
 
 
@@ -110,7 +110,25 @@ end
 # Method to delete record for specified image from PostgreSQL DB
 def delete_db_record(db, photo)
 
-  db.exec("delete from imageuploader where photo = '#{photo}'")
+  # db.exec("delete from imageuploader where photo = '#{photo}'")
+
+  begin
+
+    query = "delete from imageuploader where photo = $1"
+    db.prepare('q_statement', query)
+    rs = db.exec_prepared('q_statement', [photo])
+    db.exec("deallocate q_statement")
+
+  rescue PG::Error => e
+
+    puts 'Exception occurred'
+    puts e.message
+
+  ensure
+
+    db.close if db
+
+  end
 
 end
 
@@ -128,16 +146,58 @@ def remove_photos(db, selected)
 end
 
 
+# Method to clean up sightings directory after PDF processing
+def cleanup_cached_images()
+
+  # swap_dir = "../public/swap"  # use when running locally from /lib/s3_bucket.rb
+  swap_dir = "./public/swap"  # use when running via app.rb
+  swap_contents = "#{swap_dir}/*"
+  gitkeep = "#{swap_dir}/.gitkeep"
+
+  if File.directory?(swap_dir)
+    FileUtils.rm_rf(Dir.glob(swap_contents))  # delete contents of /public/swap    
+    file = File.new(gitkeep, 'w')  # recreate .gitkeep file
+    file.close if file
+  else
+    puts "sightings directory does not exist!"
+  end
+
+end
+
+
+# Method to create directory in ./public/swap for sightings photos
+def create_directory(subdirectory, sightings_count)
+
+  swap_dir = "./public/swap"  # use when running via app.rb
+  # swap_dir = "../public/swap"  # use when running locally from /lib/s3_bucket.rb
+  sightings_dir = "#{swap_dir}/#{subdirectory}/#{sightings_count}"
+
+  unless File.directory?(sightings_dir)
+    FileUtils.mkdir_p(sightings_dir)
+  end
+
+  return sightings_dir
+
+end
+
 # Method to download specified S3 folder/file to ./public/swap
-def download_s3_file(image_info)
+def download_s3_file(image_info, *sightings_count)
 
   folder = image_info[0]
   filename = image_info[1]
   bucket = "prototype-jv"
   s3_file_path = "#{folder}/#{filename}"
-  swap_file = "./public/swap/#{filename}"  # use when running via app.rb
-  # swap_file = "../public/swap/#{file}"  # use when running locally from /lib/s3_bucket.rb
-  
+
+  if sightings_count
+    sightings_count = sightings_count[0]
+    subdirectory = folder.split("/")[1]
+    sightings_dir = create_directory(subdirectory, sightings_count)
+    swap_file = "#{sightings_dir}/#{filename}"
+  else
+    swap_file = "./public/swap/#{filename}"  # use when running via app.rb
+    # swap_file = "../public/swap/#{file}"  # use when running locally from /lib/s3_bucket.rb
+  end
+
   s3 = connect_to_s3()
   file = File.new(swap_file, 'wb')
   s3.get_object({ bucket:bucket, key:s3_file_path }, target: swap_file)
@@ -186,5 +246,18 @@ def download_image(image_url)
   data = image_url_to_base64(image_url)
   decoded_image = decode_base64_string(filename, data)
   write_swap_file(filename, decoded_image)
+
+end
+
+
+################################
+# Utility methods
+################################
+
+
+# Method to encrypt non-sensitive/critical values
+def encrypt_string(string)
+
+  return string.tr("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "9nopqrs8tuvwxy7zabcde6fghijk5lmNOPQ4RSTUVW3XYZABC2DEFGHI1JKLM0")
 
 end

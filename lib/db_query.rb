@@ -1,29 +1,29 @@
 # --------------- use for inline testing ---------------
-# require 'pg'
-# require 'pp'
+require 'pg'
+require 'pp'
 
-# require_relative 's3_bucket.rb'
+require_relative 's3_bucket.rb'
 
-# load './local_env.rb' if File.exist?('./local_env.rb')
+load './local_env.rb' if File.exist?('./local_env.rb')
 
-# # Method to open a connection to the PostgreSQL database
-# def connection()
+# Method to open a connection to the PostgreSQL database
+def connection()
 
-#   begin
-#     db_params = {
-#           host: ENV['dbhost'],
-#           port:ENV['dbport'],
-#           dbname:ENV['dbname'],
-#           user:ENV['dbuser'],
-#           password:ENV['dbpass']
-#         }
-#     db = PG::Connection.new(db_params)
-#   rescue PG::Error => e
-#     puts 'Exception occurred'
-#     puts e.message
-#   end
+  begin
+    db_params = {
+          host: ENV['dbhost'],
+          port:ENV['dbport'],
+          dbname:ENV['dbname'],
+          user:ENV['dbuser'],
+          password:ENV['dbpass']
+        }
+    db = PG::Connection.new(db_params)
+  rescue PG::Error => e
+    puts 'Exception occurred'
+    puts e.message
+  end
 
-# end
+end
 
 # ------------------------------------------------------
 
@@ -38,6 +38,20 @@ def get_species_records(db)
 end
 
 
+# Method to generate array of subdirectory names based on common name
+def get_subdirectories(species_records)
+
+  subdirectories = []
+
+  species_records.each do |record|
+    subdirectories.push(record["common_name"].gsub(/[- ]/, "_").downcase!)
+  end
+
+  return subdirectories
+
+end
+
+
 # Method to retrieve all sighting_details records from PG
 def get_sighting_records(db)
 
@@ -48,7 +62,7 @@ end
 
 
 # Method to generate secure URLs for each photo in photos string
-def parse_photos(photos_string)
+def parse_photos(photos_string, subdirectories)
 
   urls_array = []
 
@@ -57,7 +71,14 @@ def parse_photos(photos_string)
     photos_array = photos_string.split(',')
     
     photos_array.each do |photo|
-      photo_url = generate_url("sightings", photo)
+
+      path = "sightings"
+
+      subdirectories.each do |subdirectory|
+        path = "sightings/#{subdirectory}" if photo.include?(subdirectory)
+      end
+
+      photo_url = generate_url(path, photo)
       urls_array.push(photo_url)
     end
   
@@ -69,13 +90,13 @@ end
 
 
 # Method to update photo names with secure URLs in sighting_details record hash
-def update_photo_urls(records)
+def update_photo_urls(records, subdirectories)
 
   updated_records = []
 
   records.each do |record_hash|
 
-    urls_array = parse_photos(record_hash["photos"])
+    urls_array = parse_photos(record_hash["photos"], subdirectories)
     record_hash["photos"] = urls_array
     updated_records.push(record_hash)
 
@@ -87,10 +108,10 @@ end
 
 
 # Method to route handling of photo names to secure URLs
-def get_updated_sighting(db)
+def get_updated_sighting(db, subdirectories)
 
   sighting_records = get_sighting_records(db)
-  updated_records = update_photo_urls(sighting_records)
+  updated_records = update_photo_urls(sighting_records, subdirectories)
 
 end
 
@@ -100,7 +121,8 @@ def combine_all_records(db)
 
   all_records = []
   species_records = get_species_records(db)
-  sighting_records = get_updated_sighting(db)  # get sighting records with S3 URLs for photos
+  subdirectories = get_subdirectories(species_records)
+  sighting_records = get_updated_sighting(db, subdirectories)  # get sighting records with S3 URLs for photos
   counter = 0
 
   species_records.each do |spr|

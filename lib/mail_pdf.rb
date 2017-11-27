@@ -12,14 +12,13 @@
 class MailPdf
 
   # Call helper methods to decode/save PDF, send email and clean swap directory
-  def initialize(pdf_data, pdf_filename, db, user)
+  def initialize(pdf_data, pdf_filename, db, email)
 
     attachment = "./public/swap/#{pdf_filename}"
     decoded_pdf = decode_pdf(pdf_data)
-    recipient = lookup_email(db, user)
 
     write_attachment(attachment, decoded_pdf)
-    send_email(pdf_filename, attachment, recipient)
+    send_email(pdf_filename, attachment, email)
     cleanup_swap_dir(pdf_filename)  # s3_bucket.rb method
 
   end
@@ -45,15 +44,6 @@ class MailPdf
   end
 
 
-  # Method to look up email address for current user
-  def lookup_email(db, user)
-
-    query = db.exec("select email from users where username = '#{user}'")
-    recipient = query.to_a[0]["email"]
-
-  end
-
-
   # Method to send email with PDF attachment
   def send_email(pdf_filename, attachment, recipient)
 
@@ -63,8 +53,7 @@ class MailPdf
     mail = Mail.new do
 
       from         ENV['from']
-      to           "jverbosk@gmail.com" # recipient
-      # bcc        # TBD
+      to           recipient
       subject      email_subject
 
       html_part do
