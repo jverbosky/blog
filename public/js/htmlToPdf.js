@@ -4,15 +4,31 @@ var processingMessage;  // global for resetting after PDF data POSTed to Sinatra
 var targetEmail = "";  // email address to send PDF to (if specified)
 
 
+// Sends AJAX request to remove sighting image directories from ./public/swap
+function cleanupSwap() {
+
+  $.ajax({
+      url: "/purge_swap_dir",
+      type: 'POST',
+      data: { purge_images: "yes" },  // not used, just a trigger
+      success: function(result) {}
+  });
+}
+
+
 // Remove completed species and start processing the next one in queue
 function trimSpeciesQueue() {
 
   speciesQueue.shift();  // remove current PDF from speciesQueue
 
   if (speciesQueue.length > 0) {  // if there are more species in the queue
+
     createPdf(speciesQueue[0]);  // process the next one
+
   } else {
+
     outputType = "";  // reset outputType for subsequent operations
+    cleanupSwap();  // purge cached sighting directories from ./public/swap
   }
 }
 
@@ -373,18 +389,6 @@ function createPdf(speciesButton) {
     imagesQueue[currentSightingsCount] = [];  // initialize imagesQueue for current sighting
 
 
-    // Sends AJAX request to remove sighting image directories from ./public/swap
-    function cleanupSwap() {
-
-      $.ajax({
-          url: "/purge_swap_dir",
-          type: 'POST',
-          data: { purge_images: "yes" },  // not used, just a trigger
-          success: function(result) {}
-      });
-    }
-
-
     // Convert image URL (/public/swap/image.png) to base64 string
     function getBase64FromImageUrl(url, cb) {
         
@@ -435,7 +439,6 @@ function createPdf(speciesButton) {
               if (queuedImages === totalImagesCount) {  // wait until all images are queued
 
                 processSightingsTablesQueue(pdf);
-                cleanupSwap();  // purge cached sighting directories from ./public/swap
               }
             }
           }
