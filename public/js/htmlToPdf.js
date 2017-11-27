@@ -731,6 +731,7 @@ function filterVisibleElements() {
   } else {
 
     $("#invalid_pdf").removeClass("div_hide");
+    resizeReportPanels();
   }
 }
 
