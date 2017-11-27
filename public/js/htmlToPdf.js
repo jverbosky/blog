@@ -726,6 +726,10 @@ function filterVisibleElements() {
 
   if (speciesQueue.length > 0) {
 
+    if (output === "email") {
+      pdfProcessing();
+    }
+
     createPdf(speciesQueue[0]);  // grab the leading species from the queue and process
 
   } else {
@@ -768,14 +772,9 @@ function hideMessaging() {
 // Stores the selected output type, then calls filterAudits()
 function evalPdfOutput(output) {
 
-  hideMessaging();  // hide messaging divs
-
-  if (output === "email") {
-    pdfProcessing();
-  }
-
   outputType = output;  // store the output type ("file" or "email")
 
+  hideMessaging();  // hide messaging divs
   filterVisibleElements();
 }
 
