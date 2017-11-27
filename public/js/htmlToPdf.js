@@ -726,7 +726,7 @@ function filterVisibleElements() {
 
   if (speciesQueue.length > 0) {
 
-    if (output === "email") {
+    if (outputType === "email") {
       pdfProcessing();
     }
 
@@ -735,8 +735,9 @@ function filterVisibleElements() {
   } else {
 
     $("#invalid_pdf").removeClass("div_hide");
-    resizeReportPanels();
   }
+
+  resizeReportPanels();
 }
 
 
