@@ -241,7 +241,7 @@ end
 
 
 # Route for deleting photos from S3 bucket and PG DB
-post '/deletephotos' do
+post '/delete_photos' do
 
   selected = params[:selected]
   remove_photos(connection, selected)

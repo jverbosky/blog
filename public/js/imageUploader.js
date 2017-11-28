@@ -390,5 +390,5 @@ function selectPhoto(td) {
 // POSTs the image names in deletePhotos array 
 $("#btn_del_photos").on("click", function() {
 
-    post('/deletephotos', {selected: deletePhotos});
+    post('/delete_photos', {selected: deletePhotos});
 });

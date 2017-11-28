@@ -1,29 +1,29 @@
 # --------------- use for inline testing ---------------
-require 'pg'
-require 'pp'
+# require 'pg'
+# require 'pp'
 
-require_relative 's3_bucket.rb'
+# require_relative 's3_bucket.rb'
 
-load './local_env.rb' if File.exist?('./local_env.rb')
+# load './local_env.rb' if File.exist?('./local_env.rb')
 
-# Method to open a connection to the PostgreSQL database
-def connection()
+# # Method to open a connection to the PostgreSQL database
+# def connection()
 
-  begin
-    db_params = {
-          host: ENV['dbhost'],
-          port:ENV['dbport'],
-          dbname:ENV['dbname'],
-          user:ENV['dbuser'],
-          password:ENV['dbpass']
-        }
-    db = PG::Connection.new(db_params)
-  rescue PG::Error => e
-    puts 'Exception occurred'
-    puts e.message
-  end
+#   begin
+#     db_params = {
+#           host: ENV['dbhost'],
+#           port:ENV['dbport'],
+#           dbname:ENV['dbname'],
+#           user:ENV['dbuser'],
+#           password:ENV['dbpass']
+#         }
+#     db = PG::Connection.new(db_params)
+#   rescue PG::Error => e
+#     puts 'Exception occurred'
+#     puts e.message
+#   end
 
-end
+# end
 
 # ------------------------------------------------------
 

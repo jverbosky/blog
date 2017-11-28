@@ -214,6 +214,14 @@ input {
   max-height: 500px;
 }
 
+.image_size_med {
+  max-width: 300px;
+}
+
+.image_size_sm {
+  max-width: 150px;
+}
+
 .caption * {
   font-family: Verdana, Geneva, sans-serif;
   text-align: left;
@@ -524,6 +532,10 @@ input {
 
 /* prototype page - accordion */
 
+.page_header {
+  width: 90vw;
+}
+
 button.accordion {
   background-color: rgb(229, 229, 229);
   margin: 0 auto;
@@ -552,7 +564,36 @@ div.panel {
 
 .readme {
   display: none;
-  width: 350px;
+  width: 700px;
+}
+
+.table_small {
+  margin: auto;
+  padding: 0.5em;
+}
+
+.inline_block {
+  display: inline-block;
+}
+
+.align_top {
+  vertical-align: top;
+}
+
+.grey_lt {
+  background-color: #e5e5e5;
+}
+
+.grey_med {
+  background-color: #cccccc;
+}
+
+.background_color {
+  background-color: #ffffff;
+}
+
+.background_color_ab {
+  background-color: #eeeeee;
 }
 
 .underline {
@@ -561,6 +602,21 @@ div.panel {
 
 .subheader {
   margin-bottom: 1em;
+}
+
+.about_block {
+  width: 60vw;
+}
+
+.fa-6 {
+  display: inline-block;
+  text-align: center;
+  font-size: 3em;
+  color: #0077b5;
+}
+
+.fa-6:hover {
+  color: #cccccc;
 }
 
 /* prototype page - JSON updater  */

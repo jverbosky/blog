@@ -1,19 +1,60 @@
 <div class="center-block">
 
-  <div class="padded">
-    <h1>Prototypes</h1>
+  <div class="center-block page_header padded">
+    <p class="padded">This page will let you play with some of the different prototypes that I built during my six-month full stack apprenticeship with <a href="https://www.minedminds.org" target="_blank">Mined Minds</a>.</p>
+    <p class="padded">Some of the prototypes (JSON Updater, Image Uploader and Report Filter with PDF Output) are based upon code that I developed for projects during my apprenticeship, while others were simply fun experients.</p>
+    <p class="padded">Each prototype includes a readme section with details on functionality and links to relevant files on GitHub.</p>
+    <p class="padded">For those interested, the GitHub repo for this entire site can be accessed <a href="https://github.com/jverbosky/portfolio" target="_blank">here</a>.</p>
+    <p class="padded">To begin, just click on one of the buttons below to expand the corresponding section for that prototype.</p>
   </div>
 
+  <!-- NEXT PROTOTYPE -->
 
-  <div class="padded text_center">
-    <p>This page will let you play with some of the different prototypes that I've built.</p>
-    <br>
-    <p>Just click on one of the buttons below to expand the corresponding section for that prototype.</p>
-    <br>
-    <p>And feel free to add/delete things - don't worry, I have my baseline data sets backed up... ^_^;</p>
+  <button class="accordion" id="acc_blog"><h1>Blog Editor</h1></button>
+  <div class="panel">
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="showReadme('blogReadme')">Readme</button>
+    </div>
+
+    <div class="center-block readme" id="blogReadme">
+      <p>This prototype leverages document.execCommand features to provide an inline text editor which writes formatted blog text to a JSON file.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt">
+          <col class="grey_med">
+        </colgroup>
+        <tr>
+          <th class="background_color">Ruby</th>
+          <th class="background_color">JavaScript</th>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/blog_handler.rb" target="_blank">blog_handler.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/editorButtons.js" target="_blank">editorButtons.js</a></td>
+        </tr>
+        <tr>
+          <td class="background_color"></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/photoUpload.js" target="_blank">photoUpload.js</a></td>
+        </tr>
+        <tr>
+          <td class="background_color"></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/submitBlog.js" target="_blank">submitBlog.js</a></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      <p class="centered">The Blog Creator prototype (along with some blogs that I've written) can be found on the <a href="/blog" target="_blank">Blog</a> page.</p>
+    </div>
+
+    <div class="divider"></div>
+
   </div>
 
-  <br>
+  <!-- NEXT PROTOTYPE -->
 
   <button class="accordion" id="acc_json"><h1>JSON Updater</h1></button>
   <div class="panel">
@@ -23,13 +64,44 @@
     </div>
 
     <div class="center-block readme" id="jsonReadme">
-      <p class="underline">This app will allow you to:</p>
-      <ul>
-        <li><p>- load different datasets (JSON files)</p></li>
-        <li><p>- add/remove JSON file entries</p></li>
-        <li><p>- view feedback for add/remove operations</p></li>
-        <li><p>- view JSON file data in table format</p></li>
-      </ul>
+      <p>This prototype demonstrates reading, writing and deleting entries from a deeply-nested JSON file. A selected JSON file's data is used to programatically populate a table of current data, as well as drop-down controls for making updates. Feedback is provided in a message box on updates.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt" span="2">
+          <col class="grey_med">
+          <col class="grey_lt">
+        </colgroup>
+        <tr>
+          <th colspan="2">Ruby</th>
+          <th>JavaScript</th>
+          <th>JSON</th>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/json_address.rb" target="_blank">json_address.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/json_read.rb" target="_blank">json_read.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/jsonUpdater.js" target="_blank">jsonUpdater.js</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/json/carnivores.json" target="_blank">carnivores.json</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/json_compare.rb" target="_blank">json_compare.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/json_select.rb" target="_blank">json_select.rb</a></td>
+          <td class="background_color"></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/json/herbivores.json" target="_blank">herbivores.json</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/json_filter.rb" target="_blank">json_filter.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/json_update.rb" target="_blank">json_update.rb</a></td>
+          <td class="background_color"></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/json/omnivores.json" target="_blank">omnivores.json</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/json_parse.rb" target="_blank">json_parse.rb</a></td>
+          <td class="background_color"></td>
+          <td class="background_color"></td>
+          <td class="background_color"></td>
+        </tr>
+      </table>
     </div>
 
     <div class="divider"></div>
@@ -269,14 +341,33 @@
     </div>
 
     <div class="center-block readme" id="imageReadme">
-      <p class="underline">This app will allow you to:</p>
-      <ul>
-        <li><p>- select images to upload</p></li>
-        <li><p>- remove images from the upload list</p></li>
-        <li><p>- upload the images to an S3 bucket</p></li>
-        <li><p>- readback uploaded images</p></li>
-        <li><p>- remove uploaded images</p></li>
-      </ul>
+      <p class="padded">This prototype provides a front-end for adding, viewing and deleting S3 bucket images. Multiple images can be selected for upload, as well as individually removed from the bucket. A progress bar indicates upload status as images are sent via AJAX requests to Sinatra for processing.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt" span="2">
+          <col class="grey_med">
+        </colgroup>
+        <tr>
+          <th colspan="2" class="background_color">Ruby</th>
+          <th class="background_color">JavaScript</th>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="https://github.com/jverbosky/portfolio/blob/master/lib/1_drop_and_create_table_imageuploader.rb" target="_blank">1_drop_and_create_table_imageuploader.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/imageUploader.js" target="_blank">imageUploader.js</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/ajax_interface.rb" target="_blank">ajax_interface.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/photo_upload.rb" target="_blank">photo_upload.rb</a></td>
+          <td class="background_color"></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/photo_queue.rb" target="_blank">photo_queue.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/s3_bucket.rb" target="_blank">s3_bucket.rb</a></td>
+          <td class="background_color"></td>
+          <td class="background_color"></td>
+        </tr>
+      </table>
     </div>
 
     <div class="divider"></div>
@@ -359,13 +450,19 @@
     </div>
 
     <div class="center-block readme" id="apiReadme">
-      <p class="underline">This app will allow you to:</p>
-      <ul>
-        <li><p>- enter a word or phrase</p></li>
-        <li><p>- make a Wikipedia API fetch request</p></li>
-        <li><p>- make a Flickr API AJAX request</p></li>
-        <li><p>- view a related image and text</p></li>
-      </ul>
+      <p>This prototype was one of my first attempts at working with APIs, specifically Wikipedia and Flickr. Simply enter a word or phrase, and a fetch request will return details from the Wikipedia API and an AJAX request will return a related image from the Flickr API.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt">
+        </colgroup>
+        <tr>
+          <th class="background_color">JavaScript</th>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/api.js" target="_blank">api.js</a></td>
+        </tr>
+      </table>
     </div>
 
     <div class="divider"></div>
@@ -412,12 +509,20 @@
     </div>
 
     <div class="center-block readme" id="matrixReadme">
-      <p class="underline">The code for this app features:</p>
-      <ul>
-        <li><p>- callbacks</p></li>
-        <li><p>- recursion</p></li>
-        <li><p>- lots of randomization</p></li>
-      </ul>
+      <p>This prototype was inspired by the "code rain" animation in "The Matrix", and was my first attempt at using JavaScript for randomized animations. It is entirely driven by manipulating DOM elements, which isn't as efficient as using canvas but still gets the job done.</p>
+      <p class="padded">The page width determines the number of columns, which can be seen by stopping/starting the program after resizing the browser window.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt">
+        </colgroup>
+        <tr>
+          <th class="background_color">JavaScript</th>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/matrix.js" target="_blank">matrix.js</a></td>
+        </tr>
+      </table>
     </div>
 
     <div id="m_scroll" class="divider"></div>
@@ -443,12 +548,26 @@
     </div>
 
     <div class="center-block readme" id="base64Readme">
-      <p class="underline">The code for this app features:</p>
-      <ul>
-        <li><p>- image data passed from client to server</p></li>
-        <li><p>- image data processed on server</p></li>
-        <li><p>- image data passed from server to client</p></li>
-      </ul>
+      <p>This prototype converts images to base64 strings. Options are included to convert AWS S3-hosted images, uploaded images and image URLs.</p>
+      <p class="padded">For S3-hosted images and image URLs, images are cached locally via AJAX requests for processing and then removed from the swap directory following conversion.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt">
+          <col class="grey_med">
+          <col class="grey_lt">
+        </colgroup>
+        <tr>
+          <th class="background_color">Ruby</th>
+          <th class="background_color">JavaScript</th>
+          <th class="background_color">JS Libraries</th>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/s3_bucket.rb" target="_blank">s3_bucket.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/imageConverter.js" target="_blank">imageConverter.js</a></td>
+          <td><a href="https://github.com/zenorocha/clipboard.js" target="_blank">clipboard.js</a></td>
+        </tr>
+      </table>
     </div>
 
     <div class="divider"></div>
@@ -529,12 +648,19 @@
     </div>
 
     <div class="center-block readme" id="base64convReadme">
-      <p class="underline">This app will allow you to:</p>
-      <ul>
-        <li><p>- specify a valid base64 image string</p></li>
-        <li><p>- display the decoded image</p></li>
-        <li><p>- works for PNG, JPG and GIF image strings</p></li>
-      </ul>
+      <p>This prototype takes a base64 string and displays the decoded image. It works for PNG, JPG and GIF image types.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt">
+        </colgroup>
+        <tr>
+          <th class="background_color">JavaScript</th>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/imageConverter.js" target="_blank">imageConverter.js</a></td>
+        </tr>
+      </table>
     </div>
 
     <div class="divider"></div>
@@ -573,238 +699,249 @@
     </div>
 
     <div class="center-block readme" id="reportFilterReadme">
-      <p class="underline">This app will allow you to:</p>
-      <ul>
-        <li><p>- filter reports by different criteria</p></li>
-        <li><p>- additionally filter to display a single report</p></li>
-        <li><p>- save filtered reports as PDF file(s)</p></li>
-        <li><p>- email filtered reports with PDF file attachment(s)</p></li>
-      </ul>
+      <p>This prototype converts images to base64 strings. Options are included to convert AWS S3-hosted images, uploaded images and image URLs.</p>
+      <p class="padded">For S3-hosted images and image URLs, images are cached locally via AJAX requests for processing and then removed from the swap directory following conversion.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt" span="2">
+          <col class="grey_med">
+          <col class="grey_lt">
+        </colgroup>
+        <tr>
+          <th colspan="2" class="background_color">Ruby</th>
+          <th class="background_color">JavaScript</th>
+          <th class="background_color">JS Libraries</th>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="https://github.com/jverbosky/portfolio/blob/master/lib/1_drop_and_create_table_reports.rb" target="_blank">1_drop_and_create_table_reports.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/htmlToPdf.js" target="_blank">htmlToPdf.js</a></td>
+          <td><a href="https://github.com/MrRio/jsPDF" target="_blank">jsPDF</a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="https://github.com/jverbosky/portfolio/blob/master/lib/2_add_data_tables_reports.rb" target="_blank">2_add_data_table_reports.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/showAll.js" target="_blank">showAll.js</a></td>
+          <td><a href="https://github.com/simonbengtsson/jsPDF-AutoTable" target="_blank">jsPDF-AutoTable</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/db_query.rb" target="_blank">db_query.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/s3_bucket.rb" target="_blank">s3_bucket.rb</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/mail_pdf.rb" target="_blank">mail_pdf.rb</a></td>
+        </tr>        
+      </table>
     </div>
 
     <div class="divider"></div>
 
-    <div class="container10">
+    <div class="centered">
 
-<!--       <div class="row">
-        <div class="col-lg-12 text_center">
-          <h5 class= "headline_margin">All Audits</h5>
-        </div>
-      </div> -->
-
-      <div class="form-group">
-
-        <div class="centered">
-
-          <label>Filters:</label>
-          <select class="drop_down" id="order_filter" name="order_filter">
-            <option value="All Orders" selected>All Orders</option>
-            <!-- corders populated via populateOrders() -->         
-          </select>
-          <select class="drop_down" id="location_filter" name="location_filter">
-            <option value="All Locations" selected>All Locations</option>
-            <!-- locations populated via populateLocations() -->
-          </select>
-          <select class="drop_down" id="photos_filter" name="photos_filter">
-            <option value="All Photos" selected>All Photos</option>
-            <option value="Multiple Photos">Multiple Photos</option>
-            <option value="Single Photo">Single Photo</option>
-            <option value="No Photos">No Photos</option>
-          </select>
-          <select class="drop_down div_hide" id="species_filter" name="species_filter">
-            <option value="All Species" selected>All Species</option>
-            <!-- species populated via populateSpecies() -->
-          </select>
-        </div>
-
-        <div class="centered padded">
-          <button class="nonEditorButton" onclick="applyReportFilters()">Apply Filters</button>
-          <button class="nonEditorButton" onclick="resetReportFilters()">Reset Filters</button>
-          <button id="createPdf" class="nonEditorButton" onclick="evalPdfOutput('file')">Create PDF</button>
-          <button id="emailPdf" class="nonEditorButton" onclick="showEmailAddress()">Email PDF</button>
-        </div>
-
-      </div>
-
-      <div id="pdf_email_target" class="centered padded div_hide">
-        <form id="pdf_email_form">
-          <label>Email Address:</label>
-          <input id="pdf_email_address" name=id="pdf_email_address" placeholder="Enter email address..." type="email" required>
-          <button id="pdf_email_submit" class="nonEditorButton">Submit</button>
-          <button id="pdf_email_cancel" class="nonEditorButton" type="button" onclick="hideEmailAddress()">Cancel</button>
-        </form>
-      </div>
-
-      <div id="species_ajax_result">
-        <p hidden>Photo cache results posted here</p>
-      </div>
-
-      <div class="div_hide" id="validated_addresses">
-        <%= validated_addresses %>
-      </div>
-
-      <div class="text_center div_hide" id="no_matching_records">
-        <div class="status_message">No records match the filter set.</div>
-      </div>
-
-      <div class="text_center div_hide" id="invalid_pdf">
-        <div class="status_message">There are currently no records displayed.<br> Please adjust your filters and try again.</div>
-      </div>
-
-      <div class="text_center div_hide" id="pdf_in_progress">
-        <div class="status_message" id="pdf_processing"></div>
-      </div>
-
-      <div class="text_center div_hide" id="invalid_email_address">
-        <div class="status_message">Sorry, that email address has not been validated for this prototype!</div>
-      </div>
-
-      <div class="text_center div_hide" id="pdf_emailed">
-        <div class="status_message">PDF(s) sent - please check your email!</div>
-      </div>
-
-      <% order_list = [] %>
-      <% location_list = [] %>
-
-      <% species_counter = 1 %>
-
-      <div id="species_list">
-      <% all_records.each do |record| %>
-
-        <% order_list.push(record[0]['s_order']) %>
-
-        <% sighting_counter = 1 %>
-
-        <button class="accordion_species" id="acc_species_<%=species_counter%>" name="<%=record[0]['s_order']%>">
-          <table>
-            <tr>
-              <td class="accordion_td"><h3><%=record[0]['common_name']%></h3></td>
-              <td class="accordion_h4_offset"><h4><%=record[0]['scientific_name']%></h4></td>
-            </tr>
-          </table>
-        </button>
-
-        <div class="panel" id="panel_species_<%=species_counter%>">
-
-          <!-- species -->
-
-          <table class="table_species">
-            <thead>
-              <tr>
-                <th>Common Name</th>
-                <th>Scientific Name</th>
-                <th>Kingdom</th>
-                <th>Phylum</th>
-                <th>Class</th>
-                <th>Order</th>
-                <th>Family</th>
-                <th>Subfamily</th>
-                <th>Genus</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="tr_species">
-                <td id="species_cname_<%=species_counter%>"><%=record[0]['common_name']%></td>
-                <td><%=record[0]['scientific_name']%></td>
-                <td><%=record[0]['s_kingdom']%></td>
-                <td><%=record[0]['s_phylum']%></td>
-                <td><%=record[0]['s_class']%></td>
-                <td id="species_order_<%=species_counter%>"><%=record[0]['s_order']%></td>
-                <td><%=record[0]['s_family']%></td>
-                <td><%=record[0]['s_subfamily']%></td>
-                <td><%=record[0]['s_genus']%></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table class="table_species">
-            <thead>
-              <tr>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="tr_species">
-                <td><%=record[0]['description']%></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- sightings -->
-
-          <% if record.length > 1 %>
-
-            <% (record.length - 1).times do %>
-
-              <% location_list.push(record[sighting_counter]['location']) %>
-
-              <button class="accordion_sighting" id="acc_sighting_<%=species_counter%>_<%=sighting_counter%>">
-
-                <!-- button text -->
-                <table>
-                  <tr>
-                    <td class="accordion_td accordion_h4_offset"><h4><%=record[sighting_counter]['location']%></h4></td>
-                    <td class="accordion_td accordion_h4_offset"><h4><%=record[sighting_counter]['date']%></h4></td>
-                  </tr>
-                </table>
-
-              </button>
-
-              <div class="panel">
-
-                <table class="table_species">
-                  <thead>
-                    <tr>
-                      <th>Location</th>
-                      <th>Habitat</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="tr_species">
-                      <td><%=record[sighting_counter]['location']%></td>
-                      <td><%=record[sighting_counter]['habitat']%></td>
-                      <td><%=record[sighting_counter]['date']%></td>
-                      <td><%=record[sighting_counter]['time']%></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table class="table_species">
-                  <thead>
-                    <tr>
-                      <th>Notes</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="tr_species">
-                      <td><%=record[sighting_counter]['notes'] %></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <table class="img-table center-block">
-                  <tr id="show_all_img_row" class="img-row">
-                    <% record[sighting_counter]['photos'].each do |photo| %>
-                      <td><img src=<%=photo%> class="valign_img"></td>
-                    <% end %>
-                  </tr>
-                </table>
-
-                <% sighting_counter += 1 %>
-              </div>
-
-            <% end %>
-          <% end %>
-          </div>
-        <% species_counter += 1 %>
-      <% end %>
-      </div>
-
-      <div class="div_hide" id="order_list"><%= order_list %></div>
-      <div class="div_hide" id="location_list"><%= location_list %></div>
-
+      <label>Filters:</label>
+      <select class="drop_down" id="order_filter" name="order_filter">
+        <option value="All Orders" selected>All Orders</option>
+        <!-- corders populated via populateOrders() -->         
+      </select>
+      <select class="drop_down" id="location_filter" name="location_filter">
+        <option value="All Locations" selected>All Locations</option>
+        <!-- locations populated via populateLocations() -->
+      </select>
+      <select class="drop_down" id="photos_filter" name="photos_filter">
+        <option value="All Photos" selected>All Photos</option>
+        <option value="Multiple Photos">Multiple Photos</option>
+        <option value="Single Photo">Single Photo</option>
+        <option value="No Photos">No Photos</option>
+      </select>
+      <select class="drop_down div_hide" id="species_filter" name="species_filter">
+        <option value="All Species" selected>All Species</option>
+        <!-- species populated via populateSpecies() -->
+      </select>
     </div>
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="applyReportFilters()">Apply Filters</button>
+      <button class="nonEditorButton" onclick="resetReportFilters()">Reset Filters</button>
+      <button id="createPdf" class="nonEditorButton" onclick="evalPdfOutput('file')">Create PDF</button>
+      <button id="emailPdf" class="nonEditorButton" onclick="showEmailAddress()">Email PDF</button>
+    </div>
+
+    <div id="pdf_email_target" class="centered padded div_hide">
+      <form id="pdf_email_form">
+        <label>Email Address:</label>
+        <input id="pdf_email_address" name=id="pdf_email_address" placeholder="Enter email address..." type="email" required>
+        <button id="pdf_email_submit" class="nonEditorButton">Submit</button>
+        <button id="pdf_email_cancel" class="nonEditorButton" type="button" onclick="hideEmailAddress()">Cancel</button>
+      </form>
+    </div>
+
+    <div id="species_ajax_result">
+      <p hidden>Photo cache results posted here</p>
+    </div>
+
+    <div class="div_hide" id="validated_addresses">
+      <%= validated_addresses %>
+    </div>
+
+    <div class="text_center div_hide" id="no_matching_records">
+      <div class="status_message">No records match the filter set.</div>
+    </div>
+
+    <div class="text_center div_hide" id="invalid_pdf">
+      <div class="status_message">There are currently no records displayed.<br> Please adjust your filters and try again.</div>
+    </div>
+
+    <div class="text_center div_hide" id="pdf_in_progress">
+      <div class="status_message" id="pdf_processing"></div>
+    </div>
+
+    <div class="text_center div_hide" id="invalid_email_address">
+      <div class="status_message">Sorry, that email address has not been validated for this prototype!</div>
+    </div>
+
+    <div class="text_center div_hide" id="pdf_emailed">
+      <div class="status_message">PDF(s) sent - please check your email!</div>
+    </div>
+
+    <% order_list = [] %>
+    <% location_list = [] %>
+
+    <% species_counter = 1 %>
+
+    <div id="species_list">
+    <% all_records.each do |record| %>
+
+      <% order_list.push(record[0]['s_order']) %>
+
+      <% sighting_counter = 1 %>
+
+      <button class="accordion_species" id="acc_species_<%=species_counter%>" name="<%=record[0]['s_order']%>">
+        <table>
+          <tr>
+            <td class="accordion_td"><h3><%=record[0]['common_name']%></h3></td>
+            <td class="accordion_h4_offset"><h4><%=record[0]['scientific_name']%></h4></td>
+          </tr>
+        </table>
+      </button>
+
+      <div class="panel" id="panel_species_<%=species_counter%>">
+
+        <!-- species -->
+
+        <table class="table_species">
+          <thead>
+            <tr>
+              <th>Common Name</th>
+              <th>Scientific Name</th>
+              <th>Kingdom</th>
+              <th>Phylum</th>
+              <th>Class</th>
+              <th>Order</th>
+              <th>Family</th>
+              <th>Subfamily</th>
+              <th>Genus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tr_species">
+              <td id="species_cname_<%=species_counter%>"><%=record[0]['common_name']%></td>
+              <td><%=record[0]['scientific_name']%></td>
+              <td><%=record[0]['s_kingdom']%></td>
+              <td><%=record[0]['s_phylum']%></td>
+              <td><%=record[0]['s_class']%></td>
+              <td id="species_order_<%=species_counter%>"><%=record[0]['s_order']%></td>
+              <td><%=record[0]['s_family']%></td>
+              <td><%=record[0]['s_subfamily']%></td>
+              <td><%=record[0]['s_genus']%></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table_species">
+          <thead>
+            <tr>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tr_species">
+              <td><%=record[0]['description']%></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- sightings -->
+
+        <% if record.length > 1 %>
+
+          <% (record.length - 1).times do %>
+
+            <% location_list.push(record[sighting_counter]['location']) %>
+
+            <button class="accordion_sighting" id="acc_sighting_<%=species_counter%>_<%=sighting_counter%>">
+
+              <!-- button text -->
+              <table>
+                <tr>
+                  <td class="accordion_td accordion_h4_offset"><h4><%=record[sighting_counter]['location']%></h4></td>
+                  <td class="accordion_td accordion_h4_offset"><h4><%=record[sighting_counter]['date']%></h4></td>
+                </tr>
+              </table>
+
+            </button>
+
+            <div class="panel">
+
+              <table class="table_species">
+                <thead>
+                  <tr>
+                    <th>Location</th>
+                    <th>Habitat</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="tr_species">
+                    <td><%=record[sighting_counter]['location']%></td>
+                    <td><%=record[sighting_counter]['habitat']%></td>
+                    <td><%=record[sighting_counter]['date']%></td>
+                    <td><%=record[sighting_counter]['time']%></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table_species">
+                <thead>
+                  <tr>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="tr_species">
+                    <td><%=record[sighting_counter]['notes'] %></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table class="img-table center-block">
+                <tr id="show_all_img_row" class="img-row">
+                  <% record[sighting_counter]['photos'].each do |photo| %>
+                    <td><img src=<%=photo%> class="valign_img"></td>
+                  <% end %>
+                </tr>
+              </table>
+
+              <% sighting_counter += 1 %>
+            </div>
+
+          <% end %>
+        <% end %>
+        </div>
+      <% species_counter += 1 %>
+    <% end %>
+    </div>
+
+    <div class="div_hide" id="order_list"><%= order_list %></div>
+    <div class="div_hide" id="location_list"><%= location_list %></div>
 
   </div>
 
@@ -814,7 +951,7 @@
 
 </div>
 
-<!-- jQuery must be loaded before jsonPrototype scripts -->
+<!-- jQuery must be loaded before local scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- other external scripts -->
