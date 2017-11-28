@@ -7,12 +7,6 @@ function getImage(searchTerm) {
         data: { 
             "tags": searchTerm,
             "format": "json"
-        },
-        success: function() {
-          console.log("Image request successful");
-        },
-        complete: function() {
-          // panelResize();
         }
     });
 }
@@ -21,12 +15,18 @@ function getImage(searchTerm) {
 // Get random image from JSON set of 20 images
 function jsonFlickrFeed(json) {
 
-    var randIndex = Math.floor(Math.random() * 20);
-    $("#apiImage img").attr("src", json.items[randIndex].media.m);
+    jQuery.noConflict();  // required for imagesLoaded() to work
 
-    setTimeout(function(){
+    var randIndex = Math.floor(Math.random() * 20);
+    var randImage = json.items[randIndex].media.m;
+
+    $("#apiImage img").attr("src", randImage);
+
+    $("#apiImage").imagesLoaded().done( function(instance) {
+
+        $("#api_results").removeClass("div_hide");
         panelResize("acc_api");
-    }, 500);
+    });
 };
 
 
@@ -36,16 +36,10 @@ function getArticleList(searchTerm) {
     var url = "https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=" + searchTerm + "&limit=1";
     fetch(url)
     .then(function(resp) {
-        // console.log("response: ", resp);
+
         return resp.json();
     })
     .then(function(data) {
-
-        // console.log("data: ", data);
-        // console.log("searchTerm: ", data[0]);
-        // console.log("title: ", data[1][0]);
-        // console.log("description: ", data[2][0]);
-        // console.log("articleUrl: ", data[3][0]);
 
         $("#apiTitle").text(data[1][0]);
         $("#apiDescription").text(data[2][0]);

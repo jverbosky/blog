@@ -1,7 +1,7 @@
 <div class="center-block">
 
   <div class="center-block page_header padded">
-    <p class="padded">This page will let you play with some of the different prototypes that I built during my six-month full stack apprenticeship with <a href="https://www.minedminds.org" target="_blank">Mined Minds</a>.</p>
+    <p class="padded">This page will let you play with some of the different prototypes that I built during my six-month full stack apprenticeship with <a href="http://www.minedminds.org/" target="_blank">Mined Minds</a>.</p>
     <p class="padded">Some of the prototypes (JSON Updater, Image Uploader and Report Filter with PDF Output) are based upon code that I developed for projects during my apprenticeship, while others were simply fun experients.</p>
     <p class="padded">Each prototype includes a readme section with details on functionality and links to relevant files on GitHub.</p>
     <p class="padded">For those interested, the GitHub repo for this entire site can be accessed <a href="https://github.com/jverbosky/portfolio" target="_blank">here</a>.</p>
@@ -404,7 +404,7 @@
     </form>
 
     <div class="text_center">
-      <button class="nonEditorButton btnMargin btnHide" id="btn_more_photos">Upload More Photos</button>
+      <button class="nonEditorButton btnMargin btnHide" id="btn_more_photos">Refresh</button>
     </div>
 
     <div class="divider"></div>
@@ -486,7 +486,7 @@
 
     <!-- need to hide this div and show on Submit button click: -->
 
-    <div class="centered">
+    <div id="api_results" class="centered div_hide">
       <h3 id="apiTitle" class="padded"></h3>
       <div id="apiImage">
         <img class="padded" src="">
@@ -955,6 +955,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- other external scripts -->
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>

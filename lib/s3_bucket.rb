@@ -7,6 +7,25 @@
 # load 'local_env.rb' if File.exist?('local_env.rb')
 
 # Aws.use_bundled_cert!  # resolves "certificate verify failed"
+
+# # Method to open a connection to the PostgreSQL database
+# def connection()
+
+#   begin
+#     db_params = {
+#           host: ENV['dbhost'],
+#           port:ENV['dbport'],
+#           dbname:ENV['dbname'],
+#           user:ENV['dbuser'],
+#           password:ENV['dbpass']
+#         }
+#     db = PG::Connection.new(db_params)
+#   rescue PG::Error => e
+#     puts 'Exception occurred'
+#     puts e.message
+#   end
+
+# end
 # ------------------------------------------------------
 
 
@@ -97,20 +116,18 @@ def delete_s3_file(file)
 
   bucket = "prototype-jv"
   s3_file_path = "imageuploader/#{file}"
-  
-  connect_to_s3()
-  s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
-  obj = s3.bucket(bucket).object(s3_file_path)
+  s3 = connect_to_s3()
 
-  obj.delete(file, s3_file_path)
+  s3.delete_object({
+    bucket: bucket,
+    key: s3_file_path
+  })
 
 end
 
 
 # Method to delete record for specified image from PostgreSQL DB
 def delete_db_record(db, photo)
-
-  # db.exec("delete from imageuploader where photo = '#{photo}'")
 
   begin
 
@@ -123,10 +140,6 @@ def delete_db_record(db, photo)
 
     puts 'Exception occurred'
     puts e.message
-
-  ensure
-
-    db.close if db
 
   end
 

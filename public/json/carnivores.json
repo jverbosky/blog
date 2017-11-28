@@ -118,20 +118,6 @@
           }
         }
       }
-    },
-    "Dragon": {
-      "Habitats": {
-        "Lair": {
-          "Menus": {
-            "Breakfast": {
-              "Options": [
-                "Princess",
-                "Knight"
-              ]
-            }
-          }
-        }
-      }
     }
   }
 }
