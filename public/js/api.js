@@ -34,6 +34,7 @@ function jsonFlickrFeed(json) {
 function getArticleList(searchTerm) {
 
     var url = "https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=" + searchTerm + "&limit=1";
+    
     fetch(url)
     .then(function(resp) {
 
