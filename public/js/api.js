@@ -24,8 +24,7 @@ function jsonFlickrFeed(json) {
 
     $("#apiImage").imagesLoaded().done( function(instance) {
 
-        $("#api_results").removeClass("div_hide");
-        panelResize("acc_api");
+        checkWikiContent();
     });
 };
 
@@ -49,6 +48,26 @@ function getArticleList(searchTerm) {
         document.getElementById("apiDivider").classList.remove("div_hide");
     })
 };
+
+
+// Verify Wikipedia content is loaded before resizing panel
+function checkWikiContent() {
+
+    var wikiDivLength = document.getElementById("apiDescription").childNodes.length; // used to determine if content is loaded
+
+    if (wikiDivLength > 0) {
+
+        $("#api_results").removeClass("div_hide");
+        panelResize("acc_api");
+
+    } else { // if the button hasn't loaded yet, call checkWikiContent() again
+
+        setTimeout(function() {
+
+            checkWikiContent();
+        }, 100);
+    }
+}
 
 
 $("#submitSearchTerm").on("click", function() {
