@@ -61,8 +61,3 @@ $("#submitSearchTerm").on("click", function() {
     getArticleList(searchTerm);
     getImage(searchTerm);
 });
-
-// $("searchFor").val()
-// searchTerm = "pug";
-// getImages(searchTerm);
-// getArticleList(searchTerm);
