@@ -141,77 +141,6 @@ input {
   border-radius: 2px;
 }
 
-/* media queries */
-
-/*@media screen and (max-width : 319px) {
-  .navbar .brand {
-    float: none;
-    margin-left: 10px;
-    text-align: left
-  }
-    
-  .navbar .navigation {
-    float: none;
-    display: block;
-    height: 0em;
-    overflow: hidden;
-    width: 100%;
-    border-top: 1px solid #CCC;
-    border-bottom: 1px solid #CCC
-  }
-    
-  .navbar .navigation li {
-    display: block;
-    width: 100%;
-    height: 60px;
-    background: #fff;
-    text-align: left
-  }
-    
-  .navbar .navigation li a {
-    text-align: left;
-    padding-left: 5px;
-  }
-  .navbar .resbtn {
-    display: block;
-  }
-}
-
-@media screen and (max-width : 916px) {
-  .navbar .brand {
-    float: none;
-    margin-left: 10px;
-    text-align: left
-  }
-    
-  .navbar .navigation {
-    float: none;
-    display: block;
-    height: 0em;
-    overflow: hidden;
-    width: 100%;
-    border-top: 1px solid #CCC;
-    border-bottom: 1px solid #CCC
-  }
-    
-  .navbar .navigation li {
-    display: block;
-    width: 100%;
-    height: 60px;
-    background: #fff;
-    text-align: left
-  }
-    
-  .navbar .navigation li a {
-    text-align: left;
-    padding-left: 5px;
-  }
-
-  .navbar .resbtn {
-    display: block;
-  }
-}*/
-
 /* portfolio page */
 
 .imageSize {
@@ -568,7 +497,7 @@ div.panel {
 
 .readme {
   display: none;
-  width: 700px;
+  width: 710px;
 }
 
 .table_small {
@@ -1072,6 +1001,80 @@ button.accordion_sighting.active, button.accordion_sighting:hover {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+
+/* prototype page - AngularJS content report  */
+
+.ang-body {
+  font-family: Arial, sans-serif;
+  margin: 1em 2em;
+}
+
+.ang_table {
+  border-collapse: collapse;
+  margin-top: 0.5em;
+}
+
+#bar_chart td {
+  padding: 0.25em 0; /* padding between rows */
+}
+
+.grey {
+  color: #666666;
+}
+
+.blue {
+  color: #0B62A4;
+}
+
+.green {
+  color: #18C918;
+}
+
+.ang_top {
+  width: 760px;
+  margin: 0 auto;
+}
+
+.col_top {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.col_total {
+  margin-right: 5vw;
+}
+
+.table_total_col th, td {
+  padding: 0 0.5vw 0 0;
+}
+
+.col_country {
+  width: 15vw;
+  font: 16px Verdana, Geneva, sans-serif;
+}
+
+.col_channel {
+  background-color: #0B62A4;
+}
+
+.col_device {
+  background-color: #18C918;
+}
+
+.chart_container {
+  width: 80vw;
+}
+
+.chart {
+  width: 0px;  /* initial bar width */
+  transition: all .3s ease;
+  display: inline-block;
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 0.25em 0;
 }
 
 /* media queries */

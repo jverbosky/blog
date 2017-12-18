@@ -1,0 +1,29 @@
+<div>
+  <h1 class="grey">Content Report</h1>
+</div>
+
+<div class="ang_top padded">
+
+  <div class="col_top col_total">  <!-- column for total counts -->
+    <total-counts></total-counts>
+  </div>
+
+  <div class="col_top">  <!-- column for single-select filter -->
+    <select 
+      ng-model="targetCountry"
+      ng-change="change()"
+      ng-options="country as country for country in countries track by country">
+      <option value="" selected>All</option>
+    </select>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="chart_container center-block">
+
+  <!-- conditionally display countries based on filter selection -->
+  <bar-graph></bar-graph>
+
+</div>

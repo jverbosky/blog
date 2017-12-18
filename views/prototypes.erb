@@ -948,11 +948,72 @@
 
   </div>
 
-  <div class="divider"></div>
+  <!-- NEXT PROTOTYPE -->
+
+  <button class="accordion" id="acc_angjs_rep"><h1>AngularJS Content Report</h1></button>
+  <div class="panel">
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="showReadme('angjsRepReadme')">Readme</button>
+    </div>
+
+    <div class="center-block readme" id="angjsRepReadme">
+      <p>This prototype demonstrates several AngularJS concepts, including data binding, custom directives, modules, components, controllers and $http service injection.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt" span="2">
+          <col class="grey_med">
+          <col class="grey_lt">
+        </colgroup>
+        <tr>
+          <th colspan="2" class="background_color">JavaScript</th>
+          <th class="background_color">HTML</th>
+          <th class="background_color">JS Libraries</th>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/1_drop_and_create_table_reports.rb" target="_blank">bar-graph.controller.js</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/htmlToPdf.js" target="_blank">report.component.js</a></td>
+          <td><a href="https://github.com/MrRio/jsPDF" target="_blank">bar-graph.template.html</a></td>
+          <td><a href="https://github.com/MrRio/jsPDF" target="_blank">angular.js</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/2_add_data_tables_reports.rb" target="_blank">bar-graph.directive.js</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/showAll.js" target="_blank">report.controller.js</a></td>
+          <td><a href="https://github.com/simonbengtsson/jsPDF-AutoTable" target="_blank">report.component.html</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/db_query.rb" target="_blank">json-filter.controller.js</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/s3_bucket.rb" target="_blank">report.module.js</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/s3_bucket.rb" target="_blank">totals.template.html</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/mail_pdf.rb" target="_blank">json.module.js</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/mail_pdf.rb" target="_blank">totals.controller.js</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/mail_pdf.rb" target="_blank">json.service.js</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/mail_pdf.rb" target="_blank">totals.directive.js</a></td>
+        </tr> 
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <div ng-app="contentReportApp">
+      <report></report>
+    </div>
+
+    <div class="divider"></div>
+
+  </div>
 
   <!-- NEXT PROTOTYPE -->
 
 </div>
+
+<!-- AngularJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
 
 <!-- jQuery must be loaded before local scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -971,4 +1032,16 @@
 <script src="js/matrix.js"></script>
 <script src="js/imageConverter.js"></script>
 <script src="js/showAll.js"></script>
-<script src="/js/htmlToPdf.js"></script>
+<script src="js/htmlToPdf.js"></script>
+
+<!-- AngularJS Content Report app scripts in /public/angularjs -->
+<script src="angularjs/rep_app/json/json.module.js"></script>
+<script src="angularjs/rep_app/json/json.service.js"></script>
+<script src="angularjs/rep_app/report/report.module.js"></script>
+<script src="angularjs/rep_app/report/report.controller.js"></script>
+<script src="angularjs/rep_app/report/report.component.js"></script>
+<script src="angularjs/rep_app/json/json-filter.controller.js"></script>
+<script src="angularjs/rep_app/totals/totals.directive.js"></script>
+<script src="angularjs/rep_app/totals/totals.controller.js"></script>
+<script src="angularjs/rep_app/bar-graph/bar-graph.directive.js"></script>
+<script src="angularjs/rep_app/bar-graph/bar-graph.controller.js"></script>
