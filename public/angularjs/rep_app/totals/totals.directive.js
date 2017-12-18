@@ -9,6 +9,6 @@ function totalCounts() {
     scope: true,
     restrict: 'E',
     templateUrl: 'angularjs/rep_app/totals/totals.template.html',
-    controller: CalculateTotals
+    controller: TotalsController
   }
 }

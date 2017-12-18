@@ -1,9 +1,12 @@
 'use strict';
 
-// Define the `CalculateTotals` controller that handle logic for calculating total counts
-contentReportApp.controller('CalculateTotals', CalculateTotals);
+// Define the `TotalsController` controller that handle logic for calculating total counts
+contentReportApp.controller(
+  'TotalsController',
+  ['$scope', TotalsController]  // dependencies in array for minification
+);
 
-function CalculateTotals($scope) {
+function TotalsController($scope) {
 
   init();
 

@@ -1,9 +1,12 @@
 'use strict';
 
-// Define the `FilterJsonData` controller that handles logic for JSON data processing
-contentReportApp.controller('FilterJsonData', FilterJsonData);
+// Define the `JsonFilterController` controller that handles logic for JSON data processing
+contentReportApp.controller(
+  'JsonFilterController',
+  ['$scope', JsonFilterController]  // dependencies in array for minification 
+);
 
-function FilterJsonData($scope) {
+function JsonFilterController($scope) {
 
   init();
 

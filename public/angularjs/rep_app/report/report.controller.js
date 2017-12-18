@@ -1,9 +1,12 @@
 'use strict';
 
-// Define the `PopulateReport` controller that handles logic for updating the page
-contentReportApp.controller('PopulateReport', PopulateReport);
+// Define the `ReportController` controller that handles logic for updating the page
+contentReportApp.controller(
+  'ReportController', 
+  ['$scope', 'jsonService', ReportController]  // dependencies in array for minification
+);
 
-function PopulateReport($scope, jsonService) {
+function ReportController($scope, jsonService) {
 
   init();
 
@@ -16,30 +19,21 @@ function PopulateReport($scope, jsonService) {
     jsonData.then(function (response) {
       
       $scope.values = response.data;
-      FilterJsonData($scope);  // - /json/json-filter.controller.js
-      CalculateTotals($scope);  // - /totals/totals.controller.js
-      UpdateBarGraph($scope);  // - /bar-graph/bar-graph.controller.js
+      JsonFilterController($scope);  // parse & update JSON data
+      TotalsController($scope);  // calculate total counts
+      BarGraphController($scope);  // draw bar graphs
     })
   }
 
 
-  // Call helper function and controller
+  // Update filter target and make call to redraw bar graph(s)
   $scope.change = function() {
 
-    filterCountry();
-    UpdateBarGraph($scope);  // - /bar-graph/bar-graph.controller.js
-  }
-
-
-  // Create object with details for selected country for filtered listing
-  function filterCountry() {
-
-    // only run when a single country is selected
-    if ($scope.targetCountry !== null) {
-
-      $scope.countryDetails = {"country": $scope.targetCountry};
-      $scope.countryDetails["channel"] = $scope.values[$scope.targetCountry]["Channels"];
-      $scope.countryDetails["device"] = $scope.values[$scope.targetCountry]["Devices"];
+    // reset targetCountry to display all countries when "All" is selected
+    if ($scope.targetCountry === null) {
+      $scope.targetCountry = undefined;
     }
+
+    BarGraphController($scope);  // redraw bar graphs
   }
 }

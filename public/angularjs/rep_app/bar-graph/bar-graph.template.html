@@ -1,26 +1,9 @@
-<!-- conditionally display all countries if no filter selected -->
-<div ng-if="!targetCountry">
-  <table id="bar_chart" class="ang_table table_total_col">
-    <tr ng-repeat="data in flattened | orderBy:'-channel'">
-      <td class="col_country">{{ data.country }}</td>
-      <td>
-        <div class="col_channel chart">{{ data.channel }}</div><div class="col_device chart">{{ data.device }}</div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-<!-- otherwise display single country if filter selected -->
-<div ng-if="targetCountry">
-  <table id="bar_chart" class="ang_table table_total_col">
-    <tr>
-      <td class="col_country">{{ countryDetails.country }}</td>
-      <td>
-        <div class="col_channel chart">{{ countryDetails.channel }}</div>
-      </td>
-      <td>
-        <div class="col_device chart">{{ countryDetails.device }}</div>
-      </td>
-    </tr>
-  </table>
-</div>
+<!-- table for bar graph(s) -->
+<table id="bar_chart">
+  <tr ng-repeat="data in flattened | orderBy:'-channel' | filter: targetCountry">
+    <td class="col_country">{{ data.country }}</td>
+    <td>
+      <div class="col_channel chart">{{ data.channel }}</div><div class="col_device chart">{{ data.device }}</div>
+    </td>
+  </tr>
+</table>

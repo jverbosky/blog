@@ -1,9 +1,12 @@
 'use strict';
 
-// Define the `UpdateBarGraph` controller that handles logic for bar graph population and updates
-contentReportApp.controller('UpdateBarGraph', UpdateBarGraph);
+// Define the `BarGraphController` controller that handles logic for bar graph population and updates
+contentReportApp.controller(
+  'BarGraphController',
+  ['$scope', BarGraphController]  // dependencies in array for minification
+);
 
-function UpdateBarGraph($scope) {
+function BarGraphController($scope) {
 
   init();
 

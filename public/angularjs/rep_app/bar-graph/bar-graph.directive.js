@@ -9,6 +9,6 @@ function barGraph() {
     scope: true,
     restrict: 'E',
     templateUrl: 'angularjs/rep_app/bar-graph/bar-graph.template.html',
-    controller: UpdateBarGraph
+    controller: BarGraphController
   }
 }
