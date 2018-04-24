@@ -1,8 +1,6 @@
 # --------------- use for inline testing ---------------
 # require 'base64'
 # require 'mail'
-# require 'pg'
-# require_relative 's3_bucket.rb'
 
 # load './local_env.rb' if File.exist?('./local_env.rb')
 # ------------------------------------------------------

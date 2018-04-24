@@ -1,0 +1,66 @@
+Bold:
+<i class="fa fa-bold"></i>
+
+Italic:
+<i class="fa fa-italic"></i>
+
+Underline:
+<i class="fa fa-underline"></i>
+
+Strikethrough:
+<i class="fa fa-strikethrough"></i>
+
+Superscript:
+<i class="fa fa-superscript"></i>
+
+Subscript:
+<i class="fa fa-subscript"></i>
+
+
+Create Link:
+<i class="fa fa-link"></i>
+
+Unlink:
+<i class="fa fa-chain-broken"></i>
+
+
+Ordered List:
+<i class="fa fa-list-ol"></i>
+
+Unordered List:
+<i class="fa fa-list-ul"></i>
+
+
+
+
+Indent:
+<i class="fa fa-indent"></i>
+
+Outdent:
+<i class="fa fa-outdent"></i>
+
+
+
+Justify Center:
+<i class="fa fa-align-center"></i>
+
+Justify Full:
+<i class="fa fa-align-justify"></i>
+
+Justify Left:
+<i class="fa fa-align-left"></i>
+
+Justify Right:
+<i class="fa fa-align-right"></i>
+
+
+
+Undo:
+<i class="fa fa-undo"></i>
+
+Redo:
+<i class="fa fa-repeat"></i>
+
+
+
+

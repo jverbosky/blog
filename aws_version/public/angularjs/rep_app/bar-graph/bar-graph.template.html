@@ -1,0 +1,9 @@
+<!-- table for bar graph(s) -->
+<table id="bar_chart">
+  <tr ng-repeat="data in flattened | orderBy:'-channel' | filter: targetCountry">
+    <td class="col_country">{{ data.country }}</td>
+    <td>
+      <div class="col_channel chart">{{ data.channel }}</div><div class="col_device chart">{{ data.device }}</div>
+    </td>
+  </tr>
+</table>

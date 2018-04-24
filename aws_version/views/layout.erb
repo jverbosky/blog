@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>John C. Verbosky</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="/images/favicon/favicon.ico?" type="image/x-icon">
+
+  </head>
+  <body>
+
+    <header>
+      <!-- Container Of NavBar -->
+      <div class="navbar">
+        <!-- Brand Logo Box -->
+        <div class="brand">John C. Verbosky</div>
+        <!-- Navigation -->
+        <ul class="navigation">
+            <li><a href="/">Portfolio</a></li>
+            <li><a href="/prototypes">Prototypes</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+        <!-- Responsive Buttons -->
+        <div class="resbtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+      </div>
+    </header>
+
+    <section>
+
+      <div class="padded">
+        <%= yield %>  <!-- load unique content from other .erb files -->
+      </div>
+
+      <div class="centered">
+        <p>Copyright © 2017 John C. Verbosky. All rights reserved.</p>
+      </div>
+
+    </section>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/navbar.js"></script>
+    <script type="text/javascript" src="js/crossfade.js"></script>
+
+  </body>
+</html>

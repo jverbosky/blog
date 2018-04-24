@@ -1,16 +1,19 @@
 require 'aws-sdk'
 require 'base64'
 require 'deep_merge'
+require 'digest/sha1'
 require 'fileutils'
 require 'hashable'
 require 'json'
 require 'mail'
+require 'mysql2'
+require 'net/http'
 require 'open-uri'
-require 'pg'
 require 'sinatra'
 require 'singleton'
 
 require_relative './lib/ajax_interface.rb'
+require_relative './lib/b2_bucket.rb'
 require_relative './lib/blog_handler.rb'
 require_relative './lib/db_query.rb'
 require_relative './lib/json_address.rb'
@@ -24,9 +27,7 @@ require_relative './lib/mail_pdf.rb'
 require_relative './lib/photo_handler.rb'
 require_relative './lib/photo_queue.rb'
 require_relative './lib/photo_upload.rb'
-require_relative './lib/s3_bucket.rb'
 
-Aws.use_bundled_cert!  # resolves "certificate verify failed" error
 
 load './lib/local_env.rb' if File.exist?('./lib/local_env.rb')
 
@@ -58,24 +59,27 @@ Mail.defaults do
 end
 
 
-# Method to open a connection to the PostgreSQL database
+# Method to open a connection to the GearHost MySQL database
 def connection()
 
   begin
     db_params = {
-          host: ENV['dbhost'],
-          port:ENV['dbport'],
-          dbname:ENV['dbname'],
-          user:ENV['dbuser'],
-          password:ENV['dbpass']
-        }
-    db = PG::Connection.new(db_params)
-  rescue PG::Error => e
+        host: ENV['host'],  # AWS link
+        port: ENV['port'],  # AWS port, always 5432
+        username: ENV['username'],
+        password: ENV['password'],
+        database: ENV['database']
+    }
+
+    client = Mysql2::Client.new(db_params)
+
+  rescue Mysql2::Error => e
     puts 'Exception occurred'
     puts e.message
   end
 
 end
+
 
 
 # Route to load main page
@@ -150,8 +154,8 @@ get '/prototypes' do
   # animals table items
   animals_data = data["Animals"]
 
-  # S3 bucket images
-  images = query_s3(connection)
+  # B2 bucket images
+  images = query_b2(connection)
   # images = []  # workaround for Internal Server Error on Heroku
 
   # species and sightings tables
@@ -200,9 +204,9 @@ post '/prototypes' do
   data = file.json
   animals_data = data["Animals"]
 
-  # S3 bucket images
+  # B2 bucket images
   # TODO - sessions weren't working, so calling again here
-  images = query_s3(connection)
+  images = query_b2(connection)
   # images = []  # workaround for Internal Server Error on Heroku
 
   # species and sightings tables
@@ -219,6 +223,7 @@ end
 
 
 # Route to receive/queue data from JavaScript via AJAX request
+# - Image Uploader prototype - called by imageUploader.js
 post '/queue_photos' do
 
   filename = params[:filename]
@@ -231,6 +236,7 @@ end
 
 
 # Route to pop photo data from queue for processing
+# - Image Uploader prototype - called by imageUploader.js
 post '/upload_photos' do
 
   status = params[:photoUploadStatus]
@@ -240,10 +246,12 @@ post '/upload_photos' do
 end
 
 
-# Route for deleting photos from S3 bucket and PG DB
+# Route for deleting photos from B2 bucket and MySQL DB
+# - Image Uploader prototype - called by imageUploader.js
 post '/delete_photos' do
 
   selected = params[:selected]
+
   remove_photos(connection, selected)
 
   redirect '/prototypes'
@@ -252,6 +260,7 @@ end
 
 
 # Route to receive/queue data from JavaScript via AJAX request
+# - Image Uploader and Report Filter with PDF Output prototypes - referenced in imageConverter.js and htmlToPDF.js
 post '/cache_image' do
 
   image_info = params[:image_info]
@@ -259,8 +268,8 @@ post '/cache_image' do
   sighting_count = params[:sighting_count]  # optional (splat)
 
   # download image to ./public/swap
-  if url_type == "S3"
-    download_s3_file(image_info, sighting_count)
+  if url_type == "B2"
+    download_b2_file(image_info, sighting_count)
   else
     download_image(image_info)
   end
@@ -271,6 +280,7 @@ end
 
 
 # Route to receive/queue data from JavaScript via AJAX request
+# - Image Uploader  prototype - imageConverter.js
 post '/purge_image' do
 
   image_name = params[:image_name]
@@ -283,6 +293,7 @@ end
 
 
 # Route to receive/queue data from JavaScript via AJAX request
+# - Report Filter with PDF Output prototype - referenced in htmlToPDF.js
 post '/purge_swap_dir' do
 
   cleanup_cached_images()  # delete exposure images directory from ./public/swap
@@ -294,13 +305,13 @@ end
 
 
 # Route to receive PDF data and email address from JavaScript via AJAX request
+# - Report Filter with PDF Output prototype - referenced in htmlToPDF.js
 post '/email_pdf' do
 
   pdf_data = params[:pdf_data]
   pdf_filename = params[:pdf_filename]
   email = params[:email]
 
-  # MailPdf.new(pdf_data, pdf_filename, connection, session[:user])
   MailPdf.new(pdf_data, pdf_filename, connection, email)
 
 end

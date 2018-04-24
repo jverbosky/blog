@@ -1,58 +1,67 @@
-# Example program to drop (delete) and create details and quotes tables
-
-require 'pg'
+require 'mysql2'
 load "./local_env.rb" if File.exists?("./local_env.rb")
+
 
 begin
 
-  # connect to the database
-  db_params = {
-        host: ENV['dbhost'],  # AWS link
-        port:ENV['dbport'],  # AWS port, always 5432
-        dbname:ENV['dbname'],
-        user:ENV['dbuser'],
-        password:ENV['dbpass']
-      }
-  conn = PG::Connection.new(db_params)
+    # define connection parameters
+    db_params = {
+        host: ENV['host'],
+        port: ENV['port'],
+        username: ENV['username'],
+        password: ENV['password'],
+        database: ENV['database']
+    }
 
-  # drop species_details table if it exists
-  conn.exec "drop table if exists species_details"
+    # connect to the database
+    client = Mysql2::Client.new(db_params)
 
-  # create the species_details table
-  conn.exec "create table species_details (
-             id bigserial primary key,
-             common_name varchar,
-             scientific_name varchar,
-             s_kingdom varchar,
-             s_phylum varchar,
-             s_class varchar,
-             s_order varchar,
-             s_family varchar,
-             s_subfamily varchar,
-             s_genus varchar,
-             description varchar)"
+    # drop species_details table if it exists
+    client.query("DROP TABLE IF EXISTS species_details")
+  
+    # create the species_details table
+    client.query(
+        "CREATE TABLE portfoliojv.species_details (
+            id SMALLINT NOT NULL AUTO_INCREMENT,
+            common_name varchar(50) NULL,
+            scientific_name varchar(50) NULL,
+            s_kingdom varchar(50) NULL,
+            s_phylum varchar(50) NULL,
+            s_class varchar(50) NULL,
+            s_order varchar(50) NULL,
+            s_family varchar(50) NULL,
+            s_subfamily varchar(50) NULL,
+            s_genus varchar(50) NULL,
+            description varchar(500) NULL,
+            CONSTRAINT PK_species PRIMARY KEY (id)
+        )"
+    ) 
+  
+    # drop sighting_details table if it exists
+    client.query("DROP TABLE IF EXISTS sighting_details")
 
-  # drop sighting_details table if it exists
-  conn.exec "drop table if exists sighting_details"
+    # create the sighting_details table
+    client.query(
+        "CREATE TABLE portfoliojv.sighting_details (
+            id SMALLINT NOT NULL AUTO_INCREMENT,
+            species_id int NULL,
+            location varchar(50) NULL,
+            habitat varchar(50) NULL,
+            date date NULL,
+            time time NULL,
+            notes varchar(500) NULL,
+            photos varchar(500) NULL,
+            CONSTRAINT PK_sightings PRIMARY KEY (id)
+        )"
+    ) 
 
-  # create the sighting_details table
-  conn.exec "create table sighting_details (
-             id bigserial primary key,
-             species_id int,
-             location varchar,
-             habitat varchar,
-             date date,
-             time time,
-             notes varchar,
-             photos varchar)"
-
-rescue PG::Error => e
-
-  puts 'Exception occurred'
-  puts e.message
-
-ensure
-
-  conn.close if conn
-
-end
+  rescue Mysql2::Error => e
+  
+    puts 'Exception occurred'
+    puts e.message
+  
+  ensure
+  
+    client.close if client
+  
+  end

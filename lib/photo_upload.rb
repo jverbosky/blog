@@ -1,13 +1,38 @@
 # --------------- use for inline testing ---------------
 # require 'base64'
-# require 'pg'
-# require_relative 's3_bucket.rb'
+# require 'mysql2'
+# require 'json'
+# require 'net/http'
+# require 'digest/sha1'
+# require 'pp'
+# require 'mysql2'
+
+# require_relative 'b2_bucket.rb'
 
 # load './local_env.rb' if File.exist?('./local_env.rb')
+
+# Method to open a connection to the MySQL database
+# def connection()
+#   begin
+#     db_params = {
+#         host: ENV['host'],  # AWS link
+#         port: ENV['port'],  # AWS port, always 5432
+#         username: ENV['username'],
+#         password: ENV['password'],
+#         database: ENV['database']
+#     }
+#     client = Mysql2::Client.new(db_params)
+#   rescue Mysql2::Error => e
+#     puts 'Exception occurred'
+#     puts e.message
+#   end
+# end
+
+
 # ------------------------------------------------------
 
 
-# Class to handle photo uploads via photo_upload view
+# Class to handle photo uploads via prototypes view
 class PhotoUpload
 
 
@@ -26,23 +51,21 @@ class PhotoUpload
   # Method to readback existing photos string and update with names of uploaded files
   def photo_exists?(db, filename)
 
-    query = db.exec("select photo from imageuploader where photo = '#{filename}'")
-    query == nil ? true : false
+    statement = db.prepare("select photo from imageuploader where photo = ?")
+    results = statement.execute(filename)
+
+    results == nil ? true : false
 
   end
 
 
   # Method to update imageuploader record with photo name for photos uploaded via Image Uploader prototype
-  def update_pg(db, filename)
-
-    v_filename = filename
+  def update_mysql(db, filename)
 
     begin
-      db.prepare('q_statement',
-                   "insert into imageuploader (photo) values ($1)")  # bind parameters
-      db.exec_prepared('q_statement', [v_filename])
-      db.exec("deallocate q_statement")
-    rescue PG::Error => e
+      statement = db.prepare("insert into imageuploader (photo) values (?)")
+      statement.execute(filename)
+    rescue Mysql2::Error => e
       puts 'Exception occurred'
       puts e.message
     ensure
@@ -65,9 +88,13 @@ class PhotoUpload
   # Method to write decoded photo to swap directory
   def write_swap_file(filename, decoded_image)
 
+    create_folder()
+
     f = File.new "./public/swap/#{filename}", "wb"
     f.write(decoded_image)
     f.close if f
+
+    puts "swap file written"
 
   end
 
@@ -75,13 +102,15 @@ class PhotoUpload
   # Method to call photo processing methods
   def process_photo(db, filename, data)
 
-    # PG update-related methods
-    update_pg(db, filename) if photo_exists?(db, filename) == false
+    filepath = "imageuploader/" + filename
 
-    # S3 update-related methods
+    # MySQL update-related methods
+    update_mysql(db, filepath) if photo_exists?(db, filepath) == false
+
+    # B2 update-related methods
     decoded_image = decode_image(filename, data)
-    write_swap_file(filename, decoded_image)
-    save_file_to_s3_bucket(filename)
+    write_swap_file(filepath, decoded_image)
+    save_file_to_b2_bucket(filepath)
 
   end
 

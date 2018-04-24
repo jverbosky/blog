@@ -49,6 +49,9 @@ function postPdf(pdf, pdfFilename) {
       clearTimeout(processingMessage);  // stop the setTimeout function in pdfProcessing()
       $("#pdf_emailed").removeClass("div_hide");  // advise that email has been sent
       resizeReportPanels();
+    },
+    error: function() {
+      console.log("postPDF - an error occured posting to /email_pdf");
     }
   });
 
@@ -447,15 +450,15 @@ function createPdf(speciesButton) {
     }
 
 
-    // Cache S3 folder and file names to files array
+    // Cache B2 folder and file names to files array
     function parseSpeciesImageUrl(imgUrl) {
 
-      var root_dir = imgUrl.split('/')[3];  // extract S3 folder name from URL
-      var sub_dir = imgUrl.split('/')[4];
+      var root_dir = imgUrl.split('/')[5];  // extract B2 folder name from URL
+      var sub_dir = imgUrl.split('/')[6];
       var path = root_dir + "/" + sub_dir
-      var file = imgUrl.split('/').pop().split('?').shift();  // extract S3 image name from URL
+      var file = imgUrl.split('/').pop().split('?').shift();  // extract B2 image name from URL
       var parsedData = [path, file];
-
+    
       return parsedData;
     }
 
@@ -468,7 +471,7 @@ function createPdf(speciesButton) {
       $.ajax({
           url: "/cache_image",
           type: 'POST',
-          data: { image_info: imageInfo, sighting_count: currentSightingsCount, url_type: "S3" },
+          data: { image_info: imageInfo, sighting_count: currentSightingsCount, url_type: "B2" },
           success: function(result) {
             
             $("#species_ajax_result").html(result);

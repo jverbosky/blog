@@ -1,0 +1,27 @@
+{
+  "Animals": {
+    "Cow": {
+      "Habitats": {
+        "Meadow": {
+          "Menus": {
+            "Breakfast": {
+              "Options": [
+                "Grass"
+              ]
+            },
+            "Lunch": {
+              "Options": [
+                "Grass"
+              ]
+            },
+            "Dinner": {
+              "Options": [
+                "Grass"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

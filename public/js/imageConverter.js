@@ -149,11 +149,11 @@ function retrieveImage(imageInfo) {
 }
 
 
-// Cache S3 folder and file names to files array
+// Cache B2 folder and file names to files array
 function parseImageUrl(imgUrl) {
 
-  var folder = imgUrl.split('/')[3];  // extract S3 folder name from URL
-  var file = imgUrl.split('/').pop().split('?').shift();  // extract S3 image name from URL
+  var folder = imgUrl.split('/')[5];  // extract B2 folder name from URL
+  var file = imgUrl.split('/').pop().split('?').shift();  // extract B2 image name from URL
   var parsedData = [folder, file];
 
   return parsedData;
@@ -168,8 +168,8 @@ function b64InProgress() {
 }
 
 
-// Make AJAX request to Sinatra route to prompt caching of S3 image to ./public/swap
-function cacheS3Image(imgUrl) {
+// Make AJAX request to Sinatra route to prompt caching of B2 image to ./public/swap
+function cacheB2Image(imgUrl) {
 
   b64InProgress();
   var imageInfo = parseImageUrl(imgUrl);
@@ -177,7 +177,7 @@ function cacheS3Image(imgUrl) {
   $.ajax({
       url: "/cache_image",
       type: 'POST',
-      data: { image_info: imageInfo, url_type: "S3" },
+      data: { image_info: imageInfo, url_type: "B2" },
       success: function(result) {
         
         $("#ajax_result").html(result);

@@ -1,0 +1,57 @@
+<div class="center-block">
+
+  <div class="padded">
+    <h1>Blog Creator 1.0</h1>
+  </div>
+
+  <input type="text" class="newBlogTitle border" id="newBlogTitle" placeholder="Enter blog title here...">
+
+  <!-- placeholder for (optional) image -->
+  <div class="padImage">
+    <img src="" class="border div_hide" id="photoImage">
+  </div>
+
+  <div class="padImageButton">
+    <label class="nonEditorButton fileUpload">
+      <input type="file" accept="image/*" class="upload" id="photo" onchange="evaluateAndResize('photo')" />Choose Image
+    </label>
+  </div>
+
+  <div class="border" id="newBlogText" placeholder="Enter blog text here..." contenteditable="true"></div>
+
+  <!-- text editor buttons populated programmatically via editorButtons.js -->
+  <div class="editorButtons flexButtons"></div>
+
+  <div class="centered padded">
+    <!-- <button class="nonEditorButton submit" id="btnPostNewBlog" onclick="getNewBlogText()">Submit Blog</button> -->
+    <button class="nonEditorButton" id="btnPostNewBlog" onclick="postNewBlog()">Submit Blog</button>
+  </div>
+
+  <div class="divider"></div>
+  <h2>Previous Blogs</h2>
+  <div class="divider"></div>
+
+  <div class="padded" id="oldBlogText">
+    <% blogs_array.reverse_each do |blog| %>
+
+      <h3><%= blog["blog_title"] %></h3>
+
+      <% if blog.include?("blog_photo") %>
+        <div class="centered">
+          <img class="border margin" src="images/blog/<%=blog["blog_photo"]%>" alt=""</p>
+        </div>
+      <% end %>
+      
+      <p class="right-aligned"><i><%= blog["blog_date"] %></i></p>
+      <div class="divider"></div>
+      <p><%= blog["blog_text"] %></p>
+      <div class="divider"></div>
+
+    <% end %>
+  </div>
+
+</div>
+
+<script type="text/javascript" src="js/editorButtons.js"></script>
+<script type="text/javascript" src="js/photoUpload.js"></script>
+<script type="text/javascript" src="js/submitBlog.js"></script>
