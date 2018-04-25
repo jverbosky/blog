@@ -175,7 +175,7 @@ def combine_all_records(db)
   all_records = []
   species_records = get_species_records(db)
   subdirectories = get_subdirectories(species_records)
-  sighting_records = get_updated_sighting(db, subdirectories)  # get sighting records with S3 URLs for photos
+  sighting_records = get_updated_sighting(db, subdirectories)  # get sighting records with B2 URLs for photos
   counter = 0
 
   species_records.each do |spr|

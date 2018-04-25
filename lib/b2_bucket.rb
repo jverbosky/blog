@@ -15,8 +15,8 @@
 # def connection()
 #   begin
 #     db_params = {
-#         host: ENV['host'],  # AWS link
-#         port: ENV['port'],  # AWS port, always 5432
+#         host: ENV['host'],
+#         port: ENV['port'],
 #         username: ENV['username'],
 #         password: ENV['password'],
 #         database: ENV['database']
