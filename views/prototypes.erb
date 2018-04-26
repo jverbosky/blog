@@ -341,7 +341,7 @@
     </div>
 
     <div class="center-block readme" id="imageReadme">
-      <p class="padded">This prototype provides a front-end for adding, viewing and deleting S3 bucket images. Multiple images can be selected for upload, as well as individually removed from the bucket. A progress bar indicates upload status as images are sent via AJAX requests to Sinatra for processing.</p>
+      <p class="padded">This prototype provides a front-end for adding, viewing and deleting Backblaze B2 bucket images. Multiple images can be selected for upload, as well as individually removed from the bucket. A progress bar indicates upload status as images are sent via AJAX requests to Sinatra for processing.</p>
       <p class="padded centered underline">Related Files</p>
       <table class="border table_small">
         <colgroup>
@@ -363,7 +363,7 @@
         </tr>
         <tr>
           <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/photo_queue.rb" target="_blank">photo_queue.rb</a></td>
-          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/s3_bucket.rb" target="_blank">s3_bucket.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/b2_bucket.rb" target="_blank">b2_bucket.rb</a></td>
           <td class="background_color"></td>
           <td class="background_color"></td>
         </tr>
@@ -551,8 +551,8 @@
     </div>
 
     <div class="center-block readme" id="base64Readme">
-      <p>This prototype converts images to base64 strings. Options are included to convert AWS S3-hosted images, uploaded images and image URLs.</p>
-      <p class="padded">For S3-hosted images and image URLs, images are cached locally via AJAX requests for processing and then removed from the swap directory following conversion.</p>
+      <p>This prototype converts images to base64 strings. Options are included to convert Backblaze B2-hosted images, uploaded images and image URLs.</p>
+      <p class="padded">For B2-hosted images and image URLs, images are cached locally via AJAX requests for processing and then removed from the swap directory following conversion.</p>
       <p class="padded centered underline">Related Files</p>
       <table class="border table_small">
         <colgroup>
@@ -566,7 +566,7 @@
           <th class="background_color">JS Libraries</th>
         </tr>
         <tr>
-          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/s3_bucket.rb" target="_blank">s3_bucket.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/b2_bucket.rb" target="_blank">b2_bucket.rb</a></td>
           <td><a href="https://github.com/jverbosky/portfolio/blob/master/public/js/imageConverter.js" target="_blank">imageConverter.js</a></td>
           <td><a href="https://github.com/zenorocha/clipboard.js" target="_blank">clipboard.js</a></td>
         </tr>
@@ -576,7 +576,7 @@
     <div class="divider"></div>
 
     <div class="centered padded">
-      <button class="nonEditorButton" onclick="b64showS3Images()">AWS S3 Images</button>
+      <button class="nonEditorButton" onclick="b64showB2Images()">BackBlaze B2 Images</button>
       <button class="nonEditorButton" onclick="b64showUploadImage()">Upload Image</button>
       <button class="nonEditorButton" onclick="b64showImageUrl()">Image URL</button>
     </div>
@@ -585,7 +585,7 @@
       <p hidden>Results posted here</p>
     </div>
 
-    <div id="b64_s3_images" class="div_hide">
+    <div id="b64_b2_images" class="div_hide">
       <table class="img-table center-block">
         <tr class="img-row">
           <% if images == [] %>
@@ -702,7 +702,7 @@
     </div>
 
     <div class="center-block readme" id="reportFilterReadme">
-      <p>This prototype takes data from AWS-hosted PostgreSQL tables and S3 bucket directories, and formats it into tables nested within expandable/collapsible sections.</p>
+      <p>This prototype takes data from GearHost MySQL tables and BackBlaze B2 bucket directories, and formats it into tables nested within expandable/collapsible sections.</p>
       <p class="padded">Controls are included to allow progressive filtering and PDF output of the visbile sections. Please note that the email address specified for the <b>Email PDF</b> feature needs to be validated, so you'll need to <a href="mailto:john.c.verbosky@gmail.com?Subject=Portfolio%20contact" target="_top">reach out to me</a> if you'd like to try it.</p>
       <p class="padded centered underline">Related Files</p>
       <table class="border table_small">
@@ -728,7 +728,7 @@
         </tr>
         <tr>
           <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/db_query.rb" target="_blank">db_query.rb</a></td>
-          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/s3_bucket.rb" target="_blank">s3_bucket.rb</a></td>
+          <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/b2_bucket.rb" target="_blank">b2_bucket.rb</a></td>
         </tr>
         <tr>
           <td><a href="https://github.com/jverbosky/portfolio/blob/master/lib/mail_pdf.rb" target="_blank">mail_pdf.rb</a></td>

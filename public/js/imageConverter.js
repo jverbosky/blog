@@ -1,6 +1,6 @@
 // Page elements for Image-Base64 String and Base64 String-Image prototypes
 var b64elements = {
-  b64awsS3images: $("#b64_s3_images"),
+  b64backblazeB2images: $("#b64_b2_images"),
   b64uploadImage: $("#b64_upload_image"),
   b64photoPreview: $("#b64_photo_preview"),
   b64imageUrl: $("#b64_image_url"),
@@ -32,12 +32,12 @@ function resetB64Elements() {
 }
 
 
-// Show div for AWS S3 images and hide others
-function b64showS3Images() {
+// Show div for Backblaze B2 images and hide others
+function b64showB2Images() {
 
   b64elements.b64uploadImage.addClass("div_hide");
   b64elements.b64imageUrl.addClass("div_hide");
-  b64elements.b64awsS3images.removeClass("div_hide");
+  b64elements.b64backblazeB2images.removeClass("div_hide");
 
   resetB64Elements();
   adjustPanel("acc_base64");
@@ -47,7 +47,7 @@ function b64showS3Images() {
 // Show div for image upload input and hide others
 function b64showUploadImage() {
 
-  b64elements.b64awsS3images.addClass("div_hide");
+  b64elements.b64backblazeB2images.addClass("div_hide");
   b64elements.b64imageUrl.addClass("div_hide");
   b64elements.b64uploadImage.removeClass("div_hide");
 
@@ -59,7 +59,7 @@ function b64showUploadImage() {
 // Show div for image URL input and hide others
 function b64showImageUrl() {
 
-  b64elements.b64awsS3images.addClass("div_hide");
+  b64elements.b64backblazeB2images.addClass("div_hide");
   b64elements.b64uploadImage.addClass("div_hide");
   b64elements.b64imageUrl.removeClass("div_hide");
 
@@ -229,7 +229,7 @@ function handleBadUrl() {
 }
 
 
-// Make AJAX request to Sinatra route to prompt caching of non-S3 image to ./public/swap
+// Make AJAX request to Sinatra route to prompt caching of non-B2 image to ./public/swap
 function convertImageUrl() {
 
   b64elements.b64invalidImageUrl.addClass("div_hide");
@@ -254,7 +254,7 @@ function convertImageUrl() {
       $.ajax({
         url: "/cache_image",
         type: 'POST',
-        data: { image_info: imageUrl, url_type: "non-S3" },
+        data: { image_info: imageUrl, url_type: "non-B2" },
         success: function(result) {
           
           $("#ajax_result").html(result);
