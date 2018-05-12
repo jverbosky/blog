@@ -1,8 +1,8 @@
 <div class="center-block">
 
   <div class="center-block page_header padded">
-    <p class="padded">This page will let you play with some of the different prototypes that I built during my six-month full stack apprenticeship with <a href="http://www.minedminds.org/" target="_blank">Mined Minds</a>.</p>
-    <p class="padded">Some of the prototypes (JSON Updater, Image Uploader and Report Filter with PDF Output) are based upon code that I developed for projects during my apprenticeship, while others were simply fun experiments.</p>
+    <p class="padded">This page will let you play with some of the different prototypes that I built during my six-month full stack apprenticeship with <a href="http://www.minedminds.org/" target="_blank">Mined Minds</a> and beyond.</p>
+    <p class="padded">Some of the prototypes (JSON Updater, Image Uploader and Report Filter with PDF Output) are based upon code that I developed for projects during my apprenticeship, while others are simply fun experiments.</p>
     <p class="padded">Each prototype includes a readme section with details on functionality and links to relevant files on GitHub.</p>
     <p class="padded">For those interested, the GitHub repo for this entire site can be accessed <a href="https://github.com/jverbosky/portfolio" target="_blank">here</a>.</p>
     <p class="padded">To begin, just click on one of the buttons below to expand the corresponding section for that prototype.</p>
@@ -512,7 +512,7 @@
     </div>
 
     <div class="center-block readme" id="matrixReadme">
-      <p>This prototype was inspired by the "code rain" animation in "The Matrix", and was my first attempt at using JavaScript for randomized animations. It is entirely driven by manipulating DOM elements, which isn't as efficient as using canvas but still gets the job done.</p>
+      <p>This prototype was inspired by the "code rain" animation in "The Matrix", and was my first attempt at using JavaScript for randomized animations. It is entirely driven by manipulating DOM elements, which is not as efficient as using canvas but still gets the job done.</p>
       <p class="padded">The page width determines the number of columns, which can be seen by stopping/starting the program after resizing the browser window.</p>
       <p class="padded centered underline">Related Files</p>
       <table class="border table_small">
@@ -551,7 +551,7 @@
     </div>
 
     <div class="center-block readme" id="base64Readme">
-      <p>This prototype converts images to base64 strings. Options are included to convert Backblaze B2-hosted images, uploaded images and image URLs.</p>
+      <p>This prototype converts images to Base64 strings. Options are included to convert Backblaze B2-hosted images, uploaded images and image URLs.</p>
       <p class="padded">For B2-hosted images and image URLs, images are cached locally via AJAX requests for processing and then removed from the swap directory following conversion.</p>
       <p class="padded centered underline">Related Files</p>
       <table class="border table_small">
@@ -628,8 +628,8 @@
 
     </div>
 
-    <div id="b64_container">
-      <textarea id="b64_string" class="b64_text" placeholder="Image base64 string..."></textarea>
+    <div class="b64_container">
+      <textarea id="b64_string" class="b64_text" placeholder="Image Base64 string..."></textarea>
       <div id="b64_progress"></div>
     </div>
 
@@ -651,7 +651,7 @@
     </div>
 
     <div class="center-block readme" id="base64convReadme">
-      <p>This prototype takes a base64 string and displays the decoded image. It works for PNG, JPG and GIF image types.</p>
+      <p>This prototype takes a Base64 string and displays the decoded image. It works for PNG, JPG and GIF image types.</p>
       <p class="padded centered underline">Related Files</p>
       <table class="border table_small">
         <colgroup>
@@ -673,15 +673,15 @@
     </div>
 
    <div id="b64_empty_b64_string" class="div_hide">
-      <p class="status_message text_center">Please provide a base64 string in the field below.</p>
+      <p class="status_message text_center">Please provide a Base64 string in the field below.</p>
     </div>
 
     <div id="b64_invalid_b64_string" class="div_hide">
-      <p class="status_message text_center">Unable to convert due to an issue with the base64 string.</p>
+      <p class="status_message text_center">Unable to convert due to an issue with the Base64 string.</p>
     </div>
 
-    <div id="b64_container">
-      <textarea id="b64_string_src" class="b64_text" placeholder="Image base64 string..."></textarea>
+    <div class="b64_container">
+      <textarea id="b64_string_src" class="b64_text" placeholder="Image Base64 string..."></textarea>
     </div>
 
     <div class="centered padded">
@@ -1010,6 +1010,86 @@
 
   <!-- NEXT PROTOTYPE -->
 
+  <button class="accordion" id="acc_sig_pad"><h1>Signature to Base64 String</h1></button>
+  <div class="panel">
+
+    <div class="centered padded">
+      <button class="nonEditorButton" onclick="showReadme('sigpadRepReadme')">Readme</button>
+    </div>
+
+    <div class="center-block readme" id="sigpadRepReadme">
+      <p>This prototype demonstrates capturing an electronic signature and rendering it as a Base64 string. I used this while developing a prototype to fill out a fillable PDF form.</p>
+      <p class="padded">To sign, click on the <strong>Enter signature</strong> field.</p>
+      <p class="padded centered underline">Related Files</p>
+      <table class="border table_small">
+        <colgroup>
+          <col class="grey_lt">
+          <col class="grey_med">
+        </colgroup>
+        <tr>
+          <th class="background_color">JavaScript</th>
+          <th class="background_color">JS Libraries</th>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/jverbosky/portfolio/" target="_blank">signature_pad_modal.js</a></td>
+          <td><a href="https://github.com/szimek/signature_pad" target="_blank">signature_pad</a></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Trigger/Open The Modal -->
+    <div style="text-align:center; margin-bottom: 2em;">
+        <label>Enter signature: </label>
+        <input type="text" id="appSigTrigger" style="width: 45%;">
+    </div>
+
+    <!-- Signature Modal -->
+    <div id="signature-modal">
+        <div id="signature-modal-content">
+            <span id="close-modal-btn">&times;</span>
+            <div class="signature-container">
+                <div id="signature-pad" class="signature-pad">
+                    <div class="signature-pad--body">
+                        <canvas></canvas>
+                    </div>
+                    <div class="signature-pad--footer">
+                        <div class="description">Sign above</div>
+                        <div class="signature-pad--actions">
+                            <div>
+                                <button type="button" class="nonEditorButton clear" data-action="clear">Clear</button>
+                                <button type="button" class="nonEditorButton" data-action="undo">Undo</button>
+                            </div>
+                            <div>
+                                <button type="button" class="nonEditorButton save" data-action="base64-string">Sign Document</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <img src="" id="imgAppSig" class="signature-image">
+        <div id="imgAppSigResetDiv" class="signature-image-reset">
+            <button type="button" id="imgAppSigReset" class="nonEditorButton">Reset</button>
+        </div>
+    </div>
+
+    <div>
+        <div class="b64_container">
+            <textarea id="base-target" class="b64_text" placeholder="Image Base64 string..."></textarea>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+  </div>
+
+  <!-- NEXT PROTOTYPE -->
+
 </div>
 
 <!-- AngularJS -->
@@ -1033,6 +1113,8 @@
 <script src="js/imageConverter.js"></script>
 <script src="js/showAll.js"></script>
 <script src="js/htmlToPdf.js"></script>
+<script src="js/signature_pad.umd.js"></script>
+<script src="js/signature_pad_modal.js"></script>
 
 <!-- AngularJS Content Report app scripts in /public/angularjs -->
 <script src="angularjs/rep_app/json/json.module.js"></script>
